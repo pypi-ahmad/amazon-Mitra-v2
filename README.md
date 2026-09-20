@@ -6,9 +6,6 @@ runs the released classifier or regressor, and evaluates predictions on the
 hidden rows. It includes classic EDA and an explicit comparison with one
 scikit-learn baseline.
 
-The app does not certify that a table is accurate, representative, fair, or
-trustworthy. Ollama and Agnes are not used anywhere in this project.
-
 ## Run on Windows 11
 
 Set `HF_TOKEN` as a Windows user environment variable. Do not put the token in
