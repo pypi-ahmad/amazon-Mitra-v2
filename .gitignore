@@ -1,0 +1,10 @@
+.venv/
+.env
+__pycache__/
+.streamlit/secrets.toml
+artifacts/
+vendor/
+data/hf/
+data/runs/
+data/cache/*.json
+!data/cache/.gitkeep
