@@ -28,7 +28,7 @@ The launcher:
 4. Stops an existing listener on port 8541.
 5. Opens Glass Box at `http://localhost:8541`.
 
-No checkpoint is downloaded until a model run starts.
+Model weights download when a run starts.
 
 ## Bundled tables
 
@@ -43,8 +43,8 @@ All primary tables are loaded with Hugging Face `datasets` and `HF_TOKEN`.
 | Wine quality | `codesignal/wine-quality` | Regression | `quality` |
 
 See [dataset sources and licenses](docs/DATASETS.md) for splits, fallbacks,
-licenses, and cached shapes. CSV and Parquet uploads use the same tutorial and
-model pipeline.
+licenses, and cached shapes. CSV and Parquet uploads use the same data and
+model flow.
 
 ## MITRA controls
 
@@ -67,6 +67,15 @@ eight-fold prediction can be substantially slower, so the UI shows a warning.
 See [exact MITRA flags](docs/MITRA_FLAGS.md) and the
 [architecture](docs/ARCHITECTURE.md) for implementation details.
 
+## Documentation
+
+- [Developer guide](docs/DEVELOPER_GUIDE.md): architecture, local workflow, artifacts, and checks.
+- [Contributor runbook](CONTRIBUTING.md): safe changes, verification, and documentation policy.
+- [Onboarding](docs/ONBOARDING.md): a first-session tour of the app and source tree.
+- [Zero to mastery](docs/ZERO_TO_MASTERY.md): a guided path from first launch to custom-table runs.
+- [Python reference](docs/PYTHON_REFERENCE.md): reusable `src` interfaces and generated artifacts.
+- [Dataset sources and licenses](docs/DATASETS.md): primary sources, fallbacks, and splits.
+
 ## Sources
 
 - [Mitra-v2 technical report](https://arxiv.org/abs/2609.04540)
@@ -75,7 +84,7 @@ See [exact MITRA flags](docs/MITRA_FLAGS.md) and the
 - [Fine-tuning and bagging code](https://huggingface.co/autogluon/mitra-finetune)
 - [AutoGluon](https://github.com/autogluon/autogluon)
 
-Current validation evidence is recorded in [STATUS.md](STATUS.md).
+[STATUS.md](STATUS.md) records the current validation evidence.
 
 ## License
 

@@ -27,8 +27,8 @@ not change the Glass Box application license.
 
 ## Fallbacks
 
-The primary Hugging Face source is always attempted first. If it fails, the
-loader records the verbatim error in `data/cache/hf_status.json` before trying:
+The loader tries the primary Hugging Face source first. If it fails, it records
+the verbatim error in `data/cache/hf_status.json` and then tries:
 
 | Table | Fallback order |
 | --- | --- |

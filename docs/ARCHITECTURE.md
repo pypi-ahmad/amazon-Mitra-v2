@@ -1,7 +1,7 @@
 # Glass Box architecture
 
-Glass Box is one native Windows Streamlit process. It does not use a model
-server, Ollama, Agnes, WSL, or Docker.
+Glass Box runs as one native Windows Streamlit process. It has no model server,
+Ollama, Agnes, WSL, or Docker dependency.
 
 ```mermaid
 flowchart LR
@@ -35,14 +35,14 @@ unchanged sources are loaded from disk.
 
 `src/state.py` resolves the current table, target, and problem type. Before a
 model run, `src/mitra_run.py` requires binary targets to contain exactly two
-classes, multiclass targets to contain 3–20 classes, and regression targets to
+classes, multiclass targets to contain 3 to 20 classes, and regression targets to
 be numeric.
 
 `src/mitra_run.py` accepts explicit training and test tables, chooses the
 checkpoint, applies the official released regression-head compatibility patch
 when required, fits AutoGluon MITRA, and fits one scikit-learn
-HistGradientBoosting baseline on the same split. The baseline is a teaching
-reference, not a full AutoML comparison.
+HistGradientBoosting baseline on the same split. It gives users one reference
+point and is not a full AutoML comparison.
 
 ## Model and artifact flow
 
@@ -67,9 +67,9 @@ downloaded tables are ignored by Git.
 
 ## Credentials and device selection
 
-Hugging Face calls read `HF_TOKEN` from the Windows process environment and
-never display or persist its value. The copied `.env` file is not parsed as a
-credential source.
+Hugging Face calls read `HF_TOKEN` from the Windows process environment. The
+application never displays or persists it, and it does not read credentials
+from the copied `.env` file.
 
 `torch.cuda.is_available()` selects `num_gpus=1`; otherwise the fit receives
 `num_gpus=0` and the UI shows a CPU time warning. No CUDA-specific Torch wheel

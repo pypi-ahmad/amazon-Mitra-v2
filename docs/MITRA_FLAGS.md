@@ -1,15 +1,15 @@
 # MITRA installation and flags
 
 This project follows the released Mitra-v2 model cards and AutoGluon's
-foundation-model API. The official cards currently require AutoGluon with the
-Mitra extra, TabArena, and the separately installed `mitra-finetune` package.
+foundation-model API. The cards require AutoGluon with the Mitra extra,
+TabArena, and the separately installed `mitra-finetune` package.
 
 ```text
 autogluon.tabular[mitra]>=1.6,<1.7
 tabarena>=0.1
 ```
 
-The Hub Git server can reject pip's partial clone. `run.cmd` therefore clones
+The Hub Git server can reject pip's partial clone. `run.cmd` clones
 `autogluon/mitra-finetune`, checks out revision
 `b4701e8148dc33b00ed15d7086ff59816957cde4` (v0.3.0), and installs that local
 checkout. Flash attention remains optional and no CUDA Torch wheel is pinned.
@@ -50,10 +50,10 @@ The MITRA hyperparameter dictionary is built as follows:
 ```python
 mitra_hyperparameters = {
     "hf_model": checkpoint,
-    "fine_tune": config.fine_tune,
+    "fine_tune": fine_tune,
 }
-if config.fine_tune:
-    mitra_hyperparameters["fine_tune_steps"] = config.fine_tune_steps
+if fine_tune:
+    mitra_hyperparameters["fine_tune_steps"] = fine_tune_steps
 ```
 
 It is passed to `TabularPredictor.fit` with these predictor-level controls:
@@ -61,9 +61,9 @@ It is passed to `TabularPredictor.fit` with these predictor-level controls:
 ```python
 predictor.fit(
     train_data=train,
-    time_limit=config.time_limit,
+    time_limit=time_limit,
     hyperparameters={"MITRA": mitra_hyperparameters},
-    num_bag_folds=8 if config.eight_copies else 0,
+    num_bag_folds=8 if eight_copies else 0,
     num_bag_sets=1,
     num_stack_levels=0,
     dynamic_stacking=False,
@@ -86,9 +86,9 @@ hyperparameter.
 | On | On | Eight fine-tuned bag children, default 50 steps each |
 
 The released benchmark recipe assumes CUDA and eight children. Glass Box also
-allows CPU and single-model runs for tutorial access, while warning that CPU
-fine-tuning can be slow. The app does not set the optional benchmark protocol
-environment variables `MITRA_FT_BUDGET_S` or `MITRA_BAG_SALVAGE`.
+runs on CPU and with a single model, while warning that CPU fine-tuning can be
+slow. The app leaves the optional benchmark protocol environment variables
+`MITRA_FT_BUDGET_S` and `MITRA_BAG_SALVAGE` unset.
 
 Every run preflights the selected v2 repository with `HF_TOKEN`. A missing or
 authentication-dependent checkpoint download fails with `set HF_TOKEN`; there

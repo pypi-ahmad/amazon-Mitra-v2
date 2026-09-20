@@ -3,8 +3,8 @@
 ## Current implementation
 
 - Eight-page dark Streamlit tutorial for native Windows 11.
-- Both released heads route through AutoGluon `TabularPredictor` after an
-  explicit user action.
+- Both released heads run through AutoGluon `TabularPredictor` after the user
+  starts a run.
 - Classification uses `autogluon/mitra-classifier-2`; regression uses
   `autogluon/mitra-regressor-2` with the official 1,000-bin compatibility
   patch from `mitra-finetune` v0.3.0.
@@ -98,3 +98,12 @@ local directory. `requirements.txt` retains `autogluon.tabular[mitra]` and
 - Classic EDA smoke renders eight figures and writes `eda_ok.json`.
 - UI import smoke imports the app and generates five synthetic teaching plots.
 - Streamlit AppTest executes every page without a browser.
+
+## Documentation audit
+
+The developer guide, contributor runbook, onboarding path, zero-to-mastery
+tutorial, and Python API reference sit beside the source. The documentation
+smoke checks required guides, repository-relative Markdown links, and top-level
+public `src` docstrings without downloading data or model weights. The CUDA
+figures above describe the validated local environment. The default launcher
+does not pin a CUDA Torch wheel, so it remains CPU-compatible.
