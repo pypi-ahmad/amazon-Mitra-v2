@@ -20,6 +20,12 @@ def main() -> None:
         try:
             frame, metadata = load_sample(name)
             known, hidden = split_from_metadata(frame, metadata)
+            assert metadata["source_kind"] == "huggingface", (
+                f"{name} did not load through Hugging Face: {metadata['source_kind']}"
+            )
+            assert metadata["source_id"] == spec.source.source_id, (
+                f"{name} used {metadata['source_id']}, expected {spec.source.source_id}"
+            )
             assert spec.target in frame, f"{spec.target} missing"
             assert not frame.empty, "table is empty"
             assert set(known.index).isdisjoint(hidden.index), "known and hidden rows overlap"
@@ -60,11 +66,9 @@ def main() -> None:
     OUTPUT.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
     assert results["Houses"]["status"] == "ok", results["Houses"]["error"]
-    classification_ok = any(
-        item["status"] == "ok" and item["task"] in {"binary", "multiclass"}
-        for item in results.values()
-    )
-    assert classification_ok, "No classification dataset loaded"
+    assert sum(item["status"] == "ok" for item in results.values()) == 5, results
+    assert sum(item["task"] == "regression" for item in results.values()) >= 2
+    assert sum(item["task"] in {"binary", "multiclass"} for item in results.values()) >= 2
     print(f"data smoke ok: {sum(item['status'] == 'ok' for item in results.values())}/5")
     print(OUTPUT)
 

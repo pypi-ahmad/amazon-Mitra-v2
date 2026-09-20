@@ -64,7 +64,7 @@ with chart_col:
         template="plotly_dark",
         paper_bgcolor="#111a2e",
         plot_bgcolor="#111a2e",
-        margin=dict(l=24, r=16, t=24, b=24),
+        margin={"l": 24, "r": 16, "t": 24, "b": 24},
         yaxis_title="Rows",
     )
     st.plotly_chart(figure, width="stretch")

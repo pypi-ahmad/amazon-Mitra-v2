@@ -26,9 +26,10 @@ def load_sample(name: str, *, force: bool = False) -> tuple[pd.DataFrame, dict[s
     metadata_path = sample_dir / "metadata.json"
     if not force and table_path.exists() and metadata_path.exists():
         metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
-        used_source = SourceSpec(metadata["source_kind"], metadata["source_id"])
-        _record_source_status(name, spec, used_source, metadata.get("source_failures", []))
-        return pd.read_parquet(table_path), metadata
+        if metadata.get("catalog_source_id") == spec.source.source_id:
+            used_source = SourceSpec(metadata["source_kind"], metadata["source_id"])
+            _record_source_status(name, spec, used_source, metadata.get("source_failures", []))
+            return pd.read_parquet(table_path), metadata
 
     sample_dir.mkdir(parents=True, exist_ok=True)
     failures: list[dict[str, str]] = []
@@ -143,6 +144,7 @@ def build_metadata(
         "id": spec.id,
         "source_id": used_source.source_id,
         "source_kind": used_source.kind,
+        "catalog_source_id": spec.source.source_id,
         "task": spec.task,
         "target": spec.target,
         "story": spec.story,
