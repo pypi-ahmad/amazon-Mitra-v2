@@ -1,3 +1,5 @@
+"""Render saved or in-session MITRA metrics, predictions, and comparison views."""
+
 from __future__ import annotations
 
 import json
@@ -21,7 +23,7 @@ RESULT_CHOICES = {
 st.html('<div class="gb-kicker">06 · Evaluate</div>')
 st.title("Results")
 st.html(
-    '<div class="gb-warning"><b>Trust boundary.</b> The model does not certify that the table is accurate, representative, fair, causally valid, or trustworthy.</div>'
+    '<div class="gb-warning">Model results do not certify that the table is accurate, representative, fair, causally valid, or trustworthy.</div>'
 )
 
 if st.session_state.run_error:
@@ -45,7 +47,7 @@ if result:
 
     with st.container(horizontal=True):
         for name, value in result["metrics"].items():
-            shown = "—" if value is None else f"{value:.4f}"
+            shown = "N/A" if value is None else f"{value:.4f}"
             st.metric(name, shown, border=True)
 
     metric_names = list(dict.fromkeys([*result["metrics"], *result["baseline_metrics"]]))
@@ -58,8 +60,8 @@ if result:
         }
     )
     st.subheader("Same-split comparison")
-    st.caption("The reference is one sklearn baseline on the same known and hidden rows.")
-    st.dataframe(comparison.style.format("{:.4f}", na_rep="—"), width="stretch")
+    st.caption("The reference is one sklearn baseline trained and evaluated on the same split.")
+    st.dataframe(comparison.style.format("{:.4f}", na_rep="N/A"), width="stretch")
 
     prediction_path = Path(result["prediction_path"])
     if prediction_path.exists() and prediction_path.suffix.lower() == ".csv":
@@ -138,8 +140,8 @@ if result:
             rows["spread"] = predictions[spread_column]
         else:
             st.caption(
-                "Prediction spread is unavailable for this run because the current AutoGluon "
-                "predictor output did not expose per-copy or per-fold variance."
+                "Prediction spread is unavailable because this AutoGluon predictor did not "
+                "expose per-copy or per-fold variance."
             )
         st.dataframe(rows, hide_index=True, width="stretch")
 
@@ -147,7 +149,9 @@ if result:
             "Download predictions",
             prediction_path.read_bytes(),
             file_name=f"{result['run_id']}-predictions{prediction_path.suffix}",
-            mime="text/csv" if prediction_path.suffix.lower() == ".csv" else "application/octet-stream",
+            mime="text/csv"
+            if prediction_path.suffix.lower() == ".csv"
+            else "application/octet-stream",
             icon=":material/download:",
             width="stretch",
         )
@@ -157,8 +161,14 @@ if result:
     details = {
         key: result[key]
         for key in [
-            "checkpoint", "target", "problem", "train_rows", "hidden_rows",
-            "fine_tune_steps", "time_limit", "run_dir",
+            "checkpoint",
+            "target",
+            "problem",
+            "train_rows",
+            "hidden_rows",
+            "fine_tune_steps",
+            "time_limit",
+            "run_dir",
         ]
     }
     with st.expander("Run details"):

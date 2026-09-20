@@ -1,3 +1,5 @@
+"""Statically verify the Windows launcher contract without starting Streamlit."""
+
 from __future__ import annotations
 
 import json
@@ -8,6 +10,7 @@ OUTPUT = ROOT / "data" / "cache" / "launcher_ok.json"
 
 
 def main() -> None:
+    """Assert launcher setup, token guard, port cleanup, and app command details."""
     launcher = (ROOT / "run.cmd").read_text(encoding="utf-8")
     required = [
         "py -3 -m venv .venv",

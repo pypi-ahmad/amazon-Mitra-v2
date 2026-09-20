@@ -1,3 +1,5 @@
+"""Render MITRA execution controls and the run log."""
+
 from __future__ import annotations
 
 import streamlit as st
@@ -20,7 +22,7 @@ if st.session_state.result:
 dataset_col, target_col, runtime_col, device_col = st.columns(4)
 dataset_col.metric("Dataset", source)
 target_col.metric("Target", target)
-runtime_col.metric("Last runtime", f"{last_runtime:.1f}s" if last_runtime else "—")
+runtime_col.metric("Last runtime", f"{last_runtime:.1f}s" if last_runtime else "Not run")
 device_col.metric("Device", device)
 
 if not cuda:
@@ -40,8 +42,8 @@ st.caption(
     "Both classification and regression use AutoGluon TabularPredictor with the installed native MITRA model."
 )
 st.markdown(
-    '<div class="gb-warning"><b>Explicit action.</b> Run can download about 300 MB of model weights. '
-    "The sklearn baseline uses the same known/hidden rows and is not a full AutoML benchmark.</div>"
+    '<div class="gb-warning">Running may download about 300 MB of model weights. '
+    "The sklearn baseline uses the same known and hidden rows. It is not a full AutoML benchmark.</div>"
 )
 
 st.subheader("Run log")

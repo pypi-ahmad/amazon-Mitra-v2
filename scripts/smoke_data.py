@@ -1,3 +1,5 @@
+"""Download every primary dataset source and record the catalog smoke result."""
+
 from __future__ import annotations
 
 import json
@@ -15,6 +17,7 @@ OUTPUT = ROOT / "data" / "cache" / "catalog.json"
 
 
 def main() -> None:
+    """Exercise catalog loading, caching, normalization, and deterministic splits."""
     results: dict[str, dict] = {}
     for name, spec in SAMPLE_CATALOG.items():
         try:

@@ -1,3 +1,5 @@
+"""Render uploads, deterministic split details, and row-level data inspection."""
+
 from __future__ import annotations
 
 import plotly.express as px

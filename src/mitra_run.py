@@ -1,3 +1,5 @@
+"""Run released Mitra-v2 heads and a sklearn reference baseline on the same split."""
+
 from __future__ import annotations
 
 import json
@@ -43,7 +45,18 @@ RESULT_POINTERS = {
 
 
 def load_cached_result(pointer_name: str) -> dict[str, Any] | None:
-    """Load one complete run through an approved cache pointer."""
+    """Load one complete run through an approved generated cache pointer.
+
+    Args:
+        pointer_name: One filename from :data:`RESULT_POINTERS`.
+
+    Returns:
+        Complete run metadata plus local artifact paths, or ``None`` when the pointer or
+        referenced artifact is absent, malformed, or inconsistent.
+
+    Raises:
+        ValueError: If ``pointer_name`` is not an approved result pointer.
+    """
     if pointer_name not in RESULT_POINTERS:
         raise ValueError(f"Unsupported result pointer: {pointer_name}")
     pointer_path = CACHE_DIR / pointer_name
@@ -68,11 +81,20 @@ def load_cached_result(pointer_name: str) -> dict[str, Any] | None:
 
 
 def load_last_result() -> dict[str, Any] | None:
-    """Return the latest complete local run."""
+    """Return metadata for the latest complete local MITRA run, if one exists.
+
+    Returns:
+        The result addressed by ``last_run.json``, or ``None`` when no valid run is cached.
+    """
     return load_cached_result("last_run.json")
 
 
 def device_info() -> tuple[bool, str]:
+    """Detect whether PyTorch can use CUDA and return a display-ready device name.
+
+    Returns:
+        A ``(cuda_available, device_name)`` pair. Missing PyTorch is treated as CPU-only.
+    """
     try:
         import torch
 
@@ -92,7 +114,34 @@ def run_mitra(
     fine_tune_steps: int = 50,
     time_limit: int | None = None,
 ) -> dict[str, Any]:
-    """Fit the correct released Mitra-v2 head and evaluate an explicit test table."""
+    """Fit the correct released Mitra-v2 head and evaluate an explicit test table.
+
+    Args:
+        df_train: Known rows containing features and ``target``.
+        df_test: Hidden rows with the same ordered feature columns and ``target`` retained
+            only for local evaluation.
+        target: Column to predict.
+        problem_type: ``regression``, ``binary``, ``multiclass``, or generic
+            ``classification``.
+        fine_tune: Whether MITRA receives the official fine-tuning setting.
+        eight_copies: Whether AutoGluon creates eight bagging folds instead of one model.
+        fine_tune_steps: Fine-tuning step count from 0 through 100 when enabled.
+        time_limit: Optional positive AutoGluon fitting limit in seconds.
+
+    Returns:
+        Serializable run metadata, current-split metrics, baseline metrics, model details,
+        runtime, and paths below ``data/runs/<UTC timestamp>/``.
+
+    Raises:
+        ValueError: If the tables, target, problem type, fine-tune steps, or time limit are
+            incompatible with the installed MITRA runner.
+        RuntimeError: If ``HF_TOKEN`` is missing or the selected v2 checkpoint cannot be
+            authenticated and downloaded.
+
+    Side Effects:
+        Writes flags, logs, metrics, predictions, leaderboard, a persisted AutoGluon
+        predictor, and a ``last_run.json`` cache pointer. Failed runs retain ``error.json``.
+    """
     from autogluon.tabular import TabularPredictor
 
     if target not in df_train or target not in df_test:
@@ -130,7 +179,7 @@ def run_mitra(
 
     started = time.perf_counter()
     try:
-        log("Preparing the explicit training and test rows.")
+        log("Preparing the training and test rows.")
         train = df_train.dropna(subset=[target]).copy()
         hidden = df_test.dropna(subset=[target]).copy()
         if train.empty or hidden.empty:
@@ -145,9 +194,7 @@ def run_mitra(
         y_hidden = hidden[target]
         if problem == "regression":
             _install_official_regression_patch(checkpoint_config)
-        log(
-            f"Using Hugging Face repository: {checkpoint}."
-        )
+        log(f"Using Hugging Face repository: {checkpoint}.")
         log(
             f"Configuring MITRA on {device}: fine_tune={fine_tune}, "
             f"steps={settings['fine_tune_steps']}, folds={settings['num_bag_folds']}."
@@ -178,8 +225,7 @@ def run_mitra(
         )
         model_names = predictor.model_names()
         log(
-            "Predictor class: "
-            f"{predictor.__class__.__module__}.{predictor.__class__.__qualname__}."
+            f"Predictor class: {predictor.__class__.__module__}.{predictor.__class__.__qualname__}."
         )
         log(f"Fitted AutoGluon model(s): {', '.join(model_names)}.")
         settings["predictor_class"] = (
@@ -285,6 +331,18 @@ def run_baseline(
     target: str,
     problem: str,
 ) -> tuple[np.ndarray, np.ndarray | None, Any | None]:
+    """Fit the same-split HistGradientBoosting reference baseline.
+
+    Args:
+        train: Known rows containing features and target.
+        hidden: Held-out rows with matching columns.
+        target: Column to predict.
+        problem: Normalized AutoGluon task type.
+
+    Returns:
+        Predictions, optional class probabilities, and the binary positive class. Regression
+        returns ``None`` for the last two values.
+    """
     x_train = train.drop(columns=[target])
     y_train = train[target]
     x_hidden = hidden.drop(columns=[target])
@@ -338,6 +396,19 @@ def calculate_metrics(
     probabilities: pd.DataFrame | pd.Series | np.ndarray | None = None,
     positive_class: Any | None = None,
 ) -> tuple[dict[str, float], dict[str, Any] | None]:
+    """Calculate task-appropriate metrics and an optional classification matrix.
+
+    Args:
+        actual: Ground-truth target values.
+        predicted: Predicted labels or numeric values.
+        problem: Normalized problem type.
+        probabilities: Optional class probabilities used for binary ROC-AUC.
+        positive_class: Positive label corresponding to ``probabilities`` for binary tasks.
+
+    Returns:
+        A metric dictionary and a labeled confusion-matrix payload for classification.
+        Regression returns ``None`` for the matrix.
+    """
     y_true = np.asarray(actual)
     y_pred = np.asarray(predicted)
     if problem == "regression":
@@ -414,6 +485,8 @@ def _preflight_checkpoint(checkpoint: str) -> dict[str, Any]:
 
 
 def _install_official_regression_patch(checkpoint_config: dict[str, Any]) -> None:
+    # The released regressor's 1,000-bin output head needs this companion-package patch
+    # before AutoGluon constructs the model. The model card documents this requirement.
     from mitra_finetune.patches import install_reg_ce_patches
 
     install_reg_ce_patches(int(checkpoint_config["dim_output"]))
@@ -457,7 +530,9 @@ def _validate_problem_target(target: pd.Series, problem: str) -> None:
         return
     if problem == "binary":
         if unique != 2:
-            raise ValueError(f"Binary classification requires exactly 2 target classes; found {unique}")
+            raise ValueError(
+                f"Binary classification requires exactly 2 target classes; found {unique}"
+            )
         return
     if problem == "multiclass":
         if not 3 <= unique <= 20:

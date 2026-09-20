@@ -1,3 +1,5 @@
+"""Load, normalize, cache, and split bundled or uploaded tabular data."""
+
 from __future__ import annotations
 
 import json
@@ -20,6 +22,19 @@ CACHE_DIR = ROOT / "data" / "cache"
 
 
 def load_sample(name: str, *, force: bool = False) -> tuple[pd.DataFrame, dict[str, Any]]:
+    """Load a catalog sample and return its normalized table and split metadata.
+
+    Args:
+        name: Display name from :data:`src.data_catalog.SAMPLE_CATALOG`.
+        force: When true, bypass a matching local parquet cache and fetch sources again.
+
+    Returns:
+        The normalized table and metadata containing its target, source, and hidden-row indices.
+
+    Raises:
+        KeyError: If ``name`` is not a catalog entry.
+        RuntimeError: If the primary source and every configured fallback fail.
+    """
     spec = SAMPLE_CATALOG[name]
     sample_dir = HF_DATA_DIR / spec.id
     table_path = sample_dir / "table.parquet"
@@ -60,6 +75,18 @@ def load_sample(name: str, *, force: bool = False) -> tuple[pd.DataFrame, dict[s
 
 
 def read_upload(filename: str, content: bytes) -> pd.DataFrame:
+    """Parse an uploaded CSV or Parquet file into nullable pandas dtypes.
+
+    Args:
+        filename: Original upload filename used to choose the parser.
+        content: Complete uploaded file content.
+
+    Returns:
+        A nonempty table with at least two columns.
+
+    Raises:
+        ValueError: If the extension is unsupported or the parsed table cannot supply a feature and target.
+    """
     buffer = BytesIO(content)
     if filename.lower().endswith(".csv"):
         frame = pd.read_csv(buffer, low_memory=False)
@@ -80,6 +107,20 @@ def build_upload_metadata(
     target: str,
     task: str,
 ) -> dict[str, Any]:
+    """Build catalog-compatible metadata for a user-selected target and task.
+
+    Args:
+        frame: Uploaded table before the deterministic split.
+        filename: Original upload filename recorded as the source identifier.
+        target: Existing column to predict.
+        task: Requested problem type.
+
+    Returns:
+        Metadata with the same schema used by bundled samples.
+
+    Raises:
+        ValueError: If ``target`` is absent or does not leave enough labeled rows to split.
+    """
     if target not in frame:
         raise ValueError(f"Target column is missing: {target}")
     spec = SampleSpec(
@@ -97,12 +138,30 @@ def build_upload_metadata(
 def split_from_metadata(
     frame: pd.DataFrame, metadata: dict[str, Any]
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Return copies of known training rows and hidden test rows from metadata.
+
+    Args:
+        frame: Full table that was used to create the metadata.
+        metadata: Metadata containing ``hidden_indices``.
+
+    Returns:
+        A ``(known, hidden)`` pair preserving the source table's columns.
+    """
     hidden = set(metadata["hidden_indices"])
     hidden_mask = frame.index.to_series().isin(hidden)
     return frame.loc[~hidden_mask].copy(), frame.loc[hidden_mask].copy()
 
 
 def display_frame(frame: pd.DataFrame, metadata: dict[str, Any]) -> pd.DataFrame:
+    """Prepare a table view that marks hidden rows and masks their target values.
+
+    Args:
+        frame: Full source table.
+        metadata: Metadata containing the target name and hidden-row indices.
+
+    Returns:
+        A display-only copy with a ``Status`` column and masked hidden targets.
+    """
     shown = frame.copy()
     hidden = set(metadata["hidden_indices"])
     hidden_mask = shown.index.to_series().isin(hidden)
@@ -118,6 +177,20 @@ def build_metadata(
     used_source: SourceSpec,
     failures: list[dict[str, str]],
 ) -> dict[str, Any]:
+    """Create deterministic split metadata for a normalized table.
+
+    Args:
+        frame: Normalized table containing the declared target.
+        spec: Catalog or upload specification that defines task and split settings.
+        used_source: Source that successfully produced ``frame``.
+        failures: Earlier source errors to preserve for diagnostics.
+
+    Returns:
+        Serializable metadata used by the data, EDA, and training pages.
+
+    Raises:
+        ValueError: If fewer than two rows have usable target values.
+    """
     clean_indices = frame.index[frame[spec.target].notna()].tolist()
     if len(clean_indices) < 2:
         raise ValueError(f"Target {spec.target!r} has fewer than two usable rows")

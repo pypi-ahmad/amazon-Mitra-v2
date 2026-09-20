@@ -1,3 +1,5 @@
+"""Render and save the required classic EDA figures for the Houses sample."""
+
 from __future__ import annotations
 
 import json
@@ -28,6 +30,7 @@ OUTPUT = ROOT / "data" / "cache" / "eda_ok.json"
 
 
 def main() -> None:
+    """Create the EDA smoke artifacts and record the saved plot count."""
     frame, metadata = load_sample("Houses")
     target = metadata["target"]
     numeric = frame.select_dtypes("number").columns.tolist()

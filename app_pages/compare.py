@@ -1,3 +1,5 @@
+"""Render the traditional-workflow and MITRA workflow comparison."""
+
 import pandas as pd
 import streamlit as st
 
@@ -26,39 +28,41 @@ result = st.session_state.result or load_last_result()
 
 left, right = st.columns(2)
 with left:
-    st.html('<div class="gb-board-title"><h3>Traditional · 8 stages</h3><span class="gb-runtime">a person\'s week</span></div>')
-    st.caption("Pedagogical runtime label · not a measured claim")
+    st.html(
+        '<div class="gb-board-title"><h3>Traditional · 8 stages</h3><span class="gb-runtime">a person\'s week</span></div>'
+    )
+    st.caption("Illustrative runtime label, not a measured result")
     for number, name in enumerate(traditional, 1):
         st.html(
             f'<div class="gb-flow"><span class="gb-flow-number">{number:02}</span><strong>{name}</strong></div>'
         )
 with right:
     runtime = f"{result['runtime_seconds']:.1f}s measured" if result else "run to measure"
-    st.html(f'<div class="gb-board-title"><h3>Mitra-v2 · 5 stages</h3><span class="gb-runtime">{runtime}</span></div>')
+    st.html(
+        f'<div class="gb-board-title"><h3>Mitra-v2 · 5 stages</h3><span class="gb-runtime">{runtime}</span></div>'
+    )
     st.caption("Measured on the latest local run" if result else "No completed local run found")
     for number, name in enumerate(mitra, 1):
         st.html(
             f'<div class="gb-flow"><span class="gb-flow-number">{number:02}</span><strong>{name}</strong></div>'
         )
     st.info(
-        "Mitra-v2 shortens model preparation. Data quality, leakage checks, domain review, and validation remain required."
+        "Mitra-v2 reduces model-preparation work. You still need data-quality, leakage, domain, and validation checks."
     )
 
 st.subheader("Measured on the same hidden rows")
 st.caption(
-    "The traditional reference is one sklearn HistGradientBoosting pipeline with basic imputation "
-    "and category encoding. It is not a claim about a week-long AutoML project."
+    "The reference is one sklearn HistGradientBoosting pipeline with basic imputation "
+    "and category encoding. It does not represent a week-long AutoML project."
 )
 if result:
     names = list(dict.fromkeys([*result["metrics"], *result["baseline_metrics"]]))
     table = pd.DataFrame(
         {
             "MITRA": {name: result["metrics"].get(name) for name in names},
-            "HistGradientBoosting": {
-                name: result["baseline_metrics"].get(name) for name in names
-            },
+            "HistGradientBoosting": {name: result["baseline_metrics"].get(name) for name in names},
         }
     )
-    st.dataframe(table.style.format("{:.4f}", na_rep="—"), width="stretch")
+    st.dataframe(table.style.format("{:.4f}", na_rep="N/A"), width="stretch")
 else:
-    st.info("Run Train & Predict to populate a real same-split comparison.")
+    st.info("Run Train & Predict to populate the same-split comparison.")

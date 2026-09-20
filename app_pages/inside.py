@@ -1,3 +1,5 @@
+"""Render locally generated synthetic-prior illustrations."""
+
 import plotly.express as px
 import streamlit as st
 
@@ -6,12 +8,14 @@ from src.synthetic_gallery import synthetic_prior_shapes
 
 st.html('<div class="gb-kicker">04 · Architecture</div>')
 st.title("Inside Mitra-v2")
-st.write("Mitra-v2 learns broad table patterns from synthetic pretraining before a real table arrives.")
+st.write(
+    "Mitra-v2 learns broad table patterns from synthetic pretraining before a real table arrives."
+)
 
 st.metric("REAL TABLES SEEN", "0", border=True)
 st.caption(
-    "These are locally generated teaching illustrations of synthetic pattern families. "
-    "They are not Amazon internal figures or samples from the model's training corpus."
+    "These locally generated illustrations show synthetic pattern families. They are "
+    "not Amazon figures or samples from the model's training corpus."
 )
 
 gallery = synthetic_prior_shapes()
@@ -40,8 +44,8 @@ for index, (title, frame) in enumerate(gallery.items()):
         figure.update_yaxes(visible=False, scaleanchor="x", scaleratio=1)
         st.plotly_chart(figure, width="stretch", config={"displayModeBar": False})
 
-st.subheader("Teaching view")
+st.subheader("Simplified view")
 st.code("table → row/column tokens → 2D attention → target distribution", language=None)
 st.caption(
-    f"Teaching abstraction based on the [technical report]({PAPER_URL}); it does not reproduce the paper's figures or certify causal structure."
+    f"This simplified view follows the [technical report]({PAPER_URL}). It does not reproduce the paper's figures or establish causal structure."
 )

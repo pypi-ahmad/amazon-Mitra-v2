@@ -1,3 +1,5 @@
+"""Fast exploratory-data-analysis helpers for Streamlit pages and smokes."""
+
 from __future__ import annotations
 
 import re
@@ -16,6 +18,15 @@ PLOTLY_LAYOUT = {
 
 
 def profile_table(frame: pd.DataFrame, target: str) -> dict[str, Any]:
+    """Summarize table shape, memory use, and straightforward quality signals.
+
+    Args:
+        frame: Table to inspect.
+        target: Declared target column, used when identifying leakage-name matches.
+
+    Returns:
+        Serializable counts and lists used by the EDA overview and quality panels.
+    """
     categorical = frame.select_dtypes(exclude="number").columns.tolist()
     high_cardinality = []
     for column in categorical:
@@ -43,6 +54,14 @@ def profile_table(frame: pd.DataFrame, target: str) -> dict[str, Any]:
 
 
 def dtype_summary(frame: pd.DataFrame) -> pd.DataFrame:
+    """Create a per-column dtype, non-null-count, and memory-use table.
+
+    Args:
+        frame: Table to summarize.
+
+    Returns:
+        A DataFrame indexed by column name for direct display in Streamlit.
+    """
     summary = frame.dtypes.astype(str).rename("dtype").to_frame()
     summary["non-null"] = frame.notna().sum()
     summary["unique"] = frame.nunique(dropna=True)
@@ -53,6 +72,14 @@ def dtype_summary(frame: pd.DataFrame) -> pd.DataFrame:
 
 
 def missing_figure(frame: pd.DataFrame):
+    """Build a Plotly bar chart of missing values by column.
+
+    Args:
+        frame: Table whose null counts should be plotted.
+
+    Returns:
+        A Plotly figure with a Glass Box-compatible dark theme.
+    """
     missing = frame.isna().sum().sort_values(ascending=False).rename("Missing").reset_index()
     missing.columns = ["Column", "Missing"]
     figure = px.bar(
@@ -68,6 +95,14 @@ def missing_figure(frame: pd.DataFrame):
 
 
 def correlation_figure(frame: pd.DataFrame):
+    """Build a numeric Pearson-correlation heatmap when enough columns exist.
+
+    Args:
+        frame: Table containing candidate numeric columns.
+
+    Returns:
+        A Plotly heatmap, or ``None`` when fewer than two numeric columns are available.
+    """
     numeric = frame.select_dtypes("number")
     if numeric.shape[1] < 2:
         return None
@@ -85,6 +120,16 @@ def correlation_figure(frame: pd.DataFrame):
 
 
 def distribution_figure(frame: pd.DataFrame, column: str, kind: str):
+    """Build a histogram, box plot, or violin plot for one selected column.
+
+    Args:
+        frame: Table containing ``column``.
+        column: Column to visualize.
+        kind: One of ``Histogram``, ``Box``, or ``Violin``.
+
+    Returns:
+        A Plotly figure for the requested distribution view.
+    """
     if kind == "Histogram":
         figure = px.histogram(frame, x=column, color_discrete_sequence=["#8064f4"])
     elif kind == "Box":
@@ -104,6 +149,18 @@ def distribution_figure(frame: pd.DataFrame, column: str, kind: str):
 
 
 def scatter_figure(frame: pd.DataFrame, x: str, y: str, target: str, task: str):
+    """Build a bounded-size scatter plot, coloring classification targets when useful.
+
+    Args:
+        frame: Table containing the selected columns.
+        x: X-axis column.
+        y: Y-axis column.
+        target: Declared target column.
+        task: Normalized task name used to decide whether to color by target.
+
+    Returns:
+        A Plotly scatter figure using at most 5,000 deterministic sample rows.
+    """
     plotted = frame if len(frame) <= 5_000 else frame.sample(5_000, random_state=42)
     color = target if task in {"binary", "multiclass"} and target not in {x, y} else None
     figure = px.scatter(
@@ -120,6 +177,16 @@ def scatter_figure(frame: pd.DataFrame, x: str, y: str, target: str, task: str):
 
 
 def target_figure(frame: pd.DataFrame, target: str, task: str):
+    """Build the appropriate target-distribution plot for a task type.
+
+    Args:
+        frame: Table containing ``target``.
+        target: Target column to visualize.
+        task: ``binary`` or ``multiclass`` for counts; any other value for a histogram.
+
+    Returns:
+        A Plotly bar chart for classification or histogram for regression.
+    """
     if task in {"binary", "multiclass"}:
         counts = frame[target].value_counts(dropna=False).rename("Rows").reset_index()
         counts.columns = [target, "Rows"]
@@ -150,6 +217,17 @@ def pairplot_figure(
     target: str,
     task: str,
 ):
+    """Create a seaborn pairplot from a deterministic sample of numeric columns.
+
+    Args:
+        frame: Table to sample.
+        columns: Two to five numeric columns to plot.
+        target: Declared target, used as hue for classification when selected.
+        task: Normalized problem type.
+
+    Returns:
+        The matplotlib figure owned by the seaborn pairplot grid.
+    """
     selected = list(dict.fromkeys(columns))[:5]
     if len(selected) < 2:
         raise ValueError("Pairplot needs at least two numeric columns")
@@ -184,4 +262,12 @@ def _format_bytes(value: int) -> str:
 
 
 def format_bytes(value: int) -> str:
+    """Format a byte count for concise display in the EDA page.
+
+    Args:
+        value: Nonnegative byte count.
+
+    Returns:
+        A rounded value with a B, KB, MB, or GB suffix.
+    """
     return _format_bytes(value)

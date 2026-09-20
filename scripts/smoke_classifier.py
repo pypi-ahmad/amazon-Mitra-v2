@@ -1,3 +1,5 @@
+"""Smoke-test the released Mitra-v2 classifier on a bounded Machines sample."""
+
 from __future__ import annotations
 
 import json
@@ -18,6 +20,7 @@ OUTPUT = ROOT / "data" / "cache" / "last_run_clf.json"
 
 
 def main() -> None:
+    """Run and validate a zero-shot, single-copy classification model smoke."""
     machines, metadata = load_sample("Machines")
     target = metadata["target"]
     sample, _ = train_test_split(

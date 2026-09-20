@@ -1,3 +1,5 @@
+"""Render the classic EDA workflow for the current table."""
+
 from __future__ import annotations
 
 import streamlit as st
@@ -58,11 +60,7 @@ with tabs[1]:
     with notes[1]:
         st.markdown("#### High-cardinality categories")
         if profile["high_cardinality_categoricals"]:
-            st.warning(
-                ", ".join(
-                    f"`{name}`" for name in profile["high_cardinality_categoricals"]
-                )
-            )
+            st.warning(", ".join(f"`{name}`" for name in profile["high_cardinality_categoricals"]))
         else:
             st.success("None found")
     with notes[2]:

@@ -1,3 +1,5 @@
+"""Import the app and verify its deterministic synthetic-gallery inputs."""
+
 from __future__ import annotations
 
 import importlib

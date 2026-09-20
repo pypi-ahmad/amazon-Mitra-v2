@@ -1,3 +1,5 @@
+"""Run CUDA-gated fine-tuning and eight-copy MITRA smoke tests for both heads."""
+
 from __future__ import annotations
 
 import json
@@ -23,6 +25,7 @@ SAMPLE_ROWS = 400
 
 
 def main() -> None:
+    """Skip on CPU or record successful fine-tuned regression and classification runs."""
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
     if not torch.cuda.is_available():
         GPU_STATUS.write_text(json.dumps({"cuda": False}), encoding="utf-8")

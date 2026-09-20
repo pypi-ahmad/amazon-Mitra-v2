@@ -1,3 +1,5 @@
+"""Create deterministic synthetic pattern illustrations for the gallery."""
+
 from __future__ import annotations
 
 import numpy as np
@@ -6,7 +8,15 @@ from sklearn.datasets import make_blobs, make_circles, make_moons
 
 
 def synthetic_prior_shapes(seed: int = 42, n_samples: int = 320) -> dict[str, pd.DataFrame]:
-    """Create deterministic educational shapes; these are not model training artifacts."""
+    """Create deterministic synthetic shapes for the gallery.
+
+    Args:
+        seed: Random seed controlling all generated pattern coordinates.
+        n_samples: Number of points in each returned pattern.
+
+    Returns:
+        Named DataFrames with ``x``, ``y``, and ``pattern`` columns for five scatter plots.
+    """
     rng = np.random.default_rng(seed)
 
     blobs, blob_labels = make_blobs(
@@ -23,9 +33,7 @@ def synthetic_prior_shapes(seed: int = 42, n_samples: int = 320) -> dict[str, pd
     latent = rng.normal(size=n_samples)
     switch = rng.integers(0, 2, size=n_samples)
     scm_x = latent + rng.normal(0, 0.28, n_samples)
-    scm_y = np.where(switch, 0.7 * latent**2 - 0.5, 0.9 * latent) + rng.normal(
-        0, 0.25, n_samples
-    )
+    scm_y = np.where(switch, 0.7 * latent**2 - 0.5, 0.9 * latent) + rng.normal(0, 0.25, n_samples)
 
     half = n_samples // 2
     angle = np.sqrt(rng.random(half)) * 3.5 * np.pi

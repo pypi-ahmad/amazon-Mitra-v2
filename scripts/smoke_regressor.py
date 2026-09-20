@@ -1,3 +1,5 @@
+"""Smoke-test the released Mitra-v2 regressor on a bounded Houses sample."""
+
 from __future__ import annotations
 
 import json
@@ -18,6 +20,7 @@ OUTPUT = ROOT / "data" / "cache" / "last_run_reg.json"
 
 
 def main() -> None:
+    """Run and validate a zero-shot, single-copy regression model smoke."""
     houses, metadata = load_sample("Houses")
     sample, _ = train_test_split(houses, train_size=400, random_state=42)
     train, test = train_test_split(sample, test_size=0.1, random_state=42)

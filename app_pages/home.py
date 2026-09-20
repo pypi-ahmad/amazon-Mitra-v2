@@ -1,3 +1,5 @@
+"""Render the Glass Box overview and bundled-table selection page."""
+
 import streamlit as st
 
 from src.config import PAPER_URL, SOURCES
@@ -5,7 +7,7 @@ from src.data_catalog import SAMPLE_CATALOG
 
 st.html('<div class="gb-kicker">Interactive tutorial · AutoGluon</div>')
 st.html(
-    '<div class="gb-hero"><h1>See what Mitra-v2 does to a table.</h1><p class="gb-muted">Choose a sample, inspect every assumption, then run the real model only when you are ready.</p></div>'
+    '<div class="gb-hero"><h1>See how Mitra-v2 works with a table.</h1><p class="gb-muted">Choose a sample, inspect the assumptions, then run the model when you are ready.</p></div>'
 )
 st.space("small")
 
@@ -26,9 +28,7 @@ extras = st.columns(3)
 for column, name in zip(extras, ["Adult income", "Credit-g", "Wine quality"]):
     with column:
         spec = SAMPLE_CATALOG[name]
-        st.html(
-            f'<div class="gb-card"><h3>{name}</h3><p class="gb-muted">{spec.story}</p></div>'
-        )
+        st.html(f'<div class="gb-card"><h3>{name}</h3><p class="gb-muted">{spec.story}</p></div>')
         if st.button("Explore", key=f"open_{name}", width="stretch"):
             st.session_state.selected_dataset = name
             st.switch_page("app_pages/data.py")

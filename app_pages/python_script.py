@@ -1,3 +1,5 @@
+"""Render a downloadable standalone Python reproduction script for the current table."""
+
 from __future__ import annotations
 
 from pathlib import Path
@@ -19,10 +21,14 @@ else:
     dataset_path = Path("data") / "hf" / metadata["id"] / "table.parquet"
     path_note = "This path points to the bundled dataset cached by Glass Box."
 
-loader = "pd.read_csv(DATA_PATH)" if dataset_path.suffix.lower() == ".csv" else "pd.read_parquet(DATA_PATH)"
+loader = (
+    "pd.read_csv(DATA_PATH)"
+    if dataset_path.suffix.lower() == ".csv"
+    else "pd.read_parquet(DATA_PATH)"
+)
 regression_patch = ""
 if problem == "regression":
-    regression_patch = f'''from huggingface_hub import hf_hub_download
+    regression_patch = f"""from huggingface_hub import hf_hub_download
 from mitra_finetune.patches import install_reg_ce_patches
 
 # mitra-regressor-2 uses the official 1,000-bin distributional regression head.
@@ -33,13 +39,13 @@ checkpoint_config = json.loads(
 )
 install_reg_ce_patches(int(checkpoint_config["dim_output"]))
 
-'''
+"""
 
 stratify = "frame[TARGET]" if problem in {"binary", "multiclass"} else "None"
 mitra_hyperparameters = {"hf_model": checkpoint, "fine_tune": st.session_state.fine_tune}
 if st.session_state.fine_tune:
     mitra_hyperparameters["fine_tune_steps"] = st.session_state.fine_tune_steps
-code = f'''import json
+code = f"""import json
 import os
 from pathlib import Path
 
@@ -57,8 +63,8 @@ TARGET = {target!r}
 frame = {loader}
 train, hidden = train_test_split(
     frame,
-    test_size={float(metadata.get('test_size', 0.1))!r},
-    random_state={int(metadata.get('random_state', 42))},
+    test_size={float(metadata.get("test_size", 0.1))!r},
+    random_state={int(metadata.get("random_state", 42))},
     stratify={stratify},
 )
 
@@ -81,7 +87,7 @@ predictor.fit(
 )
 predictions = predictor.predict(hidden.drop(columns=[TARGET]))
 print(predictions.head())
-'''
+"""
 
 st.code(code, language="python")
 st.download_button(
@@ -94,5 +100,5 @@ st.download_button(
 )
 st.caption(path_note)
 st.caption(
-    "HF_TOKEN is read from the Windows process environment. The script never displays or writes its value."
+    "The script reads HF_TOKEN from the Windows process environment and does not display or write its value."
 )

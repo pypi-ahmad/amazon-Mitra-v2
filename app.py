@@ -1,3 +1,5 @@
+"""Streamlit entry point that initializes shared UI state and page navigation."""
+
 from __future__ import annotations
 
 import streamlit as st

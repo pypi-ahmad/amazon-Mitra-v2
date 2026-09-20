@@ -1,3 +1,5 @@
+"""Check installed imports and the five bundled local fallback CSV files."""
+
 from importlib.util import find_spec
 from pathlib import Path
 
@@ -16,6 +18,7 @@ SAMPLES = {
 
 
 def main() -> None:
+    """Run dependency and fallback-table assertions."""
     modules = [
         "streamlit",
         "pandas",

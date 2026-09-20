@@ -1,3 +1,5 @@
+"""Render the shared dark Glass Box theme and navigation."""
+
 import os
 
 import streamlit as st
@@ -6,6 +8,7 @@ from src.data_catalog import SAMPLE_CATALOG
 
 
 def apply_theme() -> None:
+    """Inject the app-wide dark navy and purple Streamlit CSS theme."""
     st.html("""
     <style>
     :root { --ink:#eef0ff; --muted:#9ca6c6; --card:#111a2e; --line:#293654; --purple:#8064f4; }
@@ -42,6 +45,7 @@ def apply_theme() -> None:
 
 
 def render_sidebar() -> None:
+    """Render shared dataset, fine-tune-step, and time-limit controls in the sidebar."""
     with st.sidebar:
         st.markdown("# ◇ GLASS BOX")
         st.caption("Mitra-v2, explained by doing")
@@ -65,6 +69,7 @@ def render_sidebar() -> None:
 
 
 def render_top_bar() -> None:
+    """Render the readiness badge and shared fine-tune, bagging, and data controls."""
     ready, fine, copies, view = st.columns([1.25, 1, 1, 1.1], vertical_alignment="center")
     with ready:
         token_state = "HF token ready" if os.environ.get("HF_TOKEN") else "Local data ready"

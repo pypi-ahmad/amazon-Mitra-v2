@@ -1,3 +1,5 @@
+"""Definitions for the five bundled tutorial datasets and their fallbacks."""
+
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -5,6 +7,14 @@ from dataclasses import dataclass
 
 @dataclass(frozen=True, slots=True)
 class SourceSpec:
+    """Describe one downloadable or local dataset source.
+
+    Attributes:
+        kind: Loader kind accepted by :func:`src.load.load_sample`.
+        source_id: Dataset identifier, URL, or local fallback filename.
+        splits: Ordered dataset splits to combine when the source is on Hugging Face.
+    """
+
     kind: str
     source_id: str
     splits: tuple[str, ...] = ()
@@ -12,6 +22,24 @@ class SourceSpec:
 
 @dataclass(frozen=True, slots=True)
 class SampleSpec:
+    """Describe a normalized tutorial table and its deterministic split policy.
+
+    Attributes:
+        id: Stable cache-directory identifier.
+        task: AutoGluon problem type used for the sample.
+        target: Normalized target-column name shown in the app.
+        source_target: Expected target-column name before normalization.
+        story: Short instructional description displayed in the UI.
+        source: Primary source attempted before fallbacks.
+        fallbacks: Ordered sources attempted after a primary-source failure.
+        test_size: Fraction of labeled rows reserved as hidden test data.
+        random_state: Seed used for deterministic sampling and splitting.
+        row_cap: Optional maximum number of rows retained after loading.
+        column_aliases: Source-to-display column-name replacements.
+        drop_columns: Columns removed before the table is exposed to the app.
+        featured: Whether the Home page promotes this sample.
+    """
+
     id: str
     task: str
     target: str
