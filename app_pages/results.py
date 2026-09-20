@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 import pandas as pd
@@ -7,7 +8,15 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
-from src.mitra_run import load_last_result
+from src.config import ROOT
+from src.mitra_run import load_cached_result
+
+RESULT_CHOICES = {
+    "Regression · zero-shot": "last_run_reg.json",
+    "Classification · zero-shot": "last_run_clf.json",
+    "Regression · fine-tuned ×8": "last_run_reg_ft.json",
+    "Classification · fine-tuned ×8": "last_run_clf_ft.json",
+}
 
 st.html('<div class="gb-kicker">06 · Evaluate</div>')
 st.title("Results")
@@ -18,7 +27,16 @@ st.html(
 if st.session_state.run_error:
     st.error(st.session_state.run_error)
 
-result = st.session_state.result or load_last_result()
+choices = list(RESULT_CHOICES)
+if st.session_state.result:
+    choices.insert(0, "Current session")
+selection = st.selectbox("Saved run", choices, key="result_run_selector")
+selected_pointer = RESULT_CHOICES.get(selection)
+result = (
+    st.session_state.result
+    if selection == "Current session"
+    else load_cached_result(selected_pointer)
+)
 if result:
     st.caption(
         f"Run `{result['run_id']}` · {result['mode']} · {result['copies']} "
@@ -44,7 +62,12 @@ if result:
     st.dataframe(comparison.style.format("{:.4f}", na_rep="—"), width="stretch")
 
     prediction_path = Path(result["prediction_path"])
-    predictions = pd.read_parquet(prediction_path) if prediction_path.exists() else None
+    if prediction_path.exists() and prediction_path.suffix.lower() == ".csv":
+        predictions = pd.read_csv(prediction_path, index_col="row_index")
+    elif prediction_path.exists():
+        predictions = pd.read_parquet(prediction_path)
+    else:
+        predictions = None
 
     if predictions is not None and result["problem"] == "regression":
         st.subheader("Prediction versus actual")
@@ -123,8 +146,8 @@ if result:
         st.download_button(
             "Download predictions",
             prediction_path.read_bytes(),
-            file_name=f"{result['run_id']}-predictions.parquet",
-            mime="application/octet-stream",
+            file_name=f"{result['run_id']}-predictions{prediction_path.suffix}",
+            mime="text/csv" if prediction_path.suffix.lower() == ".csv" else "application/octet-stream",
             icon=":material/download:",
             width="stretch",
         )
@@ -141,6 +164,21 @@ if result:
     with st.expander("Run details"):
         st.json(details)
 else:
-    st.info("No result yet. Open Train & Predict and start an explicit run.")
+    gpu_status_path = ROOT / "data" / "cache" / "gpu_status.json"
+    try:
+        gpu_status = json.loads(gpu_status_path.read_text(encoding="utf-8"))
+    except (FileNotFoundError, json.JSONDecodeError):
+        gpu_status = None
+    fine_tune_selection = selected_pointer in {
+        "last_run_reg_ft.json",
+        "last_run_clf_ft.json",
+    }
+    if fine_tune_selection and gpu_status == {"cuda": False}:
+        st.info(
+            "This fine-tuned eight-copy result is unavailable because CUDA was not detected. "
+            "The GPU smoke was skipped without running it on CPU."
+        )
+    else:
+        st.info(f"No completed cached run is available for {selection}.")
     if st.button("Open Train & Predict", icon=":material/model_training:"):
         st.switch_page("app_pages/train.py")
