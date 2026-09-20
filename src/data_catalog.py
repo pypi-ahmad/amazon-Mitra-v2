@@ -84,11 +84,15 @@ SAMPLE_CATALOG: dict[str, SampleSpec] = {
     "Credit-g": SampleSpec(
         id="credit_g",
         task="binary",
-        target="class",
-        source_target="class",
+        target="Risk",
+        source_target="Risk",
         story="Classify credit applications as good or bad risk.",
-        source=SourceSpec("openml", "31"),
-        fallbacks=(SourceSpec("local", "credit_g.csv"),),
+        source=SourceSpec("huggingface", "AiresPucrs/german-credit-data", ("train",)),
+        fallbacks=(
+            SourceSpec("openml", "31"),
+            SourceSpec("local", "credit_g.csv"),
+        ),
+        column_aliases=(("class", "Risk"),),
     ),
     "Wine quality": SampleSpec(
         id="wine_quality",
@@ -106,4 +110,3 @@ SAMPLE_CATALOG: dict[str, SampleSpec] = {
         ),
     ),
 }
-

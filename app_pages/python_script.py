@@ -5,7 +5,6 @@ from pathlib import Path
 import streamlit as st
 
 from src.config import CLASSIFIER_ID, REGRESSOR_ID
-from src.mitra_run import device_info
 from src.state import current_data
 
 st.html('<div class="gb-kicker">07 · Reproduce</div>')
@@ -23,15 +22,25 @@ else:
 loader = "pd.read_csv(DATA_PATH)" if dataset_path.suffix.lower() == ".csv" else "pd.read_parquet(DATA_PATH)"
 regression_patch = ""
 if problem == "regression":
-    regression_patch = '''from src.mitra_regression_patch import install_regression_patch
+    regression_patch = f'''from huggingface_hub import hf_hub_download
+from mitra_finetune.patches import install_reg_ce_patches
 
 # mitra-regressor-2 uses the official 1,000-bin distributional regression head.
-install_regression_patch(1000)
+checkpoint_config = json.loads(
+    Path(hf_hub_download({checkpoint!r}, "config.json", token=_hf_token)).read_text(
+        encoding="utf-8"
+    )
+)
+install_reg_ce_patches(int(checkpoint_config["dim_output"]))
 
 '''
 
 stratify = "frame[TARGET]" if problem in {"binary", "multiclass"} else "None"
-code = f'''import os
+mitra_hyperparameters = {"hf_model": checkpoint, "fine_tune": st.session_state.fine_tune}
+if st.session_state.fine_tune:
+    mitra_hyperparameters["fine_tune_steps"] = st.session_state.fine_tune_steps
+code = f'''import json
+import os
 from pathlib import Path
 
 import pandas as pd
@@ -39,8 +48,9 @@ import torch
 from autogluon.tabular import TabularPredictor
 from sklearn.model_selection import train_test_split
 
-{regression_patch}# Fail clearly if the Hugging Face token is missing; never print its value.
+# Fail clearly if the Hugging Face token is missing; never print its value.
 _hf_token = os.environ["HF_TOKEN"]
+{regression_patch}
 DATA_PATH = Path({str(dataset_path)!r})
 TARGET = {target!r}
 
@@ -60,11 +70,7 @@ predictor = TabularPredictor(
 predictor.fit(
     train_data=train,
     time_limit={int(st.session_state.time_limit)},
-    hyperparameters={{"MITRA": {{
-        "hf_model": {checkpoint!r},
-        "fine_tune": {st.session_state.fine_tune},
-        "fine_tune_steps": {st.session_state.fine_tune_steps},
-    }}}},
+    hyperparameters={{"MITRA": {mitra_hyperparameters!r}}},
     num_bag_folds={8 if st.session_state.eight_copies else 0},
     num_bag_sets=1,
     num_stack_levels=0,

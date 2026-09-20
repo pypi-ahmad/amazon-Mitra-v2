@@ -1,7 +1,6 @@
 import pandas as pd
 import streamlit as st
 
-from src.data_catalog import SAMPLE_CATALOG
 from src.load import build_upload_metadata, load_sample, read_upload
 
 

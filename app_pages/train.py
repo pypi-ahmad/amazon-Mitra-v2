@@ -2,13 +2,16 @@ from __future__ import annotations
 
 import streamlit as st
 
-from src.mitra_run import RunConfig, device_info, run_mitra
+from src.config import CLASSIFIER_ID, REGRESSOR_ID
+from src.load import split_from_metadata
+from src.mitra_run import device_info, run_mitra
 from src.state import current_data
 
 st.html('<div class="gb-kicker">05 · Execute</div>')
 st.title("Train & Predict")
 frame, target, problem, source, metadata = current_data()
 cuda, device = device_info()
+hf_repo = REGRESSOR_ID if problem == "regression" else CLASSIFIER_ID
 
 last_runtime = None
 if st.session_state.result:
@@ -32,6 +35,7 @@ st.markdown(
     f"**Copies:** {8 if st.session_state.eight_copies else 1} · "
     f"**Fit limit:** {st.session_state.time_limit}s"
 )
+st.info(f"Hugging Face repository for this run: `{hf_repo}`")
 st.caption(
     "Both classification and regression use AutoGluon TabularPredictor with the installed native MITRA model."
 )
@@ -47,28 +51,23 @@ if st.session_state.run_error:
 
 if st.button("Run Mitra-v2", type="primary", width="stretch"):
     st.session_state.run_error = None
-    log_lines: list[str] = []
-
-    def show_log(message: str) -> None:
-        log_lines.append(message)
-        log_area.code("\n".join(log_lines), language="text")
-
-    config = RunConfig(
-        fine_tune=st.session_state.fine_tune,
-        fine_tune_steps=st.session_state.fine_tune_steps,
-        eight_copies=st.session_state.eight_copies,
-        time_limit=int(st.session_state.time_limit),
-    )
     with st.status("Running MITRA and the sklearn baseline…", expanded=True) as status:
         try:
+            train, test = split_from_metadata(frame, metadata)
             st.session_state.result = run_mitra(
-                frame,
+                train,
+                test,
                 target,
                 problem,
-                metadata,
-                config,
-                log_callback=show_log,
+                st.session_state.fine_tune,
+                st.session_state.eight_copies,
+                fine_tune_steps=st.session_state.fine_tune_steps,
+                time_limit=int(st.session_state.time_limit),
             )
+            run_log = st.session_state.result.get("run_log", "")
+            if run_log:
+                log_area.code(run_log, language="text")
+            st.success(f"Used `{st.session_state.result['hf_repo']}`")
             status.update(label="Run complete", state="complete")
             st.switch_page("app_pages/results.py")
         except Exception as exc:

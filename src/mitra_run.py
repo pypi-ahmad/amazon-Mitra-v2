@@ -4,10 +4,9 @@ import json
 import math
 import os
 import time
-from dataclasses import asdict, dataclass
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any
 
 import numpy as np
 import pandas as pd
@@ -28,17 +27,26 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OrdinalEncoder
 
 from src.config import CLASSIFIER_ID, REGRESSOR_ID, ROOT
-from src.load import split_from_metadata
 
 RUNS_DIR = ROOT / "data" / "runs"
 CACHE_DIR = ROOT / "data" / "cache"
 MAX_MITRA_TRAIN_ROWS = 10_000
-LogCallback = Callable[[str], None]
 
 
-def load_last_result() -> dict[str, Any] | None:
-    """Return the latest complete local run without trusting cached absolute paths."""
-    pointer_path = CACHE_DIR / "last_run.json"
+RESULT_POINTERS = {
+    "last_run.json",
+    "last_run_reg.json",
+    "last_run_clf.json",
+    "last_run_reg_ft.json",
+    "last_run_clf_ft.json",
+}
+
+
+def load_cached_result(pointer_name: str) -> dict[str, Any] | None:
+    """Load one complete run through an approved cache pointer."""
+    if pointer_name not in RESULT_POINTERS:
+        raise ValueError(f"Unsupported result pointer: {pointer_name}")
+    pointer_path = CACHE_DIR / pointer_name
     try:
         pointer = json.loads(pointer_path.read_text(encoding="utf-8"))
         run_id = str(pointer["run_id"])
@@ -50,24 +58,18 @@ def load_last_result() -> dict[str, Any] | None:
     if result.get("run_id") != run_id:
         return None
     result["run_dir"] = str(run_dir)
-    prediction_path = run_dir / "predictions.parquet"
+    prediction_path = run_dir / "predictions.csv"
+    legacy_prediction_path = run_dir / "predictions.parquet"
     if prediction_path.exists():
         result["prediction_path"] = str(prediction_path)
+    elif legacy_prediction_path.exists():
+        result["prediction_path"] = str(legacy_prediction_path)
     return result
 
 
-@dataclass(frozen=True, slots=True)
-class RunConfig:
-    fine_tune: bool = True
-    fine_tune_steps: int = 50
-    eight_copies: bool = True
-    time_limit: int = 600
-
-    def __post_init__(self) -> None:
-        if not 0 <= self.fine_tune_steps <= 100:
-            raise ValueError("fine_tune_steps must be between 0 and 100")
-        if self.time_limit < 1:
-            raise ValueError("time_limit must be positive")
+def load_last_result() -> dict[str, Any] | None:
+    """Return the latest complete local run."""
+    return load_cached_result("last_run.json")
 
 
 def device_info() -> tuple[bool, str]:
@@ -81,14 +83,24 @@ def device_info() -> tuple[bool, str]:
 
 
 def run_mitra(
-    frame: pd.DataFrame,
+    df_train: pd.DataFrame,
+    df_test: pd.DataFrame,
     target: str,
-    problem: str,
-    metadata: dict[str, Any],
-    config: RunConfig,
-    log_callback: LogCallback | None = None,
+    problem_type: str,
+    fine_tune: bool,
+    eight_copies: bool,
+    fine_tune_steps: int = 50,
+    time_limit: int | None = None,
 ) -> dict[str, Any]:
+    """Fit the correct released Mitra-v2 head and evaluate an explicit test table."""
     from autogluon.tabular import TabularPredictor
+
+    if target not in df_train or target not in df_test:
+        raise ValueError(f"Target column is missing: {target}")
+    problem = _normalize_problem_type(problem_type, df_train[target])
+    _validate_run_inputs(df_train, df_test, target, problem, fine_tune_steps, time_limit)
+    checkpoint = REGRESSOR_ID if problem == "regression" else CLASSIFIER_ID
+    checkpoint_config = _preflight_checkpoint(checkpoint)
 
     run_id = datetime.now(UTC).strftime("%Y%m%dT%H%M%S%fZ")
     run_dir = RUNS_DIR / run_id
@@ -100,29 +112,27 @@ def run_mitra(
         stamped = f"[{datetime.now(UTC).strftime('%H:%M:%S')}] {message}"
         log_lines.append(stamped)
         (run_dir / "run.log").write_text("\n".join(log_lines) + "\n", encoding="utf-8")
-        if log_callback:
-            log_callback(stamped)
 
     cuda, device = device_info()
-    checkpoint = REGRESSOR_ID if problem == "regression" else CLASSIFIER_ID
     settings = {
-        **asdict(config),
         "run_id": run_id,
-        "dataset_id": metadata.get("id"),
         "target": target,
-        "problem": problem,
+        "problem_type": problem,
         "checkpoint": checkpoint,
         "device": device,
-        "num_bag_folds": 8 if config.eight_copies else 0,
+        "fine_tune": bool(fine_tune),
+        "fine_tune_steps": fine_tune_steps if fine_tune else 0,
+        "eight_copies": bool(eight_copies),
+        "num_bag_folds": 8 if eight_copies else 0,
+        "time_limit": time_limit,
     }
-    (run_dir / "config.json").write_text(json.dumps(settings, indent=2), encoding="utf-8")
+    (run_dir / "flags.json").write_text(json.dumps(settings, indent=2), encoding="utf-8")
 
     started = time.perf_counter()
     try:
-        log("Preparing the known training rows and hidden test rows.")
-        train, hidden = split_from_metadata(frame, metadata)
-        train = train.dropna(subset=[target]).copy()
-        hidden = hidden.dropna(subset=[target]).copy()
+        log("Preparing the explicit training and test rows.")
+        train = df_train.dropna(subset=[target]).copy()
+        hidden = df_test.dropna(subset=[target]).copy()
         if train.empty or hidden.empty:
             raise ValueError("Both known training rows and hidden test rows are required")
         if len(train) > MAX_MITRA_TRAIN_ROWS:
@@ -134,10 +144,13 @@ def run_mitra(
         x_hidden = hidden.drop(columns=[target])
         y_hidden = hidden[target]
         if problem == "regression":
-            _install_official_regression_patch(checkpoint)
+            _install_official_regression_patch(checkpoint_config)
         log(
-            f"Configuring MITRA on {device}: fine_tune={config.fine_tune}, "
-            f"steps={config.fine_tune_steps}, folds={settings['num_bag_folds']}."
+            f"Using Hugging Face repository: {checkpoint}."
+        )
+        log(
+            f"Configuring MITRA on {device}: fine_tune={fine_tune}, "
+            f"steps={settings['fine_tune_steps']}, folds={settings['num_bag_folds']}."
         )
         predictor = TabularPredictor(
             label=target,
@@ -145,16 +158,16 @@ def run_mitra(
             path=str(predictor_path),
             verbosity=2,
         )
+        mitra_hyperparameters: dict[str, Any] = {
+            "hf_model": checkpoint,
+            "fine_tune": fine_tune,
+        }
+        if fine_tune:
+            mitra_hyperparameters["fine_tune_steps"] = fine_tune_steps
         predictor.fit(
             train_data=train,
-            time_limit=config.time_limit,
-            hyperparameters={
-                "MITRA": {
-                    "hf_model": checkpoint,
-                    "fine_tune": config.fine_tune,
-                    "fine_tune_steps": config.fine_tune_steps,
-                }
-            },
+            time_limit=time_limit,
+            hyperparameters={"MITRA": mitra_hyperparameters},
             num_bag_folds=settings["num_bag_folds"],
             num_bag_sets=1,
             num_stack_levels=0,
@@ -163,6 +176,20 @@ def run_mitra(
             num_gpus=1 if cuda else 0,
             ag_args_fit={"ag.max_memory_usage_ratio": 1.2},
         )
+        model_names = predictor.model_names()
+        log(
+            "Predictor class: "
+            f"{predictor.__class__.__module__}.{predictor.__class__.__qualname__}."
+        )
+        log(f"Fitted AutoGluon model(s): {', '.join(model_names)}.")
+        settings["predictor_class"] = (
+            f"{predictor.__class__.__module__}.{predictor.__class__.__qualname__}"
+        )
+        settings["model_names"] = model_names
+        (run_dir / "flags.json").write_text(json.dumps(settings, indent=2), encoding="utf-8")
+
+        leaderboard_path = run_dir / "leaderboard.csv"
+        predictor.leaderboard(display=False).to_csv(leaderboard_path, index=False)
 
         log("Predicting the hidden test rows with MITRA.")
         predictions = predictor.predict(x_hidden)
@@ -194,8 +221,8 @@ def run_mitra(
             prediction_table["mitra_residual"] = (
                 prediction_table["actual"] - prediction_table["mitra_prediction"]
             )
-        prediction_path = run_dir / "predictions.parquet"
-        prediction_table.to_parquet(prediction_path, index=True)
+        prediction_path = run_dir / "predictions.csv"
+        prediction_table.to_csv(prediction_path, index=True, index_label="row_index")
 
         runtime = time.perf_counter() - started
         result = {
@@ -209,15 +236,21 @@ def run_mitra(
             "runtime_seconds": runtime,
             "device": device,
             "checkpoint": checkpoint,
-            "mode": "fine-tuned" if config.fine_tune and config.fine_tune_steps > 0 else "zero-shot",
-            "copies": 8 if config.eight_copies else 1,
-            "fine_tune_steps": config.fine_tune_steps,
-            "time_limit": config.time_limit,
+            "hf_repo": checkpoint,
+            "predictor_class": f"{predictor.__class__.__module__}.{predictor.__class__.__qualname__}",
+            "model_names": model_names,
+            "leaderboard_path": str(leaderboard_path),
+            "mode": "fine-tuned" if fine_tune and fine_tune_steps > 0 else "zero-shot",
+            "copies": 8 if eight_copies else 1,
+            "fine_tune_steps": settings["fine_tune_steps"],
+            "time_limit": time_limit,
             "train_rows": len(train),
             "hidden_rows": len(hidden),
             "problem": problem,
             "target": target,
         }
+        log(f"Run complete in {runtime:.1f} seconds.")
+        result["run_log"] = (run_dir / "run.log").read_text(encoding="utf-8")
         (run_dir / "metrics.json").write_text(
             json.dumps(_jsonable(result), indent=2), encoding="utf-8"
         )
@@ -233,7 +266,6 @@ def run_mitra(
             ),
             encoding="utf-8",
         )
-        log(f"Run complete in {runtime:.1f} seconds.")
         return _jsonable(result)
     except Exception as exc:
         runtime = time.perf_counter() - started
@@ -363,17 +395,78 @@ def _to_autogluon_dtypes(frame: pd.DataFrame) -> pd.DataFrame:
     return converted
 
 
-def _install_official_regression_patch(checkpoint: str) -> None:
-    from huggingface_hub import hf_hub_download
-    from src.mitra_regression_patch import install_regression_patch
+def _preflight_checkpoint(checkpoint: str) -> dict[str, Any]:
+    token = os.environ.get("HF_TOKEN")
+    if not token:
+        raise RuntimeError("set HF_TOKEN")
 
-    config_path = hf_hub_download(
-        repo_id=checkpoint,
-        filename="config.json",
-        token=os.environ["HF_TOKEN"],
-    )
-    checkpoint_config = json.loads(Path(config_path).read_text(encoding="utf-8"))
-    install_regression_patch(int(checkpoint_config["dim_output"]))
+    from huggingface_hub import hf_hub_download
+
+    try:
+        config_path = hf_hub_download(
+            repo_id=checkpoint,
+            filename="config.json",
+            token=token,
+        )
+    except Exception as exc:
+        raise RuntimeError("set HF_TOKEN") from exc
+    return json.loads(Path(config_path).read_text(encoding="utf-8"))
+
+
+def _install_official_regression_patch(checkpoint_config: dict[str, Any]) -> None:
+    from mitra_finetune.patches import install_reg_ce_patches
+
+    install_reg_ce_patches(int(checkpoint_config["dim_output"]))
+
+
+def _normalize_problem_type(problem_type: str, target: pd.Series) -> str:
+    normalized = problem_type.strip().lower()
+    if normalized == "classification":
+        return "binary" if target.nunique(dropna=True) == 2 else "multiclass"
+    return normalized
+
+
+def _validate_run_inputs(
+    train: pd.DataFrame,
+    test: pd.DataFrame,
+    target: str,
+    problem: str,
+    fine_tune_steps: int,
+    time_limit: int | None,
+) -> None:
+    if train.empty or test.empty:
+        raise ValueError("Both training and test tables must contain rows")
+    if target not in train or target not in test:
+        raise ValueError(f"Target column is missing: {target}")
+    train_features = list(train.drop(columns=[target]).columns)
+    test_features = list(test.drop(columns=[target]).columns)
+    if train_features != test_features:
+        raise ValueError("Training and test feature columns must match in the same order")
+    if not 0 <= fine_tune_steps <= 100:
+        raise ValueError("fine_tune_steps must be between 0 and 100")
+    if time_limit is not None and time_limit < 1:
+        raise ValueError("time_limit must be positive or None")
+    _validate_problem_target(train[target], problem)
+
+
+def _validate_problem_target(target: pd.Series, problem: str) -> None:
+    unique = target.nunique(dropna=True)
+    if problem == "regression":
+        if not pd.api.types.is_numeric_dtype(target):
+            raise ValueError("Regression requires a numeric target")
+        return
+    if problem == "binary":
+        if unique != 2:
+            raise ValueError(f"Binary classification requires exactly 2 target classes; found {unique}")
+        return
+    if problem == "multiclass":
+        if not 3 <= unique <= 20:
+            raise ValueError(
+                "Multiclass classification requires between 3 and 20 target classes; "
+                f"found {unique}"
+            )
+        return
+    raise ValueError(f"Unsupported problem type: {problem!r}")
 
 
 def _jsonable(value: Any) -> Any:

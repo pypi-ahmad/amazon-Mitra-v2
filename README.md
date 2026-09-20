@@ -1,28 +1,84 @@
 # Glass Box
 
-Windows-native Streamlit tutorial for seeing how Amazon AutoGluon Mitra-v2 works with tabular data.
+Glass Box is a Windows-native Streamlit tutorial that shows how Amazon
+AutoGluon Mitra-v2 reads a table, creates a deterministic train/test split,
+runs the released classifier or regressor, and evaluates predictions on the
+hidden rows. It includes classic EDA and an explicit comparison with one
+scikit-learn baseline.
 
-## Run
+The app does not certify that a table is accurate, representative, fair, or
+trustworthy. Ollama and Agnes are not used anywhere in this project.
 
-1. Set `HF_TOKEN` as a Windows user environment variable.
-2. Double-click `run.cmd`.
+## Run on Windows 11
 
-The launcher closes any process already listening on port `8541`, then opens Glass Box at `http://localhost:8541`.
-3. If Notepad opens, close it to continue setup.
+Set `HF_TOKEN` as a Windows user environment variable. Do not put the token in
+Git or source files.
 
-The launcher creates a Python 3.13 `.venv` with uv, installs the official Mitra fine-tuning package,
-and starts Streamlit. No model weights download until **Run Mitra-v2** is clicked.
+```powershell
+[Environment]::SetEnvironmentVariable("HF_TOKEN", "<your-token>", "User")
+```
 
-## Tutorial
+Open a new terminal after setting the variable, then double-click `run.cmd`.
+The launcher:
 
-Choose Houses, Machines, Adult income, Credit-g, Wine quality, or upload CSV/Parquet. Inspect the data and EDA, compare the
-traditional workflow with Mitra-v2, study the synthetic-prior idea, then explicitly train and review
-held-out metrics. Model output does not certify that a table is trustworthy.
+1. Copies `.env.example` to `.env`, opens it in Notepad, and exits on the first
+   launch. The runtime still reads `HF_TOKEN` from the Windows environment.
+2. Creates `.venv` with `py -3 -m venv .venv`.
+3. Installs `requirements.txt` and the pinned official `mitra-finetune` clone.
+4. Stops an existing listener on port 8541.
+5. Opens Glass Box at `http://localhost:8541`.
 
-Sources: [technical report](https://arxiv.org/abs/2609.04540),
-[classifier](https://huggingface.co/autogluon/mitra-classifier-2),
-[regressor](https://huggingface.co/autogluon/mitra-regressor-2), and
-[fine-tuning recipe](https://huggingface.co/autogluon/mitra-finetune).
+No checkpoint is downloaded until a model run starts.
 
-The Glass Box app is available under the [Apache-2.0](LICENSE) and [MIT](LICENSE-MIT)
-licenses. Vendored MITRA components retain their upstream license notices.
+## Bundled tables
+
+All primary tables are loaded with Hugging Face `datasets` and `HF_TOKEN`.
+
+| Tutorial name | Source ID | Task | Target |
+| --- | --- | --- | --- |
+| Houses | `gvlassis/california_housing` | Regression | `MedHouseVal` |
+| Machines | `EddyGiusepe/Modified_dataset_for_predictive_maintenance` | Binary classification | `Machine failure` |
+| Adult income | `scikit-learn/adult-census-income` | Binary classification | `income` |
+| Credit-g | `AiresPucrs/german-credit-data` | Binary classification | `Risk` |
+| Wine quality | `codesignal/wine-quality` | Regression | `quality` |
+
+See [dataset sources and licenses](docs/DATASETS.md) for splits, fallbacks,
+licenses, and cached shapes. CSV and Parquet uploads use the same tutorial and
+model pipeline.
+
+## MITRA controls
+
+The declared problem type selects the released head:
+
+- Classification: `autogluon/mitra-classifier-2`
+- Regression: `autogluon/mitra-regressor-2`
+
+| UI control | AutoGluon behavior |
+| --- | --- |
+| Fine-tune on | `MITRA.fine_tune=True` and `MITRA.fine_tune_steps=50` by default |
+| Fine-tune off | `MITRA.fine_tune=False`; `fine_tune_steps` is omitted |
+| Eight copies on | `num_bag_folds=8` |
+| Eight copies off | `num_bag_folds=0` for one model |
+
+The app sets `num_gpus=1` when `torch.cuda.is_available()` is true and uses
+`num_gpus=0` otherwise. CPU zero-shot runs are supported. CPU fine-tuning and
+eight-fold prediction can be substantially slower, so the UI shows a warning.
+
+See [exact MITRA flags](docs/MITRA_FLAGS.md) and the
+[architecture](docs/ARCHITECTURE.md) for implementation details.
+
+## Sources
+
+- [Mitra-v2 technical report](https://arxiv.org/abs/2609.04540)
+- [Classifier weights](https://huggingface.co/autogluon/mitra-classifier-2)
+- [Regressor weights](https://huggingface.co/autogluon/mitra-regressor-2)
+- [Fine-tuning and bagging code](https://huggingface.co/autogluon/mitra-finetune)
+- [AutoGluon](https://github.com/autogluon/autogluon)
+
+Current validation evidence is recorded in [STATUS.md](STATUS.md).
+
+## License
+
+The Glass Box app is available under the [Apache-2.0](LICENSE) and
+[MIT](LICENSE-MIT) licenses. Vendored or downloaded components retain their
+upstream licenses.
