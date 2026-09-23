@@ -1,0 +1,488 @@
+{
+  "app.py": {
+    "mtime": 1789905141.9702208,
+    "seen": 1790172850.2015145,
+    "ast_hash": "c2c77e230dec2d0eacd1e28cd868c5ee",
+    "semantic_hash": "c2c77e230dec2d0eacd1e28cd868c5ee"
+  },
+  "app_pages/compare.py": {
+    "mtime": 1789905578.0997598,
+    "seen": 1790172850.2015197,
+    "ast_hash": "f6d18800043626f468361e6132efba89",
+    "semantic_hash": "f6d18800043626f468361e6132efba89"
+  },
+  "app_pages/data.py": {
+    "mtime": 1789905320.5747402,
+    "seen": 1790172850.2015214,
+    "ast_hash": "943586c5e78da14d36cae31c2927b088",
+    "semantic_hash": "943586c5e78da14d36cae31c2927b088"
+  },
+  "app_pages/eda.py": {
+    "mtime": 1789905578.1007555,
+    "seen": 1790172850.2015226,
+    "ast_hash": "89414c23407b157b1f16eae5319a7c6b",
+    "semantic_hash": "89414c23407b157b1f16eae5319a7c6b"
+  },
+  "app_pages/home.py": {
+    "mtime": 1789905578.0997598,
+    "seen": 1790172850.201524,
+    "ast_hash": "3e739a2678e32844b6e04081ea08b114",
+    "semantic_hash": "3e739a2678e32844b6e04081ea08b114"
+  },
+  "app_pages/inside.py": {
+    "mtime": 1789905556.658672,
+    "seen": 1790172850.201525,
+    "ast_hash": "e07b575368eb25bf32d990c967681926",
+    "semantic_hash": "e07b575368eb25bf32d990c967681926"
+  },
+  "app_pages/python_script.py": {
+    "mtime": 1789905578.1007555,
+    "seen": 1790172850.201526,
+    "ast_hash": "c7140bb02c46efe93eca29c912143d46",
+    "semantic_hash": "c7140bb02c46efe93eca29c912143d46"
+  },
+  "app_pages/results.py": {
+    "mtime": 1789905578.1007555,
+    "seen": 1790172850.2015269,
+    "ast_hash": "9aa6994ff602ae87c8d7ed99345684a7",
+    "semantic_hash": "9aa6994ff602ae87c8d7ed99345684a7"
+  },
+  "app_pages/train.py": {
+    "mtime": 1789905578.1020298,
+    "seen": 1790172850.2015278,
+    "ast_hash": "7551d3638f2db59d9399355434ec4668",
+    "semantic_hash": "7551d3638f2db59d9399355434ec4668"
+  },
+  "docs/diagrams/mitra-architecture.json": {
+    "mtime": 1790172250.8065922,
+    "seen": 1790172850.2015285,
+    "ast_hash": "46e92073cb61fedc7ee0ccbe4ab28833",
+    "semantic_hash": "46e92073cb61fedc7ee0ccbe4ab28833"
+  },
+  "docs/diagrams/mitra-architecture.visual-check.json": {
+    "mtime": 1790172292.8154788,
+    "seen": 1790172850.2015293,
+    "ast_hash": "d73b8c9a6cb3f43e0e2868b8c24cdb33",
+    "semantic_hash": "d73b8c9a6cb3f43e0e2868b8c24cdb33"
+  },
+  "docs/diagrams/mitra-dataflow.json": {
+    "mtime": 1790172250.8085873,
+    "seen": 1790172850.2015305,
+    "ast_hash": "6991fdcd0d0dafa448bc18894e62fd0c",
+    "semantic_hash": "6991fdcd0d0dafa448bc18894e62fd0c"
+  },
+  "docs/diagrams/mitra-dataflow.visual-check.json": {
+    "mtime": 1790172305.3386173,
+    "seen": 1790172850.2015314,
+    "ast_hash": "69ba5766df3a1b81ef2a2f529c92f053",
+    "semantic_hash": "69ba5766df3a1b81ef2a2f529c92f053"
+  },
+  "docs/diagrams/mitra-lifecycle.json": {
+    "mtime": 1790172250.8085873,
+    "seen": 1790172850.2015321,
+    "ast_hash": "89736d088eb64f923cda37fe06149693",
+    "semantic_hash": "89736d088eb64f923cda37fe06149693"
+  },
+  "docs/diagrams/mitra-lifecycle.visual-check.json": {
+    "mtime": 1790172309.5989041,
+    "seen": 1790172850.201533,
+    "ast_hash": "7a7a417a7742cdb88bc9d8cb6c010986",
+    "semantic_hash": "7a7a417a7742cdb88bc9d8cb6c010986"
+  },
+  "docs/diagrams/mitra-sequence.json": {
+    "mtime": 1790172250.8075879,
+    "seen": 1790172850.201534,
+    "ast_hash": "b0432bffdda52a7f6cbf749bd610aad7",
+    "semantic_hash": "b0432bffdda52a7f6cbf749bd610aad7"
+  },
+  "docs/diagrams/mitra-sequence.visual-check.json": {
+    "mtime": 1790172301.156336,
+    "seen": 1790172850.2015347,
+    "ast_hash": "300f0adb85acfa67e444c3d6f6c2c633",
+    "semantic_hash": "300f0adb85acfa67e444c3d6f6c2c633"
+  },
+  "docs/diagrams/mitra-workflow.json": {
+    "mtime": 1790172250.8075879,
+    "seen": 1790172850.201536,
+    "ast_hash": "7f5c54c1a9839b141f7f3cf1e1ef42c3",
+    "semantic_hash": "7f5c54c1a9839b141f7f3cf1e1ef42c3"
+  },
+  "docs/diagrams/mitra-workflow.visual-check.json": {
+    "mtime": 1790172296.879372,
+    "seen": 1790172850.2015367,
+    "ast_hash": "efa842201873e51f252b7260603327af",
+    "semantic_hash": "efa842201873e51f252b7260603327af"
+  },
+  "pyproject.toml": {
+    "mtime": 1789895276.2625675,
+    "seen": 1790172850.2015376,
+    "ast_hash": "55f51f8d862d5ced91cd4e31e3421749",
+    "semantic_hash": "55f51f8d862d5ced91cd4e31e3421749"
+  },
+  "scripts/smoke.py": {
+    "mtime": 1789905295.1796167,
+    "seen": 1790172850.2015386,
+    "ast_hash": "8782fddcb2ea5b590bdec2c154866a9b",
+    "semantic_hash": "8782fddcb2ea5b590bdec2c154866a9b"
+  },
+  "scripts/smoke_classifier.py": {
+    "mtime": 1789905320.5717356,
+    "seen": 1790172850.2015393,
+    "ast_hash": "7014d52c2095f3d71cbd530df2be68ee",
+    "semantic_hash": "7014d52c2095f3d71cbd530df2be68ee"
+  },
+  "scripts/smoke_data.py": {
+    "mtime": 1789905320.5757394,
+    "seen": 1790172850.2015407,
+    "ast_hash": "6fa231051efa0988b53e1555fe5e3444",
+    "semantic_hash": "6fa231051efa0988b53e1555fe5e3444"
+  },
+  "scripts/smoke_docs.py": {
+    "mtime": 1789905333.340171,
+    "seen": 1790172850.2015414,
+    "ast_hash": "6a0bcbb23d617f4529364a3c6aaf2b4c",
+    "semantic_hash": "6a0bcbb23d617f4529364a3c6aaf2b4c"
+  },
+  "scripts/smoke_eda.py": {
+    "mtime": 1789905295.1808949,
+    "seen": 1790172850.2015424,
+    "ast_hash": "c43fe0e776da469e99d32a0ae0107ac4",
+    "semantic_hash": "c43fe0e776da469e99d32a0ae0107ac4"
+  },
+  "scripts/smoke_finetune_gpu.py": {
+    "mtime": 1789905320.5747402,
+    "seen": 1790172850.201543,
+    "ast_hash": "aacc5a206346ce06bdb12a768a4849d3",
+    "semantic_hash": "aacc5a206346ce06bdb12a768a4849d3"
+  },
+  "scripts/smoke_launcher.py": {
+    "mtime": 1789905320.5717356,
+    "seen": 1790172850.201544,
+    "ast_hash": "01e8d5a48f301b9e6a37386345f034cf",
+    "semantic_hash": "01e8d5a48f301b9e6a37386345f034cf"
+  },
+  "scripts/smoke_mitra.py": {
+    "mtime": 1789905320.5747402,
+    "seen": 1790172850.2015448,
+    "ast_hash": "521c94482a8b3463203bd411b571e1cb",
+    "semantic_hash": "521c94482a8b3463203bd411b571e1cb"
+  },
+  "scripts/smoke_regressor.py": {
+    "mtime": 1789905320.5727322,
+    "seen": 1790172850.2015457,
+    "ast_hash": "b167f58502880e4608d16cb6412b5074",
+    "semantic_hash": "b167f58502880e4608d16cb6412b5074"
+  },
+  "scripts/smoke_ui_import.py": {
+    "mtime": 1789905578.1020298,
+    "seen": 1790172850.2015464,
+    "ast_hash": "f46b3d1189172530fe1587ff8ff87e75",
+    "semantic_hash": "f46b3d1189172530fe1587ff8ff87e75"
+  },
+  "src/__init__.py": {
+    "mtime": 1789895269.84402,
+    "seen": 1790172850.2015476,
+    "ast_hash": "96ccbd5e5b0a54f6e80fadd9607a8754",
+    "semantic_hash": "96ccbd5e5b0a54f6e80fadd9607a8754"
+  },
+  "src/config.py": {
+    "mtime": 1789905141.969218,
+    "seen": 1790172850.2015483,
+    "ast_hash": "ffc65c6295540723990ae5d75efbc0aa",
+    "semantic_hash": "ffc65c6295540723990ae5d75efbc0aa"
+  },
+  "src/data_catalog.py": {
+    "mtime": 1789905320.5757394,
+    "seen": 1790172850.201549,
+    "ast_hash": "bfcb52fc6172f79a15479de6006a1c28",
+    "semantic_hash": "bfcb52fc6172f79a15479de6006a1c28"
+  },
+  "src/eda.py": {
+    "mtime": 1789905556.6610527,
+    "seen": 1790172850.2015498,
+    "ast_hash": "5117d2a5957e899d851e1c1abe7578cf",
+    "semantic_hash": "5117d2a5957e899d851e1c1abe7578cf"
+  },
+  "src/load.py": {
+    "mtime": 1789905320.5747402,
+    "seen": 1790172850.2015512,
+    "ast_hash": "3016078cbd122ac9a4f48275764266a0",
+    "semantic_hash": "3016078cbd122ac9a4f48275764266a0"
+  },
+  "src/mitra_run.py": {
+    "mtime": 1789905578.1020298,
+    "seen": 1790172850.201552,
+    "ast_hash": "d86c3e55ce11fa30cf4569ceb1c8220d",
+    "semantic_hash": "d86c3e55ce11fa30cf4569ceb1c8220d"
+  },
+  "src/state.py": {
+    "mtime": 1789905320.573731,
+    "seen": 1790172850.2015529,
+    "ast_hash": "768eaecf91d2ab834d44eafc36dc0ae4",
+    "semantic_hash": "768eaecf91d2ab834d44eafc36dc0ae4"
+  },
+  "src/synthetic_gallery.py": {
+    "mtime": 1789905556.662239,
+    "seen": 1790172850.2015538,
+    "ast_hash": "9d1e371f2bddd7ada97e2fcf02a5a7ed",
+    "semantic_hash": "9d1e371f2bddd7ada97e2fcf02a5a7ed"
+  },
+  "src/theme.py": {
+    "mtime": 1789905556.659667,
+    "seen": 1790172850.2015548,
+    "ast_hash": "e1fcf29502953f721cec7a28576ec60c",
+    "semantic_hash": "e1fcf29502953f721cec7a28576ec60c"
+  },
+  "src/training.py": {
+    "mtime": 1789905091.1097264,
+    "seen": 1790172850.2015555,
+    "ast_hash": "23864fae26176291863c019592255ed9",
+    "semantic_hash": "23864fae26176291863c019592255ed9"
+  },
+  "CONTRIBUTING.md": {
+    "mtime": 1789905546.8637495,
+    "seen": 1790172850.2015562,
+    "ast_hash": "c6b687248921df969d29dad011c8d3ad",
+    "semantic_hash": "c6b687248921df969d29dad011c8d3ad"
+  },
+  "README.md": {
+    "mtime": 1789905537.5272932,
+    "seen": 1790172850.2015572,
+    "ast_hash": "35925c89f81f6fa42a15740cba79a1f2",
+    "semantic_hash": "35925c89f81f6fa42a15740cba79a1f2"
+  },
+  "STATUS.md": {
+    "mtime": 1789905537.5295715,
+    "seen": 1790172850.201558,
+    "ast_hash": "94430517b8225a440b42a0931382d100",
+    "semantic_hash": "94430517b8225a440b42a0931382d100"
+  },
+  "docs/ARCHITECTURE.md": {
+    "mtime": 1789905578.098749,
+    "seen": 1790172850.2015595,
+    "ast_hash": "cd04bb99d88210d7499c1299e92defb2",
+    "semantic_hash": "cd04bb99d88210d7499c1299e92defb2"
+  },
+  "docs/DATASETS.md": {
+    "mtime": 1789905537.5285573,
+    "seen": 1790172850.2015603,
+    "ast_hash": "0615881d263832bee2a7a9e57440f819",
+    "semantic_hash": "0615881d263832bee2a7a9e57440f819"
+  },
+  "docs/DEVELOPER_GUIDE.md": {
+    "mtime": 1789905546.864749,
+    "seen": 1790172850.201561,
+    "ast_hash": "14433b0e735f578836631b3aaf140758",
+    "semantic_hash": "14433b0e735f578836631b3aaf140758"
+  },
+  "docs/MITRA_FLAGS.md": {
+    "mtime": 1789905537.5285573,
+    "seen": 1790172850.2015622,
+    "ast_hash": "498d722ee12c42467fa3b8980bae799e",
+    "semantic_hash": "498d722ee12c42467fa3b8980bae799e"
+  },
+  "docs/ONBOARDING.md": {
+    "mtime": 1789905546.864749,
+    "seen": 1790172850.201563,
+    "ast_hash": "01a61e5002405e683af56bea684bef7c",
+    "semantic_hash": "01a61e5002405e683af56bea684bef7c"
+  },
+  "docs/PYTHON_REFERENCE.md": {
+    "mtime": 1789905546.865749,
+    "seen": 1790172850.2015638,
+    "ast_hash": "1f9313d31b62c87502e4a6951613ce78",
+    "semantic_hash": "1f9313d31b62c87502e4a6951613ce78"
+  },
+  "docs/ZERO_TO_MASTERY.md": {
+    "mtime": 1789905546.865749,
+    "seen": 1790172850.2015648,
+    "ast_hash": "98412481159a0388865bcfa284ba8a56",
+    "semantic_hash": "98412481159a0388865bcfa284ba8a56"
+  },
+  "docs/diagrams/mitra-architecture.html": {
+    "mtime": 1790172263.3765244,
+    "seen": 1790172850.2015655,
+    "ast_hash": "25ffd9638ba02b4a79723cee494fd601",
+    "semantic_hash": "25ffd9638ba02b4a79723cee494fd601"
+  },
+  "docs/diagrams/mitra-architecture.visual-check.html": {
+    "mtime": 1790172292.8144655,
+    "seen": 1790172850.2015665,
+    "ast_hash": "7156bf5284c803ac3440b4700426c2cd",
+    "semantic_hash": "7156bf5284c803ac3440b4700426c2cd"
+  },
+  "docs/diagrams/mitra-dataflow.html": {
+    "mtime": 1790172270.2995338,
+    "seen": 1790172850.2015672,
+    "ast_hash": "0332c6a3cf8c07034e0fd937249e8afb",
+    "semantic_hash": "0332c6a3cf8c07034e0fd937249e8afb"
+  },
+  "docs/diagrams/mitra-dataflow.visual-check.html": {
+    "mtime": 1790172305.3376164,
+    "seen": 1790172850.201568,
+    "ast_hash": "5b05562dc24d49ba14307823f0d2cc79",
+    "semantic_hash": "5b05562dc24d49ba14307823f0d2cc79"
+  },
+  "docs/diagrams/mitra-lifecycle.html": {
+    "mtime": 1790172272.916747,
+    "seen": 1790172850.201569,
+    "ast_hash": "02b26c2592c8ee14dd22a0190798759a",
+    "semantic_hash": "02b26c2592c8ee14dd22a0190798759a"
+  },
+  "docs/diagrams/mitra-lifecycle.visual-check.html": {
+    "mtime": 1790172309.5983632,
+    "seen": 1790172850.2015698,
+    "ast_hash": "77555b267cf5f186a8e6e14de67a8325",
+    "semantic_hash": "77555b267cf5f186a8e6e14de67a8325"
+  },
+  "docs/diagrams/mitra-sequence.html": {
+    "mtime": 1790172268.0017786,
+    "seen": 1790172850.2015707,
+    "ast_hash": "e1fd7d3e925e1f42d6017b4a45a7139e",
+    "semantic_hash": "e1fd7d3e925e1f42d6017b4a45a7139e"
+  },
+  "docs/diagrams/mitra-sequence.visual-check.html": {
+    "mtime": 1790172301.1553383,
+    "seen": 1790172850.2015717,
+    "ast_hash": "1051daa18a9c3de8a9a768d1c02c8b1a",
+    "semantic_hash": "1051daa18a9c3de8a9a768d1c02c8b1a"
+  },
+  "docs/diagrams/mitra-workflow.html": {
+    "mtime": 1790172265.6571803,
+    "seen": 1790172850.2015727,
+    "ast_hash": "bb161a52c809b5b2d57072d977f6793d",
+    "semantic_hash": "bb161a52c809b5b2d57072d977f6793d"
+  },
+  "docs/diagrams/mitra-workflow.visual-check.html": {
+    "mtime": 1790172296.879372,
+    "seen": 1790172850.2015734,
+    "ast_hash": "255c385670c7d6199b45a490db516e05",
+    "semantic_hash": "255c385670c7d6199b45a490db516e05"
+  },
+  "requirements.txt": {
+    "mtime": 1789897983.2745855,
+    "seen": 1790172850.201574,
+    "ast_hash": "df5b2844972d181f18d297a2c7f95193",
+    "semantic_hash": "df5b2844972d181f18d297a2c7f95193"
+  },
+  "docs/diagrams/mitra-architecture.visual-check.1440x900.dark.png": {
+    "mtime": 1790172292.3349247,
+    "seen": 1790172850.2015748,
+    "ast_hash": "a9508aca94da5ab0fd2d97c1b7e2baa3",
+    "semantic_hash": "a9508aca94da5ab0fd2d97c1b7e2baa3"
+  },
+  "docs/diagrams/mitra-architecture.visual-check.1440x900.light.png": {
+    "mtime": 1790172290.6472683,
+    "seen": 1790172850.2015758,
+    "ast_hash": "4d7bac63a40a7359b435a8a15d840dc7",
+    "semantic_hash": "4d7bac63a40a7359b435a8a15d840dc7"
+  },
+  "docs/diagrams/mitra-architecture.visual-check.2048x1320.dark.png": {
+    "mtime": 1790172292.812955,
+    "seen": 1790172850.2015767,
+    "ast_hash": "1f2095b37da0ec5ecc2856655b7dff2a",
+    "semantic_hash": "1f2095b37da0ec5ecc2856655b7dff2a"
+  },
+  "docs/diagrams/mitra-architecture.visual-check.2048x1320.light.png": {
+    "mtime": 1790172291.8843164,
+    "seen": 1790172850.2015774,
+    "ast_hash": "74821a0012806e099637496d0691d3bc",
+    "semantic_hash": "74821a0012806e099637496d0691d3bc"
+  },
+  "docs/diagrams/mitra-dataflow.visual-check.1440x900.dark.png": {
+    "mtime": 1790172304.8794684,
+    "seen": 1790172850.2015784,
+    "ast_hash": "397b3744985e0a551808af244ec13e12",
+    "semantic_hash": "397b3744985e0a551808af244ec13e12"
+  },
+  "docs/diagrams/mitra-dataflow.visual-check.1440x900.light.png": {
+    "mtime": 1790172303.212549,
+    "seen": 1790172850.2015793,
+    "ast_hash": "b74e8a9894e15268ad36bf520d724d9a",
+    "semantic_hash": "b74e8a9894e15268ad36bf520d724d9a"
+  },
+  "docs/diagrams/mitra-dataflow.visual-check.2048x1320.dark.png": {
+    "mtime": 1790172305.3355846,
+    "seen": 1790172850.2015803,
+    "ast_hash": "335d48991a818a364580a43420351290",
+    "semantic_hash": "335d48991a818a364580a43420351290"
+  },
+  "docs/diagrams/mitra-dataflow.visual-check.2048x1320.light.png": {
+    "mtime": 1790172304.4296918,
+    "seen": 1790172850.201581,
+    "ast_hash": "0a4443f8694fb7026f1d62f5c6dcfef4",
+    "semantic_hash": "0a4443f8694fb7026f1d62f5c6dcfef4"
+  },
+  "docs/diagrams/mitra-lifecycle.visual-check.1440x900.dark.png": {
+    "mtime": 1790172309.132301,
+    "seen": 1790172850.2015817,
+    "ast_hash": "1b3d32016a6a5e88f959859cae8914b7",
+    "semantic_hash": "1b3d32016a6a5e88f959859cae8914b7"
+  },
+  "docs/diagrams/mitra-lifecycle.visual-check.1440x900.light.png": {
+    "mtime": 1790172307.4327593,
+    "seen": 1790172850.2015827,
+    "ast_hash": "dff18f9acb7c0c56271485dd1dfd74c0",
+    "semantic_hash": "dff18f9acb7c0c56271485dd1dfd74c0"
+  },
+  "docs/diagrams/mitra-lifecycle.visual-check.2048x1320.dark.png": {
+    "mtime": 1790172309.595898,
+    "seen": 1790172850.2015836,
+    "ast_hash": "d6651ff10f7ca3e5e53a3b0f814b8df1",
+    "semantic_hash": "d6651ff10f7ca3e5e53a3b0f814b8df1"
+  },
+  "docs/diagrams/mitra-lifecycle.visual-check.2048x1320.light.png": {
+    "mtime": 1790172308.6627247,
+    "seen": 1790172850.2015843,
+    "ast_hash": "1ee3f0193877c526567f93b1b9b0335f",
+    "semantic_hash": "1ee3f0193877c526567f93b1b9b0335f"
+  },
+  "docs/diagrams/mitra-sequence.visual-check.1440x900.dark.png": {
+    "mtime": 1790172300.682684,
+    "seen": 1790172850.2015853,
+    "ast_hash": "34178897af33262eabb87bc2e463baf4",
+    "semantic_hash": "34178897af33262eabb87bc2e463baf4"
+  },
+  "docs/diagrams/mitra-sequence.visual-check.1440x900.light.png": {
+    "mtime": 1790172298.9993896,
+    "seen": 1790172850.2015862,
+    "ast_hash": "f798dffb44eaf0bd9f53246126104699",
+    "semantic_hash": "f798dffb44eaf0bd9f53246126104699"
+  },
+  "docs/diagrams/mitra-sequence.visual-check.2048x1320.dark.png": {
+    "mtime": 1790172301.1533265,
+    "seen": 1790172850.2015872,
+    "ast_hash": "84a821494ba599442579ad05bcd116eb",
+    "semantic_hash": "84a821494ba599442579ad05bcd116eb"
+  },
+  "docs/diagrams/mitra-sequence.visual-check.2048x1320.light.png": {
+    "mtime": 1790172300.229139,
+    "seen": 1790172850.2015882,
+    "ast_hash": "0d6c2fca4e436db9a45ea6e9c4217569",
+    "semantic_hash": "0d6c2fca4e436db9a45ea6e9c4217569"
+  },
+  "docs/diagrams/mitra-workflow.visual-check.1440x900.dark.png": {
+    "mtime": 1790172296.4321082,
+    "seen": 1790172850.201589,
+    "ast_hash": "a9bffcb0f437e75f56b0d1d8f51ee844",
+    "semantic_hash": "a9bffcb0f437e75f56b0d1d8f51ee844"
+  },
+  "docs/diagrams/mitra-workflow.visual-check.1440x900.light.png": {
+    "mtime": 1790172294.7886765,
+    "seen": 1790172850.2015898,
+    "ast_hash": "c732f555d4ee411c479723c0f9ab7971",
+    "semantic_hash": "c732f555d4ee411c479723c0f9ab7971"
+  },
+  "docs/diagrams/mitra-workflow.visual-check.2048x1320.dark.png": {
+    "mtime": 1790172296.877982,
+    "seen": 1790172850.2015908,
+    "ast_hash": "6ec366843708967d7f20025e4da7feb8",
+    "semantic_hash": "6ec366843708967d7f20025e4da7feb8"
+  },
+  "docs/diagrams/mitra-workflow.visual-check.2048x1320.light.png": {
+    "mtime": 1790172296.0099297,
+    "seen": 1790172850.2015915,
+    "ast_hash": "1725189b92ff4e2817828f504eee4024",
+    "semantic_hash": "1725189b92ff4e2817828f504eee4024"
+  }
+}
