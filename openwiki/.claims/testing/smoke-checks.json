@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:05cffe3ab06c393c3f4ccc7807a475b785923628120547e8b76e8b529fd740e9",
+  "claims": [
+    {
+      "id": "claim_3a103401eb104ff5bfd0e030bac7327c",
+      "statement": "The contributor workflow requires the documentation smoke, Ruff lint, Ruff format check, and git diff check, then selects focused smokes by changed surface.",
+      "evidence": [
+        {
+          "resource": "repo://CONTRIBUTING.md#L33-L57",
+          "version": "repo-lines-v1:sha256:82ef40ad2c3a1b854f9685369acfa858e3c2623aa0323bb337f33110ddf1b79c:eyJzZWxlY3RlZExpbmVDb3VudCI6MjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhkMGZlYzIzNGM3OWIxOGMwYzkwNjdiOTVlYjczODJiNGQ1MTQwMWZhYmQ2MmIyMmZhNzZiNzExY2M0YjEzOTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNiYzc2Y2ZkOTcxMDhjMjBhYjgzNWY3NDU1MTM0Y2ViNmNkMGU2NWE3NDM5YTZjYTY5ZTk3NWMwYWEyMDY2YzIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjMzZDQwMTcyM2Y5MDQ4MzdiMjhjOWU3NTE2NTUyNWIwM2ZjNzgyOGY0ZTUyNzY4ZDI2NTUyNDEwZGNjZWEzZTYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjJlMTNlYzMyZDQ5MTg0NjBjZDA4ZGFmZjg1NGQ3NzY4NTc5NzRiOWVhMWEwNDgzOGRiZGI3MzRmNTM5NjRhYTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_b418aec239c14f15ae6bc973ef10f6cf",
+      "statement": "The documentation smoke checks required headings, local Markdown links, and public source docstrings; the launcher smoke checks launcher content and ordering without starting Streamlit.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/smoke_docs.py#L23-L75",
+          "version": "repo-lines-v1:sha256:9cbd8a772c82a33099711dbdb1d78e7075e2ed341afea0351e6f20211c512260:eyJzZWxlY3RlZExpbmVDb3VudCI6NTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcwYmM1MTI2NWRhM2M0OTRiZGQyOTQwOGMwZTE3NzY2NWJmZWFkNmZkMjc5MzZmMDU5ZDJjNTU3YjE5YTNjZTEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQwNzQyMzZhMjAzYjA5Y2JhN2QxOWY4M2IxZWVhMmMzYzcyZGNmMDI5YTJjZDdlOTBkYmYwMDFjMDYzMjQ2NzUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjZjYzc0MjIxNDY1MjI2MGI2N2Q2ZTA5MDY2YTUxODRmNjFmZTU4YjBiNTc5NmFiYzM2Yzg4Yzc4OTA3ZmM5NzMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjNkNDEzNDBjYzIzOWExNTljZTliNjAyMmU5ZjYzMjI4MzJlMmVhZDc2Y2FlOWU0NzU0ZDIxMGViOGZiNmQ1ZTgifQ"
+        },
+        {
+          "resource": "repo://scripts/smoke_launcher.py#L1-L30",
+          "version": "repo-lines-v1:sha256:956b563f9dc8b0623e849527b612aaec009aa913f2e2728683b78abf426dc5cf:eyJzZWxlY3RlZExpbmVDb3VudCI6MzAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMzNjk5NzQ2YWQ1N2E2MDdiNGM1YzJlMDg1NmJhOTkxZTQ1NWEzODY2YmUyMTBhNDJmZWNhODhjNmY2MTY4YzYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZhZTg4N2NkMjEyOTUxN2M0ZjFhNzY5ZTVkMDNiMDE2NWU1OGM1ZmZmOTMzZjkyMmEwZWQxMGNlNDZhZjNjYzMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQ2ZjI2NzBhMDU5MmFiOWQzM2I2ODFlYjFkYmVhNjE2ZTdlOTg4OTJkNDY0NjcyNmNjNzYwOGRjYTRlNDEzY2YifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_cbd03f1bf16445aaaf8933869e6d2d8b",
+      "statement": "The UI import smoke imports app and validates the five deterministic synthetic gallery frames and their required columns.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/smoke_ui_import.py#L13-L27",
+          "version": "repo-lines-v1:sha256:122d1197677a6130b4b591f3a24bb4e855092720db8db337938c856a07b58ae4:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZlZTU2ZWNmYzM1NGVhYzc5M2EzNTczOTgzMTk3N2Q3YmNhYmRjNDYzNmIzZTRhZGRhZGZiNGEwYTdiNWNjODYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZhZmJhMDUyN2MzOTUzYzRiNmUwZTViNTczOWJhODM2MTJmODA1M2JjZGM5NDY2NzMwMTkzY2QxZDU5MGI0MDgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImIzNmU1YzIzNjE3NDQ3ZGY4Yjc2ZTRiZmM0NjMyNWRiMjIzMGE2YzQ2NGNiNWJkYzcwOTJmODkxMjkwYWQ5OTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImU2MjFiMDAyMTZmOGY0ODI3ODcwZmUxNGJjZDEyMGU5NDcwNGE0MjUwNGY5MzNlZDRjZTllMWJhZThiNTQ2MjgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_a5d207adf3d84c4b87d6cc542e422d00",
+      "statement": "The data smoke requires all five samples to report their configured Hugging Face primary source and asserts that known and hidden rows are disjoint and cover all labeled rows.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/smoke_data.py#L19-L39",
+          "version": "repo-lines-v1:sha256:82ed03fd58ca341ca791a82fbec0748c5d8ee217083a2df45da9beb6f0867700:eyJzZWxlY3RlZExpbmVDb3VudCI6MjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcwYmM1MTI2NWRhM2M0OTRiZGQyOTQwOGMwZTE3NzY2NWJmZWFkNmZkMjc5MzZmMDU5ZDJjNTU3YjE5YTNjZTEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY1ZjgyYzQ1ZThkY2IyYTQyODVmNGI2Y2JkMzBkMTA3YTkyMzVlOGYzYTgxNjA2MWI4YjY5ZTA1NDNlODI5ZmYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImNkZjM3Y2FjMGY4MWM1YTEwOWU0M2Y0YTIxMGRiZWZiMDI0MjYxMDkyYjY4ZWY4NDNhZTgwYzAzNzI4MmVmNzMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImE1MzU3OGFjNjU4MTNiNGVjYWNiNGE5NGFiMDRmZjVjOGYwYTg3NWU3MzZlN2FjNjBmY2M3NmE5M2YzMGQ0YTIifQ"
+        },
+        {
+          "resource": "repo://scripts/smoke_data.py#L71-L75",
+          "version": "repo-lines-v1:sha256:951e50c4d4f71d70b15ee0149fc438c41e1fa1c6df31814162f3ff718d4bde87:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiM2U3ZTNlMDEyYzJiYTc2ODE5ZmI0NzI3OGMyZGRjYTY0Mjg3NTU0Yzg5MWJmYTM5YjFiMjFmYTI5MjYxY2NmZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMmQwYzdkNjIzNTMxOGRkNGQwMTg0NzgyYTYzMTBjMTFhODExZDcyYTUzNTBkYzMzZjJhYjhkYmZjMmM5NTZhOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNGZhYjZiMjdkNmMxNDA1NmMwYmI2YmQ2ZjRhYjMzMjQwYjMzZGExM2YwYWE1Y2ZlNjk1Y2VjNGQ0ZmJmYzM3ZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjVjYjhiNDViZDA5YzRiZjUyYWQ0YzJjM2Y3Njc2MWMyZGY1MDQ2ZjRjOWNlZmU2ZTE0MGQyMTYwMzdlZWY1MSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_decc0c0cf34640c4814da7cfbe78b01a",
+      "statement": "The EDA smoke loads Houses and asserts that seven Plotly figures and one pairplot are saved as nonempty files.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/smoke_eda.py#L32-L68",
+          "version": "repo-lines-v1:sha256:68d8deff85dd476aa5a285b122a70ca9bf753594bb81258082226384c95a4ff5:eyJzZWxlY3RlZExpbmVDb3VudCI6MzcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcwYmM1MTI2NWRhM2M0OTRiZGQyOTQwOGMwZTE3NzY2NWJmZWFkNmZkMjc5MzZmMDU5ZDJjNTU3YjE5YTNjZTEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg3ZjQ2MGY1MzUxNGU1MDNjNzBlMWMxZTMzNWUxY2Y0NDA5ZDBlNDc1MDI1MjFjNGI4Y2ZmNjdhYzZjNzM0NTQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjZlMGZjMzVmMzNhMzkxZGM5ZDJjYTIyM2ZkNGU0ODBlZjAzYWFiMTY1NTg5OWQxYTQ3ZjY3YTUzZTkzZmZhZWUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjRhOTk1OTFhYTI1NjEzNGRlZDA5MzkwMWRlMDJlODA2YTlmZjYwZDZiMzUyNTQyM2RhOWZmZDk5NmViMDgzNzEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_c98a8c5c86ec49f5b42f0361e30206b1",
+      "statement": "The zero-shot classifier and regressor smokes use bounded 400-row samples and check task-specific metrics and required model-run artifacts.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/smoke_classifier.py#L22-L55",
+          "version": "repo-lines-v1:sha256:b1c7d5e783bbfe2f08c5f1d6c54671e960ea2e1753268f66466f4d5a33c14a12:eyJzZWxlY3RlZExpbmVDb3VudCI6MzQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcwYmM1MTI2NWRhM2M0OTRiZGQyOTQwOGMwZTE3NzY2NWJmZWFkNmZkMjc5MzZmMDU5ZDJjNTU3YjE5YTNjZTEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI5ZDgzNDNhZTk0ZTIyMjA5N2I5MGZiNWIyZjY0OTYwN2UxOTE4MzlkM2IwYzg3NWE3MjE0ZmUxNDEzNjdjZjUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjIwNTI1MDdiYTVkODljNGY4ZGUzZmZmYTNhNGI0YmEwYjU1YWI4YTE5NmUxZjRiZGY3MmQ1MDQ2OGUxM2JjNTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjA4M2ViNGFmYTA0MzBlY2VhOWIxOGI1M2ExOGFlN2Q3YzZlNjdkODgyMWE4MmM1MTdlZWE1NGI2NWI3YTRiNmEifQ"
+        },
+        {
+          "resource": "repo://scripts/smoke_regressor.py#L22-L44",
+          "version": "repo-lines-v1:sha256:684320625df1923d82a9208cff16e8b0a5d1ac5b4d643635bbc213abac644640:eyJzZWxlY3RlZExpbmVDb3VudCI6MjMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcwYmM1MTI2NWRhM2M0OTRiZGQyOTQwOGMwZTE3NzY2NWJmZWFkNmZkMjc5MzZmMDU5ZDJjNTU3YjE5YTNjZTEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI5ZDgzNDNhZTk0ZTIyMjA5N2I5MGZiNWIyZjY0OTYwN2UxOTE4MzlkM2IwYzg3NWE3MjE0ZmUxNDEzNjdjZjUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImU4ODljNTY3NmI0NmY5ZGEwNzJiOWE0MzA0YzRhMzlmYzg2ZjhjNzk0MjRlYTQ5ZjZiMWFjZTU3MGFkMWY3ODYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjA4M2ViNGFmYTA0MzBlY2VhOWIxOGI1M2ExOGFlN2Q3YzZlNjdkODgyMWE4MmM1MTdlZWE1NGI2NWI3YTRiNmEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_30f55713a621452ea5ce1e49e6810d5d",
+      "statement": "The fine-tuning smoke skips model work and records CUDA unavailable when no CUDA device is detected; with CUDA it runs regression and classification fine-tuning with eight copies.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/smoke_finetune_gpu.py#L27-L40",
+          "version": "repo-lines-v1:sha256:dca3924667e27f55fef82d2b6f3adf57b0fbb2af716249e1cb8130bcfb7db162:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcwYmM1MTI2NWRhM2M0OTRiZGQyOTQwOGMwZTE3NzY2NWJmZWFkNmZkMjc5MzZmMDU5ZDJjNTU3YjE5YTNjZTEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcyMGUyMDRlMTQ3ZWNjYzAwZDFlMjZmYzQwMWM4NDhlMGY3ZjI0NDQyOGUwNTQ5ODZhZWUxNTgxNjQ0NzcyNjMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjNlNWEzNmZiYTNhNzllNWNjYzY4YWRjOGFkZDkyMTQzNWQ3MjM4ZjdmM2RlZmNhYzk3OTg1MzFhNjQ2MjkxMDUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImI3MTQ3M2M4MDVkODFiODhlZDc5MjRmMTE1ZDM2ZmRkNDdlMmE2NmZkZTNiYzNkYmI3NTExNzJhZTExMDg5N2EifQ"
+        },
+        {
+          "resource": "repo://scripts/smoke_finetune_gpu.py#L77-L103",
+          "version": "repo-lines-v1:sha256:3a59ea21d354df992cb6945c69686ac0cd2b3f63540df4d39eee65e681cf806c:eyJzZWxlY3RlZExpbmVDb3VudCI6MjcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE4ZGUzMzM5YmI1ZTNkNGUyYjA2OTc4NzQwYmY1ZTExZDQyZTA5NzhmZDA2NGIwMTVhOWFlN2Q4NWU4YTg4M2QiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE4MWRlYjQ3N2FjMzU2MTI5N2IzZGZkYTRlNjU2NTJiMjhmZDU2N2VkZmRhNDQxOTkxNmU3MTYzZjNjNTAwNjUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImE0NzkxZDllMDI2Nzg3ZDY3NjFlZWJlOTU2MWRlODM4ZDg3NDdkM2M0MWY2ZGIxNWY5NzMwMmY1ZDI2ZTk4MmYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjhjYWUzYTMxOWUwZjVmODYwYjNkYTUyYjE4M2EzOTBjODJiNmRlZWEzM2M2ZDRkYTlkZmVjMjZiODYyNTM1NmIifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.5.2",
+    "at": "2026-09-23T14:16:42.939Z"
+  }
+}

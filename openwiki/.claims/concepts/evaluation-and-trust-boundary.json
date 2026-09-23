@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:2d1ab2db700db193271c8950a2979abc186da6b0e8eabb1a11ffaa91bf70e387",
+  "claims": [
+    {
+      "id": "claim_75f050375cda497089dee0bf0be99056",
+      "statement": "Split metadata records target, task, test fraction, random seed, and hidden-row indices; the catalog defaults use a 10% test fraction and seed 42, with stratification conditional on class and partition sizes.",
+      "evidence": [
+        {
+          "resource": "repo://src/data_catalog.py#L43-L55",
+          "version": "repo-lines-v1:sha256:f6a8758a03b754d297260edffd9053054047920b4d80773d070aba981fd17502:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU2MjliZjY3YWJjY2E2MGUwYWE1MWZkMThmMGUxOTA0MTJiYTMyOWExNGNlODg0NGNmOTg5Y2Q0ZDJhMGVhNWIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjlmNjgzYWM2NjE1MzA2OGE1Y2NlZjcyOTM4MTVhM2JlMmQyNDRhYTEzODFlMTNiMzY0Yjg5NWFjMWFlMjZkZTYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjNlYmI5Nzk0NDUzZjUyNGQ2M2UwYTk2Y2JjMjlmOTA1YmFjM2VjYzFiMzg0ZmI5ZDA5ZjUyODk0OWQ4NTlmMzIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjZhOGZmZDk1NDI5Y2IyMDUzOTVjY2I1MGFkYjc1ODc1ZjgyMDE1NzMxM2I1OGEwMzA2NGNjZGNhNmI0MDEwYmIifQ"
+        },
+        {
+          "resource": "repo://src/load.py#L174-L232",
+          "version": "repo-lines-v1:sha256:75f9c2cbd863492b0a427ac62677fedc1f09286d3c17844e50ab88fdde93f8d6:eyJzZWxlY3RlZExpbmVDb3VudCI6NTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBjOTRkZjUyYWI1MGY1ZmU5YzMyNGU1NGFiMTFkMjBmMTQ0OGI4NTViZmI2YmNlNjFmMGVmYTM5MDU2YzQ4YmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQwYTgwMDk4MDA4ZjFhODVjYTBjNmY1NjdiMzhlY2I5Yzk2MmJjMzVmNzIwMDg1N2QwYmYwY2M1ZTBiMzFmMDMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjkyZmU1ZTg0OGViYjk4NjdlOWI2ODQxODIxN2ZjM2JkODJlMjE2N2FkNjY1MDRlNTRmNTNkNDA0MmI4MGQ3MTIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjRmYmQwMDkzMTRiYzI3MDg0MTY3MzRhMDJhZTVmZjM5YTFlNDhhMDUwYmU5MWY0M2IyZmFhOTIwMDJjNjJiZmMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_2c81fb4317e94212a91541a47962076f",
+      "statement": "The loader reconstructs known and hidden tables as separate copies using the recorded hidden indices.",
+      "evidence": [
+        {
+          "resource": "repo://src/load.py#L138-L152",
+          "version": "repo-lines-v1:sha256:c3598eda1a51af1f0c08fdfa92a529cc54a3dc5ae17e044f885d1f5b6bd47097:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdkZjIzMmQyZTJhY2NjYmU1YmJlNWFmZjc0ZDA5ODZkMzkyZDg2NGJjYzNlZTUwYWNjMDRjMThhN2E1NWNlNDkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI1YjQ3ZWIwZjYyMTE1ZmI3ZjZmMDE3ZWFlMzI2ZTQxOGYwMmVmMzU2YTQ2ZmUxMWM3NTRmYTRmZTcyN2ZmYWMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjhkZTI2ZmRjMmJkODhiZWM0ZDNjOGI3NjgzZjk1NTQ5NDMzZGRkZDU0MzQ0YTI4MWY4ZGJkMzdhODJiOTlhNzYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImJlZDhkM2VhNTUzNGM0ZTkwYWQ4YmFjNjJkNzdkNjVlMGU4ODBhYmZjNzA2Nzk3ODhlNmIwOWNiZWFiNzcxYmQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_6349f0cd97964285a70f4a658e3059a0",
+      "statement": "The MITRA runner validates separate training and hidden tables, predicts on hidden rows, and fits its HistGradientBoosting reference baseline on the same split.",
+      "evidence": [
+        {
+          "resource": "repo://src/mitra_run.py#L107-L150",
+          "version": "repo-lines-v1:sha256:e739d98b5403c5a1f1dbf798b6e95a3ac59bf3c4b62cad5af09adf80a7bb3846:eyJzZWxlY3RlZExpbmVDb3VudCI6NDQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY4OTEzZWEwZGNhYWQxZWNjZThhODE3YTI4ZjVjYzBkMmQwNWYxZDk3NjRlM2M5ODczNzY3YzZmZDAzNzNjMGMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZmNDBmOGIyNDk0ZDI0ZGFhY2QzN2NmZmJhOWRkNWI2NWNhYzBhZTc4NWY0ODJmZDczMzdmNzllOWE3YTJhN2IiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImY1MTM0N2U3Njg1OTFhZmM0N2RhM2U1NGQ2ZDczNGI3MGYzYzRkYWJjZmVhZGEyMTNhMTAzMzU3NzJkZGQ4NDEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjIxZmYxMWY0YjEwNmFiZWJkNWJlZDhmNDY4ZGNmMjkzMGY3ZDlmOWU4NzAxYzE5MTczOTdjOTViZGVkNzVkOGUifQ"
+        },
+        {
+          "resource": "repo://src/mitra_run.py#L240-L255",
+          "version": "repo-lines-v1:sha256:6f794076d0dd2998f1f70851df41e20a490928481f2c2982c5f1ac79d2656cc8:eyJzZWxlY3RlZExpbmVDb3VudCI6MTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJiMjUyM2YyMjEyMzgzZWU3MDVkOWFjM2JkNWZlODQ5N2NmMDBkMmVmNmFlZjExNjVkZGNhMWZkNmM5YjQ3NjUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBlMGZmYjU5OTMwZTdkYTQzMDIxODBiMTNlYzFlNzA2N2Y3MGVkOGM0ZjFjZmY5ZTAyNjg5NmU0YTEzMDUxOWUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImRjNDViNTg1YWQyOThmNWNlYzVmZDRmYTAzNTk0NTUwNDVhMjcyMzM0OTlhMzJlZjVkOGNkYzVlMTE4OTg0YTYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjIzMjA5NTdmYzc0OWJhOThiN2Q2ZWZhZjI4YjA5MjMxMGM0NGZlOTE3YWQzNzdiZWNmYzhkY2EwMjZkYmE0YzIifQ"
+        },
+        {
+          "resource": "repo://src/mitra_run.py#L328-L388",
+          "version": "repo-lines-v1:sha256:df50b3ec70bb3cb8a26e46e1aa9b3b08b5eb55817180fb7ec5cae33194909154:eyJzZWxlY3RlZExpbmVDb3VudCI6NjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA1MDg0ZmRkZTE3ZjcwZjA1ZTJlOGRlYWYzOTc5M2M0MmMzOWQ1YzE4ZjE2MmM5MTIzMjRiOTM4ZDI1ZjhjN2IiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY2NzAxMzkwMjQwYWFiM2UzNWE0YzFiMjhjN2M0MGNjOTdiNmI0ODNjMGViYTM4OWUzZDJlYWUwYzdjMmQ4MWMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjM5ZWZkOWUxNzJlNTE2NDhjYzY1N2RiZWEwNDYxM2ZiNzc5M2Q2ZjZjYmViOTIyZjE2YWVkYTZmZDRhMTlmNTEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjExM2ViMjg2NGJhNmY0MzRiZGJhYTAzMjdkNWMxMWY2MjQzZDkwOTI4NmZjNmFlOTAwNTQ4YzMwM2I5NGNiMjkifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_79cd2e80b49d4dd48c4f5610be521ece",
+      "statement": "Regression metrics include RMSE, MAE, and R2, with MAPE only for positive targets; classification metrics include accuracy and F1, optional binary ROC-AUC, and a confusion matrix.",
+      "evidence": [
+        {
+          "resource": "repo://src/mitra_run.py#L391-L441",
+          "version": "repo-lines-v1:sha256:f3fca08d0482978e933ab28db04d22606b68bb13e1213a2ed6a8c967d6676b93:eyJzZWxlY3RlZExpbmVDb3VudCI6NTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImM2YjA4MjhiZWE5NTNjODczMTA3OThmMmNlMDEwYTBjNTRiODQ4ZTljNTQ3Yjg5ZTEzOGNkOTI1MWQ2YjhkMDkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE0YTYzZmYwODMzNmE5NTFjMzllZGRiMWUzOGEwZmM4MGVmYWFjZGMyZmRkMDY2NjQyNmE4YjQ4NjE0MWQ0MmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImE5NTY3YTI3NDU1MTk4NjFhZGY4MTlmMDE0ZTlkZmJkMjBhMDMzNWIxZGYzMmE4MmIyMjkwMzQ3NjY5NDU0NTIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjhhMGY0NTViYzEyM2RmNTI0NWFmYWRhNjZhMmZiMTk1MGQxZTcwZDkwOGUyNmVhNmQ2ODNhNmFiNjdkZGFlMTcifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_31890ce8ffcc454596599a3d2ea19bad",
+      "statement": "The Results UI explicitly states that model metrics do not certify data accuracy, representativeness, fairness, causal validity, or trustworthiness.",
+      "evidence": [
+        {
+          "resource": "repo://app_pages/results.py#L23-L27",
+          "version": "repo-lines-v1:sha256:8e36257a2497a77b576d75535bac551029b3ffeb7845d689b5531793e20e649c:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOGU1M2VmYjFjYWU0N2VhYjVjMDk0ZGRiMTU4YmQ5NDQ1NzU3N2MwMjc0YTY5NjhiNGM5ZTM3YzJkM2RhNjA1NCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZmFmYmEwNTI3YzM5NTNjNGI2ZTBlNWI1NzM5YmE4MzYxMmY4MDUzYmNkYzk0NjY3MzAxOTNjZDFkNTkwYjQwOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMjI4ZGU0NTllNjY1Y2EyZjU0YjZiNjg5NDJjOTMyNzE1MzY3ZGE2NjQ1ZmM1NWM2MDdiMmRiNTdmMGFkYTg3NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzgxZTM5MjQxMGE4ZGM5ZjI1ZGI2MmZjYzFkOTYzM2M4MjdkODdlNjcwZWM1OTg4ZGVjNGUxOTc3ZGQ5ODk5NCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_1cdc76b990974294a53278cd003690c4",
+      "statement": "The data smoke asserts primary-source behavior and split coverage, while the classifier smoke checks finite metrics and required artifacts; these are bounded implementation checks.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/smoke_classifier.py#L39-L55",
+          "version": "repo-lines-v1:sha256:ba8375f18962f7dbb733b65cf8c6ea5bd89f4d78f1d7861cc3d93658923b0a8d:eyJzZWxlY3RlZExpbmVDb3VudCI6MTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE1MzVjZTQyNzQwMWI0NGIwNmZkYzEzYTRlMWFjZWJmYmQxYmJiZmNiM2ZhODMyMzVmMTQ3MGQyYTY4Y2MxZDQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI5ZDgzNDNhZTk0ZTIyMjA5N2I5MGZiNWIyZjY0OTYwN2UxOTE4MzlkM2IwYzg3NWE3MjE0ZmUxNDEzNjdjZjUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImNjMmNlZDBjYjYxOThmNDQzNzMzOTdmYjA4NmY0OWMxNTQ1YjU3ODEzNWRmM2ZmYzk2N2RhNjgzZWU0ZWQyNDIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjA4M2ViNGFmYTA0MzBlY2VhOWIxOGI1M2ExOGFlN2Q3YzZlNjdkODgyMWE4MmM1MTdlZWE1NGI2NWI3YTRiNmEifQ"
+        },
+        {
+          "resource": "repo://scripts/smoke_data.py#L19-L37",
+          "version": "repo-lines-v1:sha256:a7fe16fd562ff047a415d135c082b4922cddeec340929ee0af2d2619e29ff1c5:eyJzZWxlY3RlZExpbmVDb3VudCI6MTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcwYmM1MTI2NWRhM2M0OTRiZGQyOTQwOGMwZTE3NzY2NWJmZWFkNmZkMjc5MzZmMDU5ZDJjNTU3YjE5YTNjZTEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU1MDMyZTk2NGQwOTMyMzUxZTVkMTg1MjY5MjgxYjE3MWEzYTA5YjA4YjI4NmU2NjFlYTQ3MDMyM2M4MmViNGQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImNkZjM3Y2FjMGY4MWM1YTEwOWU0M2Y0YTIxMGRiZWZiMDI0MjYxMDkyYjY4ZWY4NDNhZTgwYzAzNzI4MmVmNzMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImFmODRlYTYyYTQ1OGJmYzBhMjFjMDA0M2UzNjY4N2M2ZmJiMzhjODEwN2I2MmYwNmJjMTBhMzU1NTRjYmNhNmEifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.5.2",
+    "at": "2026-09-23T14:16:42.939Z"
+  }
+}

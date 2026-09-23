@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:bd8895dc288acd9a63c586d3089315a16f690d0d3c63cb315cc8a85e25d6ca8b",
+  "claims": [
+    {
+      "id": "claim_735dc2a89b7244609961c1c152041feb",
+      "statement": "The supported first-run path sets HF_TOKEN in the Windows user environment, creates .env from .env.example and exits on the initial run, then starts the app on port 8541 when run.cmd is launched again.",
+      "evidence": [
+        {
+          "resource": "repo://README.md#L12-L31",
+          "version": "repo-lines-v1:sha256:d507ca53c923626a0c4c4ccd89aa603760d18bb016e031726bac213180c3a6d5:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBjMzdjNjY1YmE3OTdkNWU0MWMyNTdhOWEwMmY2MDUxYTgwNzEwMGYwN2Y0MTgwNmNhMDY5NWE2ZWUxOGQ2ODciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdkZTc0NDljOWJmYzc3N2FlNjVhMzBjNTVkYzRjMjQyODEyYWEzNWIzNWVmMWEyNzY1OWUxODQ4ZGUxYWI2NWYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjVkYzgzNDFjZGE2ODdlMjFkZTJjNDgwMThjNmEyZDY2Y2I5YTE0YTA0MmU2NTI0MjhlYmVkYzkzMDk2NDg0MzQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjljODQyOTljNjRkODBmZDgyZDQ3MDBjMGFkOGI5ZDdjNzI3M2FkYWM1YjAyYmQ4NmQ5MGYyYmFlNmI5MTA4ZTMifQ"
+        },
+        {
+          "resource": "repo://run.cmd#L26-L31",
+          "version": "repo-lines-v1:sha256:3b5874294ff4ebc5be5aa829358ab3af6ee4c65b140820829317a080a44a1472:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNWVhNzJjNjg1ZDFiNGNmMTRlNjM3ZjgyYmE0YjI1MjNjNGJlMTQ5MmQ4MDJmZWE1YmM5YTQ4ZTRmZjMxOTA0MCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMjRiYjk0MWRkYjMzYzljNjMwM2YyZGUwMTExMTdiM2U1MzE1ZmIzNzRkZWUxYzA5YzQyYTJmYWQ2ZjZjNmQ5MyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMjI1ZjYwZDQ1N2NmYjRhNjVkNjljY2M4MzdmYzFjNDg1YTQ0ZmFmY2JiYTM3ZTVmMzk2M2EwZmZjYTIwYzQ3OCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjAsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSJ9"
+        },
+        {
+          "resource": "repo://run.cmd#L4-L13",
+          "version": "repo-lines-v1:sha256:b75f06e03369435fca2ae5f5ebbfe17c3f31a56b0b48537099c0b9bffa150139:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVhNmFjN2RlNzg4ZjY0OGJjNWMxMjJlZTZhNDg4NDY1NzBiMGUxZmYyMTZjZjE1NGMwMzJiNWVjNDliYjdlNzIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjliMzllMDIyZTBkODU0MTIwMDAzZDc5MGMyOGI3NTk2MmVkZDMwMzc1NmQ1MTMzM2RmNzQ1Y2ZiODZlYTExY2UiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjczZWFlYzE1OWE5ZDI0MmNkMzBjMDYwYjVlZWM5Nzk0MzI4ZmIyMmJiNDA2ZDI1MGIyNDFiZmY5MDY4YTIzNmIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjM1ZGM3MzkxNjVkOWE1OTBmYzRjY2Y4NGRhOWQ0ZDVmYjg5ODVlMDkxZjdiMTIwODAzYzc3MDNlODgyY2U1YTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_8f3a60f5acf5435aa09018f1ea6bdbda",
+      "statement": "The Home page promotes Houses and Machines and routes the catalog samples into the Data page; the app registers eight Streamlit pages.",
+      "evidence": [
+        {
+          "resource": "repo://app.py#L16-L27",
+          "version": "repo-lines-v1:sha256:14b20ee31c19f9d5bc9bc588e64ce3b51936aae41330bd1e13e47e60252a78b7:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI3ODQ5NmZlYjAzNTMyZDY0NjJhMjE3ZTE2ZWFhZjYwOGU1OGIxNDhmM2Y0MDQzZjg5NDBlMTcxOGU1NTE3MWIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIxODE2NWE5MDNiNGFmNDRkNzJlMzlkMjNjMWE3NjQyZDM4ZDc3ZjQ0NjlhM2MyYzRjOGJjMTQ4M2Y5OGRjZWYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjEwNDBiN2Y0NTIxODQwYWQzYWZjYWU4ZTY1YzdmNTAxZjczMGQ0ODI1Zjc5MmExNzZjNTg0NzJiNDM4NGViMmMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        },
+        {
+          "resource": "repo://app_pages/home.py#L14-L34",
+          "version": "repo-lines-v1:sha256:27441933fcb02398cf61a5e8fd93263178dbf7a38966345a263934fdba37fb05:eyJzZWxlY3RlZExpbmVDb3VudCI6MjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjlmMWNlMzlhZmJkZDk5Y2I3NDI1ZTkwOGI5NmU1MmRlYmU2OTAwZThjM2VkOTg4NGY4MjRlYmI2NGIyY2JkYzgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMyNmQxMTE4ZGQ5NDQxZGQxMjQ4NTFhNTk1ZTkxY2VkMjc0ZjNhMzhjNzQ3MTZlNjQ5N2U5OTA1ZTUzNjBmOWQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImE1Mzc3YmY0M2Y2OTQwNTA5MGNkMTgyMmYwMTI1Zjg4YjQzNTMyMmU1M2U5YzM3Y2RmZmY4MDRiZjI2ZGU4MjYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjcwNmE5ZjUzZWEwYTgxNGIwZTcxNWM3NGZkMTBmZjRmMDBiMmQzZjc1MzA0NzgyY2JhM2RhN2VlZjQ1NDNmNTYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_9c56f259a6544db08991ebc40ffc8a06",
+      "statement": "Model weights download when a run starts, and the Train & Predict page requires the explicit Run Mitra-v2 button to invoke the runner.",
+      "evidence": [
+        {
+          "resource": "repo://README.md#L31-L31",
+          "version": "repo-lines-v1:sha256:7de7449c9bfc777ae65a30c55dc4c242812aa35b35ef1a27659e1848de1ab65f:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiN2RlNzQ0OWM5YmZjNzc3YWU2NWEzMGM1NWRjNGMyNDI4MTJhYTM1YjM1ZWYxYTI3NjU5ZTE4NDhkZTFhYjY1ZiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2RlNzQ0OWM5YmZjNzc3YWU2NWEzMGM1NWRjNGMyNDI4MTJhYTM1YjM1ZWYxYTI3NjU5ZTE4NDhkZTFhYjY1ZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDUxMDFhMWY1NjU2M2E5NWQ0NmE5ZjMyNTA2MDdjNTlhMmIyOWM2NTk2MjQ3MzUyNWE3M2FmNWIyMGIzM2U5ZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOWM4NDI5OWM2NGQ4MGZkODJkNDcwMGMwYWQ4YjlkN2M3MjczYWRhYzViMDJiZDg2ZDkwZjJiYWU2YjkxMDhlMyJ9"
+        },
+        {
+          "resource": "repo://app_pages/train.py#L54-L68",
+          "version": "repo-lines-v1:sha256:4befb64f4dacbcd51127a148c2b6e3b775de6edd1de2309bdad83f7b72a2c839:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE0NDY0OGZiM2I5MGU1MzYyYWVjN2U2OGZmM2ExYjAzZTZkNTY5NGI4NjQ1Y2FlNzU1NGMzOGI1Y2VkZGY0MjkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU1MDMyZTk2NGQwOTMyMzUxZTVkMTg1MjY5MjgxYjE3MWEzYTA5YjA4YjI4NmU2NjFlYTQ3MDMyM2M4MmViNGQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImIzMTg2MDAwZmIxNzYxMzBkNzM1ZTZmZTI1Yzg3M2I2MWZmOTdjNTg1NmI5YjNjYWFlNTM5NjE1Y2ZmYjk0MjYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijg0YmM1YjY5ZWFlYWVjNDk0MDIzOTUyMjM0YjBlYWY3ZjllODZmNzI0YzI1ZTU5YmMyYTc2MjdhZWU0M2MxNGIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_dbbc1a7063d14c0b8258d227e4ba4981",
+      "statement": "The contributor workflow requires the documentation smoke, Ruff lint, Ruff format check, and git diff check, followed by the focused smoke for the changed surface.",
+      "evidence": [
+        {
+          "resource": "repo://CONTRIBUTING.md#L33-L57",
+          "version": "repo-lines-v1:sha256:82ef40ad2c3a1b854f9685369acfa858e3c2623aa0323bb337f33110ddf1b79c:eyJzZWxlY3RlZExpbmVDb3VudCI6MjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhkMGZlYzIzNGM3OWIxOGMwYzkwNjdiOTVlYjczODJiNGQ1MTQwMWZhYmQ2MmIyMmZhNzZiNzExY2M0YjEzOTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNiYzc2Y2ZkOTcxMDhjMjBhYjgzNWY3NDU1MTM0Y2ViNmNkMGU2NWE3NDM5YTZjYTY5ZTk3NWMwYWEyMDY2YzIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjMzZDQwMTcyM2Y5MDQ4MzdiMjhjOWU3NTE2NTUyNWIwM2ZjNzgyOGY0ZTUyNzY4ZDI2NTUyNDEwZGNjZWEzZTYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjJlMTNlYzMyZDQ5MTg0NjBjZDA4ZGFmZjg1NGQ3NzY4NTc5NzRiOWVhMWEwNDgzOGRiZGI3MzRmNTM5NjRhYTUifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.5.2",
+    "at": "2026-09-23T14:16:42.939Z"
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:d9306a21e8d994ad5b3a67880c439f9a0dd600afff057ec44dcc810ad2321177",
+  "claims": [
+    {
+      "id": "claim_486f445b3aca4f52bfccac951b4d2f88",
+      "statement": "The Train & Predict page invokes run_mitra only after the Run button is pressed, passing separate known and hidden tables plus the selected fine-tuning, copy, step, and time-limit settings.",
+      "evidence": [
+        {
+          "resource": "repo://app_pages/train.py#L54-L78",
+          "version": "repo-lines-v1:sha256:ec533ab7187c7a7b39cb919c4f2c6fa3158c069dcb27fa2b175a4206b221a64c:eyJzZWxlY3RlZExpbmVDb3VudCI6MjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE0NDY0OGZiM2I5MGU1MzYyYWVjN2U2OGZmM2ExYjAzZTZkNTY5NGI4NjQ1Y2FlNzU1NGMzOGI1Y2VkZGY0MjkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjlmYzdiNzc3YjUwZWE2MTg5Mjk1MmM2MGQ4ZDExZDYzNTUwYzJjNDQyM2ZhMzMyNTIyNDJiMzA4OWUwYmFkZmUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImIzMTg2MDAwZmIxNzYxMzBkNzM1ZTZmZTI1Yzg3M2I2MWZmOTdjNTg1NmI5YjNjYWFlNTM5NjE1Y2ZmYjk0MjYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_0ef6c8677bf84e638de9e5d6bc8d3c79",
+      "statement": "The runner validates targets, task type, matching feature columns, fine-tuning steps, and time limit, then selects and preflights the task-specific released checkpoint.",
+      "evidence": [
+        {
+          "resource": "repo://src/mitra_run.py#L107-L155",
+          "version": "repo-lines-v1:sha256:601d587ef1edc6399c34cd9cda2a3149ee69ae4ff369b4852e2ddbc03539c156:eyJzZWxlY3RlZExpbmVDb3VudCI6NDksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY4OTEzZWEwZGNhYWQxZWNjZThhODE3YTI4ZjVjYzBkMmQwNWYxZDk3NjRlM2M5ODczNzY3YzZmZDAzNzNjMGMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRjNDZhMjM2OGQxYWE0ZGE3NTYxYWEyZmZiZWVjODU1ZDUyZjg1MGViMjkzMDE1Y2Q4MGM2ZDMwNmQyMTkzOWIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImY1MTM0N2U3Njg1OTFhZmM0N2RhM2U1NGQ2ZDczNGI3MGYzYzRkYWJjZmVhZGEyMTNhMTAzMzU3NzJkZGQ4NDEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjYyMDJlMGMyNWQxYmVkNDBjZmI5ZjE2OGVlZmRkOWRjMjJkMDkwZGNhMjNhYjg0NmRiMjQ4YjFhNDc2ZTk4NzIifQ"
+        },
+        {
+          "resource": "repo://src/mitra_run.py#L502-L544",
+          "version": "repo-lines-v1:sha256:63619458052e5f7e1ce8050727a5e2b3aae8d2b2172192d1955ec8538ca2c3dc:eyJzZWxlY3RlZExpbmVDb3VudCI6NDMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImYxODllMTM1MWUxZjEwZWRlNmEwNTc3YTljYzQzNzk5YWVmZmUxMGJkMzc1YjRhMmE3NTc2ZmMwZDE5NmRhMTMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEwNGYzMzg3N2I3NTk3OGNkZGE4N2UzMjIwNmVjNWYzOGY5ZWQ4Y2FkNWYzMzRmZTBiYmQ3M2Q5ZWUyNjVkMjIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImZkYjI4Yzk1ZTQ0ODE2MmYyN2IzYWM1NjY5ZThmMjU0NTllMjkyMzViZTIyOTFhZGMyNzEzMzkzYzQ3YzAxNGMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjJmZTk1ODA5ODkwY2VhYTU0NTdhMTNmYzIzYTFhOGI2MGNiMjM1ZjZlNjI2OGQwOWM4ZTcyODExMzM1YTE4OWUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_71952f5cce594020875bf458f4cf9f7b",
+      "statement": "Binary/multiclass tasks select the released classifier and regression selects the released regressor; the regression path installs the official compatibility patch before predictor construction.",
+      "evidence": [
+        {
+          "resource": "repo://docs/MITRA_FLAGS.md#L17-L26",
+          "version": "repo-lines-v1:sha256:d3a10ad6f33a4250f4407dadc73f596a8cc058ddce1eaf766a88231f93b78716:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRiODIwMTkyZDQzNDUyNTgyM2Y4ZDk2NzFiMTJiNWZmM2M3NzU1M2VhMGRjNDgyZjQ3MjdjNzk2YjkyNmYxOTQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRkN2E3YTllOTk4NTRlMmQ4YTIyZjMxMjk4ZjZkYzkxN2IxMzUyMDUyZTlhODFhZWMyMjI5MGVmNWU5ODU2YzQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjFiMTIxZWRjZWRkYTE1N2QwN2E4MmI0N2UxYjk5NjA5MmYxMDZjMGQ0MjQ0MzZkMjJhYzI4NjA1ODE2MmJmMDgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImJhOTA1MmU3ZDBiYWQ1YTIyZTI2ZjVkZGI0MzI5NzgxMGRjYzRhY2MzNGQzY2QyNmI4Y2JjNzZmNDBiNGUxMGMifQ"
+        },
+        {
+          "resource": "repo://src/mitra_run.py#L195-L200",
+          "version": "repo-lines-v1:sha256:b6b7458d56c31024925e88390b012445876e3623ad49607991b10278d9ddc636:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNzJmY2M4NzM4M2IzMTEyZjA1MjY1M2I1MTBlMjNlYmI2N2IwZTljNDQxMTg0MzFkNDYxZDdkMDRmODMxY2I5YyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMjczOGU2ZmQzZjRjYTcwN2EyYWE2Y2I3ZjFmZjNlZTk5MTc4ZTMzZjY1MGZjZmJlNDFkNmRlODlhY2EyN2M3YSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNTFlNjZjYjk5ZDdiY2Q4ODdlMDQ3NTU3ZjNjMmQ5MjE2MTJmZTcyMGJhOTNhY2FkNjM5ZDc3N2UxZjU1M2EzYyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNTNmMGM0Mzg4MzkwZWIyMWM1NDg2MGExMGM4MzEyYzczMzkyZDgxMmQ0YTNkM2RiNjNhMDQ4MjQ5ZjBlMTBlNiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_827c3effd08047b9a15e67c3db6b05be",
+      "statement": "Fine-tuning steps are added to the MITRA configuration only when fine-tuning is enabled, while the eight-copy setting maps to AutoGluon bagging folds.",
+      "evidence": [
+        {
+          "resource": "repo://docs/MITRA_FLAGS.md#L48-L77",
+          "version": "repo-lines-v1:sha256:46eceb8d2da12caddf5ac21846cad455a63e701f924eea94ce84502e763afd61:eyJzZWxlY3RlZExpbmVDb3VudCI6MzAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE3YWY4NTZlNjFjYzBhNDgxN2Q0NmY5YTE4MWEwNzk3YjJiMjFmYmIwN2E5OGU3YWIyMDViZjI1MGM2M2ZiYzMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIwZjdlMGYyZjc3ODQxMDcxMDRlMzIyYWMzMTY3NWQwMTZmZmM3NjhkYjhmNzZhMzliMGQ2M2Y4ZDAyMzc3NmEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjcyYWU5NzJlOTk5MTM5MDVmNmJhMzUzNzZhYWM2ZTYxYjVjNDliN2EwYTY4ODFhNTlkYzA5Mzk4NzlmMzVmMGIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjBhYjUwNmRkZWY5YWNhNTY1MGYyNmM4YWIyZjgwOGE3ZjJhZGQ1Mjg2OWQ4NGViYjExZjE5Y2FhM2YxYTNmOWYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_ea9233714f6a408a88d33eb29d531594",
+      "statement": "The runner evaluates both MITRA and one HistGradientBoosting reference on the same known/hidden split.",
+      "evidence": [
+        {
+          "resource": "repo://app_pages/results.py#L53-L64",
+          "version": "repo-lines-v1:sha256:e629d2444205cd3e36b4428077d852f211a6357a87fd1d3f709b63c5ee7949ea:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNkMTFkNDZjMjE0ZDExMzJlNmMzZjg4NmQzMDI1NzhiMThkNTE1YzMxNTg4NTU5NmZjMmVlOGVmYzZiZDA0OTMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJjOTVkODc5ZDI2ZGI0Yzg0YmQ4N2U2ZmI0Mjk0ZGE3NDA2NDkyNWU2OTI0ZTJmYmFjMDk3YWZkZjg4NTIyZTciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQzMTJhYmQwMjFhMTBlMzg5OGZkOWJlN2FmM2RjMzIxMmQ5MWY1NTBhZjJjZWYxZjNiMDM1ZDIzMzQyZGU1M2QiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQzMjQzZmI1NzI2N2M4MzZmY2EzNTFhZDJmOWNiM2MyMTg1MWU0Nzg4OTlmMWVlMjFlNjNjOTNjNzliOTIxMGEifQ"
+        },
+        {
+          "resource": "repo://src/mitra_run.py#L240-L255",
+          "version": "repo-lines-v1:sha256:6f794076d0dd2998f1f70851df41e20a490928481f2c2982c5f1ac79d2656cc8:eyJzZWxlY3RlZExpbmVDb3VudCI6MTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJiMjUyM2YyMjEyMzgzZWU3MDVkOWFjM2JkNWZlODQ5N2NmMDBkMmVmNmFlZjExNjVkZGNhMWZkNmM5YjQ3NjUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBlMGZmYjU5OTMwZTdkYTQzMDIxODBiMTNlYzFlNzA2N2Y3MGVkOGM0ZjFjZmY5ZTAyNjg5NmU0YTEzMDUxOWUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImRjNDViNTg1YWQyOThmNWNlYzVmZDRmYTAzNTk0NTUwNDVhMjcyMzM0OTlhMzJlZjVkOGNkYzVlMTE4OTg0YTYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjIzMjA5NTdmYzc0OWJhOThiN2Q2ZWZhZjI4YjA5MjMxMGM0NGZlOTE3YWQzNzdiZWNmYzhkY2EwMjZkYmE0YzIifQ"
+        },
+        {
+          "resource": "repo://src/mitra_run.py#L328-L388",
+          "version": "repo-lines-v1:sha256:df50b3ec70bb3cb8a26e46e1aa9b3b08b5eb55817180fb7ec5cae33194909154:eyJzZWxlY3RlZExpbmVDb3VudCI6NjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA1MDg0ZmRkZTE3ZjcwZjA1ZTJlOGRlYWYzOTc5M2M0MmMzOWQ1YzE4ZjE2MmM5MTIzMjRiOTM4ZDI1ZjhjN2IiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY2NzAxMzkwMjQwYWFiM2UzNWE0YzFiMjhjN2M0MGNjOTdiNmI0ODNjMGViYTM4OWUzZDJlYWUwYzdjMmQ4MWMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjM5ZWZkOWUxNzJlNTE2NDhjYzY1N2RiZWEwNDYxM2ZiNzc5M2Q2ZjZjYmViOTIyZjE2YWVkYTZmZDRhMTlmNTEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjExM2ViMjg2NGJhNmY0MzRiZGJhYTAzMjdkNWMxMWY2MjQzZDkwOTI4NmZjNmFlOTAwNTQ4YzMwM2I5NGNiMjkifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_a51c4a8878414444988477ad0cb049de",
+      "statement": "Successful runs persist a timestamped directory with flags, metrics, predictions, leaderboard, log, and predictor; fitting failures write error.json and a failure log before raising.",
+      "evidence": [
+        {
+          "resource": "repo://docs/ARCHITECTURE.md#L54-L66",
+          "version": "repo-lines-v1:sha256:8e25e538a002ff36df5213d80ba861e5c113e9f268276a731ed9b7e4a3eb949c:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNiOWVlNDZkZjYxMDNlYzRmNmY0ODE0ZDg5YTAwNGJkZGRkZjI4MjFjNTNiNDk5YWU0NGMxN2VjMmEwNGJkNjUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhkMzA5YjIzZDhiZWQxM2I5Y2E4OTQ1NjNjNzhkZmY0NTJlMWQwOGQzMmQ2NzUwNzVjZWRhOWE2YzRiZDcxYTYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjVmZTQzZTU2YmRkNjMxYjYyODk3N2I3MTE2NjFlODY1Nzg0ZGQ2MTA0ZWU0Y2E4MWI1OTc3OWIxOWU4NGUyMGEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImEzODQ1NmRhODM1Y2ZmZmY2MjdjMjZiMGI2MmQzODcyNmI3NjdhZjdmMzY2MjM3ZTc4NmFiZDI3MjAyZTFiYTMifQ"
+        },
+        {
+          "resource": "repo://src/mitra_run.py#L154-L164",
+          "version": "repo-lines-v1:sha256:2758815b02481582ba17dd34d9bf05ce43cffee3d3c25536f84c215efb20b40a:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU5MjUwOWIzN2Y0OWY0Y2I0NDk5NDc1ZWIyNDE1ZmJmYWNmNmM2ZDM3MjI0M2ExMmFiMmM0ODgwZjBiYzllMjgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjIxZmYxMWY0YjEwNmFiZWJkNWJlZDhmNDY4ZGNmMjkzMGY3ZDlmOWU4NzAxYzE5MTczOTdjOTViZGVkNzVkOGUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQ5ZTExMTkxOGUyMjdjN2Q4Njg4MjE3Y2Q3YTk4ZWFlODc2ZjA1NGZmN2QyM2UzMmQ3MDY3YjRlMzU5NTU1ZDcifQ"
+        },
+        {
+          "resource": "repo://src/mitra_run.py#L298-L325",
+          "version": "repo-lines-v1:sha256:2ef3fa1c1e57b764c86a3a121ab564d55ccebe3d1cc3f5aea9fe29feb5ac4c58:eyJzZWxlY3RlZExpbmVDb3VudCI6MjgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg0Njg5YjdjMzJmNmQ2MDY4MzUzNWZlYzY1ZmI0M2Y2MmJkZGQ4YmFlMmRiYWY4OWM4MDhkNDM1YTNmMDk4ZmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEzYjIyMzQzZTljNzU1OTIzM2RjNDZkY2VhNTg5OTY1OGY2Yzg2YTczMTRmYTQ2MjA5OGYyOTI4YWY2YWQzZjUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjhiZjMxNjU2MWE0YmI2OWI1ZjlhNzQ5ZWY3YjJjNTdjN2VjN2FjOGY1ZmZkNGE3YmM3NmU5MDc5ZDk3YTAxOGQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjdmYmM3ZDRiOTc0OTZlMTE0YzdjNTU3ZTZjY2Q0OTBlMmVkMjM0NzVmYjBhZmMwOWUxNjQyNzg3MGJkMjE4NDYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_eab795619e864a608f8773669140c6d1",
+      "statement": "Saved-result loading validates pointer/run ID consistency and attaches an available local prediction artifact; the Results page offers current-session and saved run choices.",
+      "evidence": [
+        {
+          "resource": "repo://app_pages/results.py#L16-L41",
+          "version": "repo-lines-v1:sha256:fe98e5fa435bfc2f0220d109d053be9cead0d4bfc5490be5460d60c01a78af8f:eyJzZWxlY3RlZExpbmVDb3VudCI6MjYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU2YWE4MTE1NjlmMDE5MmYyYzIwNjY3ZGVmNDNlOTI0NWRkNjBiOTdmZmQyMDViZGE0NDk3M2M2NzUyNzg1MGEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZhZmJhMDUyN2MzOTUzYzRiNmUwZTViNTczOWJhODM2MTJmODA1M2JjZGM5NDY2NzMwMTkzY2QxZDU5MGI0MDgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQzMjdkMDBjYWVjMDI4MmE1OGViNjEzZjgzOWRmZWE3NzczNmUyYjRmNWY2ZTlmZGM4ZTg2YTI5YjM0MjFhYWMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQ1OWQ5YWJmOGM2NzMyNzBhYjIzZmEwNDA4MjQzMTE4NWFkYTcwYzlhMDA1Yzc0YzZmMjExZTE3OTA5MTM4MDIifQ"
+        },
+        {
+          "resource": "repo://src/mitra_run.py#L47-L80",
+          "version": "repo-lines-v1:sha256:a23696e26eb3da26508ad33ae8e43910541549de7912d1812f78702b517395b9:eyJzZWxlY3RlZExpbmVDb3VudCI6MzQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjM0YmY5ZmUyZDE4OTUyYTU5ZDlkNjAxNTBjYTkyMzE2YzZkNGRmYjVlODgzMDljYmJjODFhM2JkNzdjMjc2OTkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZhMTFjMDU2N2QwYTVmOWU5YjEzNWY2NWNkMjUzNzJkZmQ2Mjg3NzVmN2MxZWQyNTNmOGJhZDQyZGQyZDY2NjkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjA5ZjkzMDgzYzE5NzEyMWI5ODI3MDBiYThhZmFiZDE3MjJjZjFkM2U3NDA0NTA5ZTgwZWZhMjcyNDdmNjJmMDciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImVkNzk3MjU4ZDZlYjJlZmEwNjZmZjZjNTk3MDk0NTQyMzJmZDE1NmZhYWMxOWJjZDdlOTdlYzY4ZTk5ZTgwNTEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_b82fb5a7145f422ea31d9c7b5baf7ca0",
+      "statement": "The zero-shot model smoke scripts use bounded samples, while the CUDA fine-tuning smoke runs both heads with eight copies only when CUDA is available.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/smoke_classifier.py#L22-L48",
+          "version": "repo-lines-v1:sha256:092318072f26e88d7d329fbcdedadf823dd6581d462de7da9882d400711bd50c:eyJzZWxlY3RlZExpbmVDb3VudCI6MjcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcwYmM1MTI2NWRhM2M0OTRiZGQyOTQwOGMwZTE3NzY2NWJmZWFkNmZkMjc5MzZmMDU5ZDJjNTU3YjE5YTNjZTEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMwYzFmMTg4ZjE0MmVkN2E4MjQ2ODBiMjA3MTcyYzU1MTliYzYxNGE0OGZkYTdjZjE2N2VkYjhkZGY3OTk1NmMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjIwNTI1MDdiYTVkODljNGY4ZGUzZmZmYTNhNGI0YmEwYjU1YWI4YTE5NmUxZjRiZGY3MmQ1MDQ2OGUxM2JjNTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImJjOTkwYmU4ZDNlYWEyZjA2MjhmZjQyNGZjMzcwYTcwNmNlNDg0M2FjMWFlYTllODYxMzRhMzQzODRmYzg4OTIifQ"
+        },
+        {
+          "resource": "repo://scripts/smoke_finetune_gpu.py#L27-L40",
+          "version": "repo-lines-v1:sha256:dca3924667e27f55fef82d2b6f3adf57b0fbb2af716249e1cb8130bcfb7db162:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcwYmM1MTI2NWRhM2M0OTRiZGQyOTQwOGMwZTE3NzY2NWJmZWFkNmZkMjc5MzZmMDU5ZDJjNTU3YjE5YTNjZTEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcyMGUyMDRlMTQ3ZWNjYzAwZDFlMjZmYzQwMWM4NDhlMGY3ZjI0NDQyOGUwNTQ5ODZhZWUxNTgxNjQ0NzcyNjMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjNlNWEzNmZiYTNhNzllNWNjYzY4YWRjOGFkZDkyMTQzNWQ3MjM4ZjdmM2RlZmNhYzk3OTg1MzFhNjQ2MjkxMDUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImI3MTQ3M2M4MDVkODFiODhlZDc5MjRmMTE1ZDM2ZmRkNDdlMmE2NmZkZTNiYzNkYmI3NTExNzJhZTExMDg5N2EifQ"
+        },
+        {
+          "resource": "repo://scripts/smoke_finetune_gpu.py#L77-L103",
+          "version": "repo-lines-v1:sha256:3a59ea21d354df992cb6945c69686ac0cd2b3f63540df4d39eee65e681cf806c:eyJzZWxlY3RlZExpbmVDb3VudCI6MjcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE4ZGUzMzM5YmI1ZTNkNGUyYjA2OTc4NzQwYmY1ZTExZDQyZTA5NzhmZDA2NGIwMTVhOWFlN2Q4NWU4YTg4M2QiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE4MWRlYjQ3N2FjMzU2MTI5N2IzZGZkYTRlNjU2NTJiMjhmZDU2N2VkZmRhNDQxOTkxNmU3MTYzZjNjNTAwNjUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImE0NzkxZDllMDI2Nzg3ZDY3NjFlZWJlOTU2MWRlODM4ZDg3NDdkM2M0MWY2ZGIxNWY5NzMwMmY1ZDI2ZTk4MmYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjhjYWUzYTMxOWUwZjVmODYwYjNkYTUyYjE4M2EzOTBjODJiNmRlZWEzM2M2ZDRkYTlkZmVjMjZiODYyNTM1NmIifQ"
+        },
+        {
+          "resource": "repo://scripts/smoke_regressor.py#L22-L38",
+          "version": "repo-lines-v1:sha256:4a8b8e26b956ea1f5625267b94e05df93822d6178bdfe229f2638091bbe7966a:eyJzZWxlY3RlZExpbmVDb3VudCI6MTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcwYmM1MTI2NWRhM2M0OTRiZGQyOTQwOGMwZTE3NzY2NWJmZWFkNmZkMjc5MzZmMDU5ZDJjNTU3YjE5YTNjZTEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMwYzFmMTg4ZjE0MmVkN2E4MjQ2ODBiMjA3MTcyYzU1MTliYzYxNGE0OGZkYTdjZjE2N2VkYjhkZGY3OTk1NmMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImU4ODljNTY3NmI0NmY5ZGEwNzJiOWE0MzA0YzRhMzlmYzg2ZjhjNzk0MjRlYTQ5ZjZiMWFjZTU3MGFkMWY3ODYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjBmZDVhNDVlYmJhMjY3MDg3OGRkMDlkYWE5NmNmYTBiMGFmZTk2NjYzY2Q3ZDQ4ODgwZTZhOTAwMjYzZjVmM2YifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.5.2",
+    "at": "2026-09-23T14:16:42.939Z"
+  }
+}

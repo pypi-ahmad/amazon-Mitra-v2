@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:43ba6049903ab886a54c45729442a7c23e539a69a541df12692c9b02f5abc222",
+  "claims": [
+    {
+      "id": "claim_834c586ca71f4ff9a256ca76a51e80b6",
+      "statement": "The Home page promotes Houses and Machines and routes all five catalog samples to the Data page; the catalog specifies each sample's task, target, primary source, fallbacks, and split settings.",
+      "evidence": [
+        {
+          "resource": "repo://app_pages/home.py#L14-L34",
+          "version": "repo-lines-v1:sha256:27441933fcb02398cf61a5e8fd93263178dbf7a38966345a263934fdba37fb05:eyJzZWxlY3RlZExpbmVDb3VudCI6MjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjlmMWNlMzlhZmJkZDk5Y2I3NDI1ZTkwOGI5NmU1MmRlYmU2OTAwZThjM2VkOTg4NGY4MjRlYmI2NGIyY2JkYzgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMyNmQxMTE4ZGQ5NDQxZGQxMjQ4NTFhNTk1ZTkxY2VkMjc0ZjNhMzhjNzQ3MTZlNjQ5N2U5OTA1ZTUzNjBmOWQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImE1Mzc3YmY0M2Y2OTQwNTA5MGNkMTgyMmYwMTI1Zjg4YjQzNTMyMmU1M2U5YzM3Y2RmZmY4MDRiZjI2ZGU4MjYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjcwNmE5ZjUzZWEwYTgxNGIwZTcxNWM3NGZkMTBmZjRmMDBiMmQzZjc1MzA0NzgyY2JhM2RhN2VlZjQ1NDNmNTYifQ"
+        },
+        {
+          "resource": "repo://docs/DATASETS.md#L8-L14",
+          "version": "repo-lines-v1:sha256:d5828fa32d8dd58d61f0812606d892c7e0fc4cd46a0cac854fa753a35ae30128:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDg5ZjZkZTk1MGE2OTdlNzI0ZjRlZmNkZGM1Nzg2ZDU1MDgzMTEzMzNkZTIwNGY5OGUzODg1YWJlNmQ0ZTFmMiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNjNjNzA4MWMyNzIwZGQzMjdmYmVkNzk4YzU0NjdmODY2MGM3ZjkxYTE3MjM2ZjQxZjFlZWVhY2FmMzIxYzg4OCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODYwMDJjZmU2NzA4M2U2NTY2YzRmMzE2MjM2YTdjYjEzMmIyM2NiZmM3MDZkYmQ3NzA0OTBiMmI0YTgwNjI5ZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjI4ZGRkN2U2NWZhMjY0OTE1YTYyOGYxNDM2YzJlMWY4NzY5MThjZjRlMGZlYzE4ZmE3ZDMxNTk3ZGMzNjQ1MiJ9"
+        },
+        {
+          "resource": "repo://src/data_catalog.py#L24-L55",
+          "version": "repo-lines-v1:sha256:14fb8765daf27ffea4d9e8765a070890a757c99c1c6f143432ac67106bc0c198:eyJzZWxlY3RlZExpbmVDb3VudCI6MzIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImJkY2JkY2QzMmUwYjJjNTJhMzhiZjE3ZTBhYzk5OGI5ZGY0NDczNmJkZTFiMWMyZWU4ZjBiMDc4NzAxNzE3MWEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjlmNjgzYWM2NjE1MzA2OGE1Y2NlZjcyOTM4MTVhM2JlMmQyNDRhYTEzODFlMTNiMzY0Yjg5NWFjMWFlMjZkZTYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjlhOGI5Y2MwZmJmZGU2Y2ZlMGRiNjFlMTBjOGFmYTkzNzg4NDkxZTY5ZWViZGRhMjJkNWZjOWUzODkxODNlMzYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjZhOGZmZDk1NDI5Y2IyMDUzOTVjY2I1MGFkYjc1ODc1ZjgyMDE1NzMxM2I1OGEwMzA2NGNjZGNhNmI0MDEwYmIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_e22f5182c5e949108d041b0fdc4195a1",
+      "statement": "The bundled loader reuses a cached Parquet table and metadata when the catalog source ID matches; otherwise it tries the primary source and ordered fallbacks, normalizes the first successful result, and writes table metadata.",
+      "evidence": [
+        {
+          "resource": "repo://src/load.py#L24-L74",
+          "version": "repo-lines-v1:sha256:a9fa4a3eec691a1f6f338b6996d5ee031eae40f44694a4e271de95d3614479ce:eyJzZWxlY3RlZExpbmVDb3VudCI6NTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE5ZjdhMzU3YWFmYTUzMzkyYjdhM2I3MzdiYmM0ZjhlN2QwZDkyYmNmMjBhOWYxZGEyYmQxMTE4NGVjOGJkZjYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc5NTJlYzU2MTRlZTllMWZhZDAxYjk3YThmMjhjZTZhOTY5NjkwMDlhYTFlY2ViMzBlZDI0MmI0OGVhNzM4MDgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImYxYTc1ZWI1OGI4YWIwYmRhMWJlOTM2NzgwMDdjOTdhMjY5ZjA3ZDA2NzMxYTZmZjYyNzIzOTc3MjdmNGNlMTgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQ4NzhjOTJjYzBjMjQxZjdlMmQyMjk1ODhjNzdlMDAzM2VmZjI1YzhjNjU5ODljMWQzNjJjZjc4NDY5ODljNzIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_f7df1f56af76494a90bf11236f32eaa3",
+      "statement": "The documented fallback order is scikit-learn then bundled CSV for Houses, UCI then bundled CSV for Machines and Wine quality, and OpenML then bundled CSV for Adult income and Credit-g.",
+      "evidence": [
+        {
+          "resource": "repo://docs/DATASETS.md#L28-L42",
+          "version": "repo-lines-v1:sha256:e361fedf3f36b291668a502d5b6a0c7f2fcf9e8c2a2a66ce66c0a178de03b9fa:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZiOGEyMDEzNzI0YTkxMTAzNTY0NDQzMDVlMjgwNWM3NTg3OGFmNTYwNmMzNmEyZjRkNDY5MzVlYjhhMDM3ZjYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg3ZDI1ZmZhYjg1YTIyYTk4ZDg5ZTg0MDIxMjg4NTkxYjA1YWI3MGIxMGI4Y2YyYmUxMjFmMDI0ZTQ2NGI3MTQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjgyMDJiNzBhOGNlZDVhMzUzYzdkYWM2MWFkMTAyYmFmZTQxNmU3MDgxNDA1MjhiMTU1NjRiZmU2NWIxM2IwNzMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_dd6d9f75314b46f297616963b00f1344",
+      "statement": "The upload parser accepts CSV and Parquet, rejects empty uploads and tables with fewer than two columns, and creates catalog-compatible metadata for the user-selected target and task.",
+      "evidence": [
+        {
+          "resource": "repo://app_pages/data.py#L14-L36",
+          "version": "repo-lines-v1:sha256:a5c53ded3e26f220ebc350337fe1c7c84e9d0efdeac836c086ecf3681b262b6e:eyJzZWxlY3RlZExpbmVDb3VudCI6MjMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhmYmY2YTRhN2RmYjk2MWQ1MjEwNTdhOWRiZTZmZDhlOWZhNzUxZWY1YmRkM2U0MWNjNDJlYzg1MGU5NTgxZDciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxZDIxOWVmYjA1ODNiODk3Y2NmMDE2N2VlZWMyYWFjMmJjZjg0MDkzY2U4MDEwOWRlNTk2Mjc4ZTY2MDhlZTQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjZhYzY2YTlmYTAzMzQ3MTE4NjhhODViOWIxZjA0YTE2NTU5Mzk1YmQ2Yjg2Zjc3MmQ1YzllZDc2NDNmZmFhOGUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQ1OWJhY2IxZjQ0ZGI0OTk4Y2I3NWNjODAzMTM4YmE4Y2M0NjMyMTVmNzM5ZDEzMzNmMzIwNzIxOGVlOTE0OTgifQ"
+        },
+        {
+          "resource": "repo://src/load.py#L77-L135",
+          "version": "repo-lines-v1:sha256:e5189152e660f21f0d17c7922afb2acf1c851b07652422fae1be3136d8763254:eyJzZWxlY3RlZExpbmVDb3VudCI6NTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAwZDkxZjVmNmNhN2FhM2UyN2NjY2FhNDA5YTBmMDU0NjU5NjRiOTYzYWY4OTlkZWUxMDE3MzJkYTdhNjI4MTAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImMzMmUwMTQyNzhlMjNhM2QxOGRmMWE4OWRiZjI3MWZhYzZiNTdhZGQ3NjgxNWJmMmEwOTdlNDNhODA4M2IwYWUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjA1OGM4ZjM4MWIwYWQ2OTljY2NjMTUxODQ5ZDQ4MTlkYWFmNGJmNWUzNTdjNWM1M2JlMjA0ZjEyYTNkZmUzNmUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjA5ZmQxYmZkMzI2NTgxMmRmNzE2ZmNmYjFhZGRkMzAzMmViMzcwNmIwOGFjNzBhNjE4MDU1MGQ1YjQ3N2Q1NjMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_8469c3cb1be14181889e1240aa3fc110",
+      "statement": "Split metadata uses labeled rows, the catalog's test-size and random-state settings, and conditional classification stratification; it records hidden indices that are used to reconstruct separate known and hidden table copies.",
+      "evidence": [
+        {
+          "resource": "repo://src/data_catalog.py#L43-L55",
+          "version": "repo-lines-v1:sha256:f6a8758a03b754d297260edffd9053054047920b4d80773d070aba981fd17502:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU2MjliZjY3YWJjY2E2MGUwYWE1MWZkMThmMGUxOTA0MTJiYTMyOWExNGNlODg0NGNmOTg5Y2Q0ZDJhMGVhNWIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjlmNjgzYWM2NjE1MzA2OGE1Y2NlZjcyOTM4MTVhM2JlMmQyNDRhYTEzODFlMTNiMzY0Yjg5NWFjMWFlMjZkZTYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjNlYmI5Nzk0NDUzZjUyNGQ2M2UwYTk2Y2JjMjlmOTA1YmFjM2VjYzFiMzg0ZmI5ZDA5ZjUyODk0OWQ4NTlmMzIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjZhOGZmZDk1NDI5Y2IyMDUzOTVjY2I1MGFkYjc1ODc1ZjgyMDE1NzMxM2I1OGEwMzA2NGNjZGNhNmI0MDEwYmIifQ"
+        },
+        {
+          "resource": "repo://src/load.py#L138-L152",
+          "version": "repo-lines-v1:sha256:c3598eda1a51af1f0c08fdfa92a529cc54a3dc5ae17e044f885d1f5b6bd47097:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdkZjIzMmQyZTJhY2NjYmU1YmJlNWFmZjc0ZDA5ODZkMzkyZDg2NGJjYzNlZTUwYWNjMDRjMThhN2E1NWNlNDkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI1YjQ3ZWIwZjYyMTE1ZmI3ZjZmMDE3ZWFlMzI2ZTQxOGYwMmVmMzU2YTQ2ZmUxMWM3NTRmYTRmZTcyN2ZmYWMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjhkZTI2ZmRjMmJkODhiZWM0ZDNjOGI3NjgzZjk1NTQ5NDMzZGRkZDU0MzQ0YTI4MWY4ZGJkMzdhODJiOTlhNzYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImJlZDhkM2VhNTUzNGM0ZTkwYWQ4YmFjNjJkNzdkNjVlMGU4ODBhYmZjNzA2Nzk3ODhlNmIwOWNiZWFiNzcxYmQifQ"
+        },
+        {
+          "resource": "repo://src/load.py#L174-L232",
+          "version": "repo-lines-v1:sha256:75f9c2cbd863492b0a427ac62677fedc1f09286d3c17844e50ab88fdde93f8d6:eyJzZWxlY3RlZExpbmVDb3VudCI6NTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBjOTRkZjUyYWI1MGY1ZmU5YzMyNGU1NGFiMTFkMjBmMTQ0OGI4NTViZmI2YmNlNjFmMGVmYTM5MDU2YzQ4YmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQwYTgwMDk4MDA4ZjFhODVjYTBjNmY1NjdiMzhlY2I5Yzk2MmJjMzVmNzIwMDg1N2QwYmYwY2M1ZTBiMzFmMDMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjkyZmU1ZTg0OGViYjk4NjdlOWI2ODQxODIxN2ZjM2JkODJlMjE2N2FkNjY1MDRlNTRmNTNkNDA0MmI4MGQ3MTIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjRmYmQwMDkzMTRiYzI3MDg0MTY3MzRhMDJhZTVmZjM5YTFlNDhhMDUwYmU5MWY0M2IyZmFhOTIwMDJjNjJiZmMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_d7b16a958f0e48ff971b6be0a9388225",
+      "statement": "The Data page reports known and hidden counts, redacts the selected hidden row's target, and provides all, known, and hidden table views.",
+      "evidence": [
+        {
+          "resource": "repo://app_pages/data.py#L46-L58",
+          "version": "repo-lines-v1:sha256:9d69ba258f950f79f71a2083d572717b068821f807cd1d280c30777d2c51d7f9:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE1OGQ1OTEyMmNjZDY0ZjVhMmM3ZjFlZDI4NWE4NWZmMzkxYTA1NGJkNGZlODlhMzQ4YTEyMTRmY2IzMGYwNWMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI4NDM3ZGM1ODEzOTQwNTMzNWM4MWQ3NzEwNjBiNmZjNmZjY2E1ZTVlYTRjZDdiM2E3NzRlNmEzYWZkYmZiMWYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImNlZmQ1MGNhMGUyZDE3NjMxMmJlMjZlNWEzY2VmZDkwOGQwNDBhNjdhZDk3ZTcwM2I3YzY4MjBhZWE2MGNmNGEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjZkYTg4Y2RmZTQ0ZWY5ZTRhZTM5MzU5MzBlZDY2MGRjNTQ3NTBiODhlMWNjNTM5N2I5OTEwNTFjMjc3OGUyNjQifQ"
+        },
+        {
+          "resource": "repo://app_pages/data.py#L74-L103",
+          "version": "repo-lines-v1:sha256:679c3055b38d31618762c3a16b49a9415f4fc3f521c059196eeef524a772c5e4:eyJzZWxlY3RlZExpbmVDb3VudCI6MzAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU1ZGI0MDhmYTg0MWQ0MDQwNmEzMTY5NzgzNjU0MDJlYWYxZTQwMGU3ZTNkZDM4M2EwMGZlNzRjNTg5N2FiYTIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU5MDlhNTNhNjE4ZDAyOGUxZDMwMDBjMGE3YWJjZWVjYmU1ZmIzN2Y0ZTUxMWVmZTQ2NjQzZmFkNmU2Njg3MmYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImRlODIwY2NmMWI2MzU0Mjk2YzZiMTQzYjg3Y2RlM2FlMWYwODEwNGRiMmE2ZTA4YWM2MTgyNjIxMjllMDZiYzciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImI2NTc1ODRkMDk0NmY0ZTFiMmY4MTE0Y2ZkNDJlNGM5NDhmMmFjZGQ1ODE1MDMyNjQ0MjQ5YmE0ZTUyNDJhNzkifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_dbdad8ca0a8a46b6876d66ed942b9569",
+      "statement": "The strict data smoke requires each sample to report its configured Hugging Face primary source and checks split disjointness and coverage; fallback success alone does not pass.",
+      "evidence": [
+        {
+          "resource": "repo://docs/DATASETS.md#L41-L42",
+          "version": "repo-lines-v1:sha256:de213bc2d3a301ca5d3df03a35e766fd4eed190b371eab6d01cf3847a7b60f19:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNGJlYjkyMGNiNzc3NDk5YmM3YjRlOGQzNWQ4NmU0MjI2Zjg5YmQ5MTUwODhkYjA3MWMyMTg3N2RlZmQ5YjBhZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiODdkMjVmZmFiODVhMjJhOThkODllODQwMjEyODg1OTFiMDVhYjcwYjEwYjhjZjJiZTEyMWYwMjRlNDY0YjcxNCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNmQwZWM2YmYxZWVmMzJjYmU1ZDBlMjY0NTBiYTA4MmI5N2FkMzFlZGMyOGE3NDQ0ZjVjNGIzMTE3M2JlOTExZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjAsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSJ9"
+        },
+        {
+          "resource": "repo://scripts/smoke_data.py#L19-L39",
+          "version": "repo-lines-v1:sha256:82ed03fd58ca341ca791a82fbec0748c5d8ee217083a2df45da9beb6f0867700:eyJzZWxlY3RlZExpbmVDb3VudCI6MjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcwYmM1MTI2NWRhM2M0OTRiZGQyOTQwOGMwZTE3NzY2NWJmZWFkNmZkMjc5MzZmMDU5ZDJjNTU3YjE5YTNjZTEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY1ZjgyYzQ1ZThkY2IyYTQyODVmNGI2Y2JkMzBkMTA3YTkyMzVlOGYzYTgxNjA2MWI4YjY5ZTA1NDNlODI5ZmYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImNkZjM3Y2FjMGY4MWM1YTEwOWU0M2Y0YTIxMGRiZWZiMDI0MjYxMDkyYjY4ZWY4NDNhZTgwYzAzNzI4MmVmNzMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImE1MzU3OGFjNjU4MTNiNGVjYWNiNGE5NGFiMDRmZjVjOGYwYTg3NWU3MzZlN2FjNjBmY2M3NmE5M2YzMGQ0YTIifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.5.2",
+    "at": "2026-09-23T14:16:42.939Z"
+  }
+}

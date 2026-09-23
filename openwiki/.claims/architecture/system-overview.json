@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:c855534cfe8dd9944d3eb29dd0ffb6bd4b7da9ae87af0e8773adc1c35f670ecf",
+  "claims": [
+    {
+      "id": "claim_2de951c978394fb7af0a7ce74cef22eb",
+      "statement": "The Streamlit entry point initializes shared state and theme controls, then registers and runs eight named application pages.",
+      "evidence": [
+        {
+          "resource": "repo://app.py#L10-L27",
+          "version": "repo-lines-v1:sha256:9adde71e64583ad92b1ca6377ffd22dc5e70a50ca9e22b4bb27a545f3bab61f9:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQyNDIxMTM5MDQyZjkxZmY5MTQxYTA4MWEyN2NjMzViZTQ1NDc2ZjZmYTU5NmY3YjM0MWZhNjYzM2M4ODNmODAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIxODE2NWE5MDNiNGFmNDRkNzJlMzlkMjNjMWE3NjQyZDM4ZDc3ZjQ0NjlhM2MyYzRjOGJjMTQ4M2Y5OGRjZWYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijg0NmVlNTNiZjNlMmYwYzAyZDUyYjhmMzdlNTQxMGVlZGMxYjg3MGZlYjUwZjE3MTE3Y2E1NmZkMzY4ODdlM2IiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_7e506d6be6c44f09aafd9dcf5b19216a",
+      "statement": "The loader owns bundled-source loading, fallback attempts, normalization, Parquet and metadata caching, upload parsing, and deterministic known/hidden split metadata.",
+      "evidence": [
+        {
+          "resource": "repo://src/load.py#L24-L74",
+          "version": "repo-lines-v1:sha256:a9fa4a3eec691a1f6f338b6996d5ee031eae40f44694a4e271de95d3614479ce:eyJzZWxlY3RlZExpbmVDb3VudCI6NTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE5ZjdhMzU3YWFmYTUzMzkyYjdhM2I3MzdiYmM0ZjhlN2QwZDkyYmNmMjBhOWYxZGEyYmQxMTE4NGVjOGJkZjYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc5NTJlYzU2MTRlZTllMWZhZDAxYjk3YThmMjhjZTZhOTY5NjkwMDlhYTFlY2ViMzBlZDI0MmI0OGVhNzM4MDgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImYxYTc1ZWI1OGI4YWIwYmRhMWJlOTM2NzgwMDdjOTdhMjY5ZjA3ZDA2NzMxYTZmZjYyNzIzOTc3MjdmNGNlMTgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQ4NzhjOTJjYzBjMjQxZjdlMmQyMjk1ODhjNzdlMDAzM2VmZjI1YzhjNjU5ODljMWQzNjJjZjc4NDY5ODljNzIifQ"
+        },
+        {
+          "resource": "repo://src/load.py#L77-L152",
+          "version": "repo-lines-v1:sha256:2030a724990cb34460c36f3f951a01ad33d215b2c415129c3e2d26003701ff7e:eyJzZWxlY3RlZExpbmVDb3VudCI6NzYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAwZDkxZjVmNmNhN2FhM2UyN2NjY2FhNDA5YTBmMDU0NjU5NjRiOTYzYWY4OTlkZWUxMDE3MzJkYTdhNjI4MTAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI1YjQ3ZWIwZjYyMTE1ZmI3ZjZmMDE3ZWFlMzI2ZTQxOGYwMmVmMzU2YTQ2ZmUxMWM3NTRmYTRmZTcyN2ZmYWMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjA1OGM4ZjM4MWIwYWQ2OTljY2NjMTUxODQ5ZDQ4MTlkYWFmNGJmNWUzNTdjNWM1M2JlMjA0ZjEyYTNkZmUzNmUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImJlZDhkM2VhNTUzNGM0ZTkwYWQ4YmFjNjJkNzdkNjVlMGU4ODBhYmZjNzA2Nzk3ODhlNmIwOWNiZWFiNzcxYmQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_2a11a518ecfc42af8662558a31f9c5d5",
+      "statement": "Shared session state resolves the selected dataset or upload together with the target, task, and run settings used by the pages.",
+      "evidence": [
+        {
+          "resource": "repo://docs/DEVELOPER_GUIDE.md#L59-L65",
+          "version": "repo-lines-v1:sha256:5df525620c798a021af72b82ec99f049666a201ed24977fa00a93c310683f169:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOGQzZmVlNTRhMDU4ZWM4NTI2MGE2ZDRmNTk2ZjBlNjAxNTYwNTk5MTBiM2RjMTA2ZjIwODE0NTc2ODMyZWM4MyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTJmMzkxM2MxMDlhMWM3MDliNmViMWQ3MjJlNGUxYjA1NzQ0MmMyOGExNDE0ZmNiYjllYzQzMDI0NTI5NDY4YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYTZmNTNhODNiNjVhMjQ1NzE3MzdlNGI1YTY2Mjk4MTdiNGE3MzVkY2U5NTYwZGU1Yjk4MmJmNjIzNmM2OWViYiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNTU5ZTMwMTIzOGUyNWM5NTk3YTlmZTc1YzYwYWQ1NjA3YjVmNjU1NDU5NWZjMGE4ZmNmNjlkNTA0ODc0NjdiNCJ9"
+        },
+        {
+          "resource": "repo://src/state.py#L9-L87",
+          "version": "repo-lines-v1:sha256:6a5adc871173428b51c9ef3f94a173a4c32bdcbccfbb9c7d21dd61f91e67bf95:eyJzZWxlY3RlZExpbmVDb3VudCI6NzksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImEwODgxMWU4ZTkzODRiNTMxZDc3YzYyZTE2Y2IyZDJhNDk5ZWY0ODA5NWE3OWZiNWJiMDU2MjFjM2Q0OWEyZWMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdmYjNlNzZlZjAzNjFiN2QzODdhZWI0MmZiM2Y0YTVkMjEwMWEyNDE3MjQ4MzYzOTVlNDZjMjA2YWY1NmIwOTAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijk2MjBlOTEyOGQyMDg1YzYzNmViNTgyMjc3YzQzNjMyNDViMDViZDgzYTIyYWFkZjFhM2FlZjA3ZmI0MmFmYTEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_e447325fd1ab46d4b9323175776366ef",
+      "statement": "The model runner validates explicit training and hidden tables, selects the released v2 classifier or regressor, and fits one HistGradientBoosting baseline on the same split.",
+      "evidence": [
+        {
+          "resource": "repo://docs/ARCHITECTURE.md#L36-L52",
+          "version": "repo-lines-v1:sha256:20f67fe20477a19d0f390b4c9b1c3ef21346b57e3dd121cae567f3a29f2480d2:eyJzZWxlY3RlZExpbmVDb3VudCI6MTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjkyMTg2NTQxN2ViOTFmMTAwYmNkODJhOWE1OGRkYjA3MTY3MWJkYmVhNmZjZjQxNzVlOWIxZDJiZDBmYjM5YWYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJkMDkyZDk4MjU2ZmI0ZDY5ZTZiYjM3M2Q5M2U5OTYzZDg4YTkxNDkxMThkZjU5Njg2MjhiMzI1MDJjY2IzYmQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjE1MDFiYjI1YmQ2ZDhhMjlhYWJlMzQ4OGM3ZTU3NTViYTVhYTg3ZGU4Zjk3MGFmNzFkOWEyMjZiMTczNWNjYTciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImViZWYxMmRmOWFjNzU4OGMxOWFlNWFlYzBkMzJiZDhlODEyYzk5MjU2M2M4YmNmNGNjYzUzNjAxNjZmNzVhYTcifQ"
+        },
+        {
+          "resource": "repo://src/mitra_run.py#L107-L155",
+          "version": "repo-lines-v1:sha256:601d587ef1edc6399c34cd9cda2a3149ee69ae4ff369b4852e2ddbc03539c156:eyJzZWxlY3RlZExpbmVDb3VudCI6NDksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY4OTEzZWEwZGNhYWQxZWNjZThhODE3YTI4ZjVjYzBkMmQwNWYxZDk3NjRlM2M5ODczNzY3YzZmZDAzNzNjMGMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRjNDZhMjM2OGQxYWE0ZGE3NTYxYWEyZmZiZWVjODU1ZDUyZjg1MGViMjkzMDE1Y2Q4MGM2ZDMwNmQyMTkzOWIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImY1MTM0N2U3Njg1OTFhZmM0N2RhM2U1NGQ2ZDczNGI3MGYzYzRkYWJjZmVhZGEyMTNhMTAzMzU3NzJkZGQ4NDEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjYyMDJlMGMyNWQxYmVkNDBjZmI5ZjE2OGVlZmRkOWRjMjJkMDkwZGNhMjNhYjg0NmRiMjQ4YjFhNDc2ZTk4NzIifQ"
+        },
+        {
+          "resource": "repo://src/mitra_run.py#L240-L255",
+          "version": "repo-lines-v1:sha256:6f794076d0dd2998f1f70851df41e20a490928481f2c2982c5f1ac79d2656cc8:eyJzZWxlY3RlZExpbmVDb3VudCI6MTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJiMjUyM2YyMjEyMzgzZWU3MDVkOWFjM2JkNWZlODQ5N2NmMDBkMmVmNmFlZjExNjVkZGNhMWZkNmM5YjQ3NjUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBlMGZmYjU5OTMwZTdkYTQzMDIxODBiMTNlYzFlNzA2N2Y3MGVkOGM0ZjFjZmY5ZTAyNjg5NmU0YTEzMDUxOWUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImRjNDViNTg1YWQyOThmNWNlYzVmZDRmYTAzNTk0NTUwNDVhMjcyMzM0OTlhMzJlZjVkOGNkYzVlMTE4OTg0YTYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjIzMjA5NTdmYzc0OWJhOThiN2Q2ZWZhZjI4YjA5MjMxMGM0NGZlOTE3YWQzNzdiZWNmYzhkY2EwMjZkYmE0YzIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_5a2d31bd74e44f5d95ceff56465abeed",
+      "statement": "Successful runs persist metrics and model artifacts under a timestamped run directory, while failures preserve an error record and run log; Results also resolves approved cache pointers.",
+      "evidence": [
+        {
+          "resource": "repo://app_pages/results.py#L16-L21",
+          "version": "repo-lines-v1:sha256:1be707e1875d96b0b70b030b9fb4fd04d019f63c7eef84d2d5ce849b15b2fd90:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTZhYTgxMTU2OWYwMTkyZjJjMjA2NjdkZWY0M2U5MjQ1ZGQ2MGI5N2ZmZDIwNWJkYTQ0OTczYzY3NTI3ODUwYSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDEyY2EzNDVjY2Y3NWJmOWMwODA2YmNlNjk1YmU4ZGU4MDhiNzk5ODQyNTFhN2E1NGQyMDJjZjYxMDFkZDQ1MSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNDMyN2QwMGNhZWMwMjgyYTU4ZWI2MTNmODM5ZGZlYTc3NzM2ZTJiNGY1ZjZlOWZkYzhlODZhMjliMzQyMWFhYyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZmFlMjM0M2I5NjllOGNmYjc2YjRkNGZhOGViMzI3NzRmYmMyOGRmNzNmOWI4NzY1NjcxOTI4NDk4M2IxZDhlNiJ9"
+        },
+        {
+          "resource": "repo://docs/ARCHITECTURE.md#L54-L66",
+          "version": "repo-lines-v1:sha256:8e25e538a002ff36df5213d80ba861e5c113e9f268276a731ed9b7e4a3eb949c:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNiOWVlNDZkZjYxMDNlYzRmNmY0ODE0ZDg5YTAwNGJkZGRkZjI4MjFjNTNiNDk5YWU0NGMxN2VjMmEwNGJkNjUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhkMzA5YjIzZDhiZWQxM2I5Y2E4OTQ1NjNjNzhkZmY0NTJlMWQwOGQzMmQ2NzUwNzVjZWRhOWE2YzRiZDcxYTYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjVmZTQzZTU2YmRkNjMxYjYyODk3N2I3MTE2NjFlODY1Nzg0ZGQ2MTA0ZWU0Y2E4MWI1OTc3OWIxOWU4NGUyMGEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImEzODQ1NmRhODM1Y2ZmZmY2MjdjMjZiMGI2MmQzODcyNmI3NjdhZjdmMzY2MjM3ZTc4NmFiZDI3MjAyZTFiYTMifQ"
+        },
+        {
+          "resource": "repo://src/mitra_run.py#L298-L325",
+          "version": "repo-lines-v1:sha256:2ef3fa1c1e57b764c86a3a121ab564d55ccebe3d1cc3f5aea9fe29feb5ac4c58:eyJzZWxlY3RlZExpbmVDb3VudCI6MjgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg0Njg5YjdjMzJmNmQ2MDY4MzUzNWZlYzY1ZmI0M2Y2MmJkZGQ4YmFlMmRiYWY4OWM4MDhkNDM1YTNmMDk4ZmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEzYjIyMzQzZTljNzU1OTIzM2RjNDZkY2VhNTg5OTY1OGY2Yzg2YTczMTRmYTQ2MjA5OGYyOTI4YWY2YWQzZjUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjhiZjMxNjU2MWE0YmI2OWI1ZjlhNzQ5ZWY3YjJjNTdjN2VjN2FjOGY1ZmZkNGE3YmM3NmU5MDc5ZDk3YTAxOGQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjdmYmM3ZDRiOTc0OTZlMTE0YzdjNTU3ZTZjY2Q0OTBlMmVkMjM0NzVmYjBhZmMwOWUxNjQyNzg3MGJkMjE4NDYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_f2cd42dec51a4298ab039026a54336a7",
+      "statement": "Hugging Face calls use HF_TOKEN from the process environment, and runner device configuration selects one GPU when CUDA is available or zero otherwise.",
+      "evidence": [
+        {
+          "resource": "repo://docs/ARCHITECTURE.md#L68-L76",
+          "version": "repo-lines-v1:sha256:c5411247bb665f602f7fbe16a433e1d1946616c36d844cf5669da876932c2f2b:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzNiNDc4NGQwMGYwMWZjZTJjNjhjYmNlMDU5ZTUyMDgzNTRiNzljMjFkMDY3ODczNjM5OGU0M2M4Y2M5OWEzZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMzJjNGFkYTk5ZWI0NzM0YWQ1NTVlYWFmZTA1MTg3M2I4NzI5NWQyZTBhNGY4MDc0ZDMzOTcyOTFiOGJiNzU5NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMWEzNjg4ZTgyYjgyZjUzNWIyZDdhN2EzM2RiNmU4YzBlMjUyOWY3N2ZhMDU4MGExMDczYTBkOWRjOTdmN2M3MCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjAsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSJ9"
+        },
+        {
+          "resource": "repo://src/mitra_run.py#L469-L484",
+          "version": "repo-lines-v1:sha256:6f88a5e1a615a2434b9d68007fe1f896a6fd48ec8608f0991e6d45a37411fcc7:eyJzZWxlY3RlZExpbmVDb3VudCI6MTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIxOGQ1ODQwMDFkZjlmNDM1MDg2YzY3YTM4NzY4ZGI5MjUxZTdkMDIxYjJjNTc5MTY3NGFiOTQ3ODdiMmQ0YjAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE2ZDZjNWI4MjBjN2JhYjlmMmYxMzczOWNkNTc2NjFlMjM5OGQzYzdiY2M3MTk1OTNhM2E3OTExMTFiOWNkMmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjUzMmFmMGNhMmJhNTc1Mjg1YmVhMmYwOTE1ZGVlZmVlODcwZjY4NGExZjdiOTNiODNkYTczYjA5MTgwOGM2OTQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImIwZTg2ZmMzNTE2ZDI5MzBjM2I2ODQ5NmIzYzFjMGMwMzBjNDVkNjhkNjc2ZDk5MTFmYTUyZmE5ODFjM2M0YTgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_eff81b9b248d4a688fc7e55e60662cde",
+      "statement": "The application explicitly warns that model results do not certify that the input table is accurate, representative, fair, causally valid, or trustworthy.",
+      "evidence": [
+        {
+          "resource": "repo://app_pages/results.py#L23-L27",
+          "version": "repo-lines-v1:sha256:8e36257a2497a77b576d75535bac551029b3ffeb7845d689b5531793e20e649c:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOGU1M2VmYjFjYWU0N2VhYjVjMDk0ZGRiMTU4YmQ5NDQ1NzU3N2MwMjc0YTY5NjhiNGM5ZTM3YzJkM2RhNjA1NCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZmFmYmEwNTI3YzM5NTNjNGI2ZTBlNWI1NzM5YmE4MzYxMmY4MDUzYmNkYzk0NjY3MzAxOTNjZDFkNTkwYjQwOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMjI4ZGU0NTllNjY1Y2EyZjU0YjZiNjg5NDJjOTMyNzE1MzY3ZGE2NjQ1ZmM1NWM2MDdiMmRiNTdmMGFkYTg3NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzgxZTM5MjQxMGE4ZGM5ZjI1ZGI2MmZjYzFkOTYzM2M4MjdkODdlNjcwZWM1OTg4ZGVjNGUxOTc3ZGQ5ODk5NCJ9"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.5.2",
+    "at": "2026-09-23T14:16:42.939Z"
+  }
+}

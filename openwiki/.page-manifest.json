@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "pages": {
+    "/openwiki/architecture/system-overview.md": {
+      "pageVersion": "sha256:c855534cfe8dd9944d3eb29dd0ffb6bd4b7da9ae87af0e8773adc1c35f670ecf",
+      "completedBy": "codex",
+      "completedRunId": "76ad1bf2-8b0a-44f0-99ab-e9d0a569d23b",
+      "gitHead": "cf89179bc33814e4aee28b2d21793ad581bd8f2f",
+      "sourceFingerprint": "sha256:5550fc67fd56f0f64c4a89bb4c1bc18a1d7a5293238a722596b56df0faff5a08"
+    },
+    "/openwiki/concepts/evaluation-and-trust-boundary.md": {
+      "pageVersion": "sha256:2d1ab2db700db193271c8950a2979abc186da6b0e8eabb1a11ffaa91bf70e387",
+      "completedBy": "codex",
+      "completedRunId": "76ad1bf2-8b0a-44f0-99ab-e9d0a569d23b",
+      "gitHead": "cf89179bc33814e4aee28b2d21793ad581bd8f2f",
+      "sourceFingerprint": "sha256:5550fc67fd56f0f64c4a89bb4c1bc18a1d7a5293238a722596b56df0faff5a08"
+    },
+    "/openwiki/operations/windows-setup-and-credentials.md": {
+      "pageVersion": "sha256:0c1211d995f1837acc183e0d9c6f613b0569644b325e31c8673182db22cde373",
+      "completedBy": "codex",
+      "completedRunId": "76ad1bf2-8b0a-44f0-99ab-e9d0a569d23b",
+      "gitHead": "cf89179bc33814e4aee28b2d21793ad581bd8f2f",
+      "sourceFingerprint": "sha256:5550fc67fd56f0f64c4a89bb4c1bc18a1d7a5293238a722596b56df0faff5a08"
+    },
+    "/openwiki/quickstart.md": {
+      "pageVersion": "sha256:bd8895dc288acd9a63c586d3089315a16f690d0d3c63cb315cc8a85e25d6ca8b",
+      "completedBy": "codex",
+      "completedRunId": "76ad1bf2-8b0a-44f0-99ab-e9d0a569d23b",
+      "gitHead": "cf89179bc33814e4aee28b2d21793ad581bd8f2f",
+      "sourceFingerprint": "sha256:5550fc67fd56f0f64c4a89bb4c1bc18a1d7a5293238a722596b56df0faff5a08"
+    },
+    "/openwiki/testing/smoke-checks.md": {
+      "pageVersion": "sha256:05cffe3ab06c393c3f4ccc7807a475b785923628120547e8b76e8b529fd740e9",
+      "completedBy": "codex",
+      "completedRunId": "76ad1bf2-8b0a-44f0-99ab-e9d0a569d23b",
+      "gitHead": "cf89179bc33814e4aee28b2d21793ad581bd8f2f",
+      "sourceFingerprint": "sha256:5550fc67fd56f0f64c4a89bb4c1bc18a1d7a5293238a722596b56df0faff5a08"
+    },
+    "/openwiki/workflows/data-selection-and-splitting.md": {
+      "pageVersion": "sha256:43ba6049903ab886a54c45729442a7c23e539a69a541df12692c9b02f5abc222",
+      "completedBy": "codex",
+      "completedRunId": "76ad1bf2-8b0a-44f0-99ab-e9d0a569d23b",
+      "gitHead": "cf89179bc33814e4aee28b2d21793ad581bd8f2f",
+      "sourceFingerprint": "sha256:5550fc67fd56f0f64c4a89bb4c1bc18a1d7a5293238a722596b56df0faff5a08"
+    },
+    "/openwiki/workflows/model-training-and-results.md": {
+      "pageVersion": "sha256:d9306a21e8d994ad5b3a67880c439f9a0dd600afff057ec44dcc810ad2321177",
+      "completedBy": "codex",
+      "completedRunId": "76ad1bf2-8b0a-44f0-99ab-e9d0a569d23b",
+      "gitHead": "cf89179bc33814e4aee28b2d21793ad581bd8f2f",
+      "sourceFingerprint": "sha256:5550fc67fd56f0f64c4a89bb4c1bc18a1d7a5293238a722596b56df0faff5a08"
+    }
+  }
+}
