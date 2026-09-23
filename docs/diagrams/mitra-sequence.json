@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": { "title": "Glass Box Run Request", "output": "docs/diagrams/mitra-sequence.html", "quality_profile": "showcase", "viewBox": [1080, 920], "column_fit": "spread" },
+  "participants": [
+    { "id": "user", "type": "external", "label": "User", "sublabel": "browser" },
+    { "id": "app", "type": "frontend", "label": "Streamlit", "sublabel": "train page" },
+    { "id": "loader", "type": "backend", "label": "Loader", "sublabel": "src/load.py" },
+    { "id": "runner", "type": "backend", "label": "MITRA runner", "sublabel": "src/mitra_run.py" },
+    { "id": "model", "type": "cloud", "label": "MITRA-v2", "sublabel": "Hugging Face" },
+    { "id": "artifacts", "type": "database", "label": "Run directory", "sublabel": "data/runs/<UTC>" }
+  ],
+  "segments": [
+    { "from": 160, "to": 390, "label": "Prepare" },
+    { "from": 408, "to": 670, "label": "Fit and predict" },
+    { "from": 688, "to": 840, "label": "Persist and display" }
+  ],
+  "messages": [
+    { "id": "request", "from": "user", "to": "app", "y": 180, "label": "click Run" , "variant": "emphasis" },
+    { "id": "load-table", "from": "app", "to": "loader", "y": 222, "label": "resolve selected data" },
+    { "id": "split-table", "from": "loader", "to": "app", "y": 264, "label": "known + hidden tables", "variant": "return" },
+    { "id": "start-run", "from": "app", "to": "runner", "y": 306, "label": "run_mitra(settings)" , "variant": "emphasis" },
+    { "id": "checkpoint", "from": "runner", "to": "model", "y": 368, "label": "select classifier or regressor" },
+    { "id": "fit", "from": "runner", "to": "model", "y": 410, "label": "fit AutoGluon MITRA" , "variant": "emphasis" },
+    { "id": "predictions", "from": "model", "to": "runner", "y": 452, "label": "hidden-row predictions", "variant": "return" },
+    { "id": "baseline", "from": "runner", "to": "artifacts", "y": 494, "label": "write baseline metrics", "variant": "dashed" },
+    { "id": "write", "from": "runner", "to": "artifacts", "y": 556, "label": "write metrics + predictions", "variant": "emphasis" },
+    { "id": "predictor", "from": "runner", "to": "artifacts", "y": 598, "label": "persist predictor", "variant": "default" },
+    { "id": "result", "from": "artifacts", "to": "app", "y": 700, "label": "result metadata", "variant": "return" },
+    { "id": "display", "from": "app", "to": "user", "y": 742, "label": "metrics + status", "variant": "return" },
+    { "id": "error", "from": "runner", "to": "artifacts", "y": 804, "label": "error.json + run.log", "variant": "security", "note": "Failed runs preserve diagnostics." }
+  ],
+  "activations": [
+    { "participant": "app", "from": 176, "to": 324, "type": "frontend" },
+    { "participant": "loader", "from": 218, "to": 270, "type": "backend" },
+    { "participant": "runner", "from": 300, "to": 820, "type": "backend" },
+    { "participant": "model", "from": 362, "to": 468, "type": "cloud" },
+    { "participant": "artifacts", "from": 548, "to": 812, "type": "database" }
+  ],
+  "cards": []
+}

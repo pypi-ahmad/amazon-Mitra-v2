@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "diagram_type": "dataflow",
+  "meta": { "title": "Glass Box Dataset-to-Results Dataflow", "output": "docs/diagrams/mitra-dataflow.html", "quality_profile": "showcase", "viewBox": [1200, 900] },
+  "stages": [
+    { "label": "Sources" },
+    { "label": "Load + cache" },
+    { "label": "Split + inspect" },
+    { "label": "Fit + predict" },
+    { "label": "Results" }
+  ],
+  "nodes": [
+    { "id": "catalog", "type": "external", "label": "HF datasets", "stage": 0, "row": 0, "tag": "primary" },
+    { "id": "upload", "type": "frontend", "label": "Table upload", "stage": 0, "row": 2, "tag": "optional", "width": 140 },
+    { "id": "fallback", "type": "database", "label": "Local fallback", "stage": 0, "row": 4, "tag": "offline path" },
+    { "id": "normalized", "type": "backend", "label": "Normalized table", "stage": 1, "row": 1, "tag": "cacheable" },
+    { "id": "known", "type": "backend", "label": "Known rows", "stage": 2, "row": 0, "tag": "90%" },
+    { "id": "hidden", "type": "security", "label": "Hidden rows", "stage": 2, "row": 3, "tag": "10%" },
+    { "id": "mitra", "type": "cloud", "label": "MITRA prediction", "stage": 3, "row": 0, "tag": "AutoGluon" },
+    { "id": "run", "type": "database", "label": "Run artifacts", "stage": 4, "row": 1, "tag": "data/runs" },
+    { "id": "results", "type": "frontend", "label": "Results page", "stage": 4, "row": 3, "tag": "Streamlit" }
+  ],
+  "flows": [
+    { "id": "catalog-normalized", "from": "catalog", "to": "normalized", "label": "downloaded table", "classification": "HF_TOKEN", "variant": "emphasis" },
+    { "id": "upload-normalized", "from": "upload", "to": "normalized", "label": "uploaded table", "classification": "local", "variant": "default", "labelDx": -70 },
+    { "id": "fallback-normalized", "from": "fallback", "to": "normalized", "label": "fallback", "classification": "local", "variant": "dashed" },
+    { "id": "normalized-known", "from": "normalized", "to": "known", "label": "deterministic split", "classification": "random_state=42", "variant": "emphasis" },
+    { "id": "normalized-hidden", "from": "normalized", "to": "hidden", "label": "held out rows", "classification": "evaluation boundary", "variant": "security" },
+    { "id": "known-mitra", "from": "known", "to": "mitra", "label": "fit", "classification": "AutoGluon", "variant": "emphasis", "route": "straight", "labelDy": -30 },
+    { "id": "hidden-mitra", "from": "hidden", "to": "mitra", "label": "predict", "classification": "no target leakage", "variant": "security" },
+    { "id": "mitra-run", "from": "mitra", "to": "run", "label": "metrics", "classification": "persisted", "variant": "emphasis" },
+    { "id": "run-results", "from": "run", "to": "results", "label": "load approved result", "classification": "cache pointer", "variant": "emphasis" }
+  ],
+  "cards": []
+}

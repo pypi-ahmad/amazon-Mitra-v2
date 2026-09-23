@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Glass Box Mitra-v2 Architecture",
+    "output": "docs/diagrams/mitra-architecture.html",
+    "quality_profile": "showcase",
+    "viewBox": [1200, 800],
+    "repository": { "url": "https://github.com/pypi-ahmad/amazon-Mitra-v2.git", "revision": "cf89179bc33814e4aee28b2d21793ad581bd8f2f" }
+  },
+  "layout": { "mode": "grid", "origin": [90, 150], "cols": 4, "gapX": 70, "gapY": 100, "cellW": 230, "cellH": 110 },
+  "components": [
+    { "id": "launcher", "type": "external", "label": "run.cmd", "sublabel": "Windows launcher", "row": 0, "col": 0, "sources": [{ "path": "run.cmd" }] },
+    { "id": "streamlit", "type": "frontend", "label": "Streamlit app", "sublabel": "app.py + pages", "row": 0, "col": 1, "sources": [{ "path": "app.py" }, { "path": "app_pages/train.py" }] },
+    { "id": "catalog", "type": "backend", "label": "Dataset catalog", "sublabel": "sources + fallbacks", "row": 1, "col": 0, "sources": [{ "path": "src/data_catalog.py" }] },
+    { "id": "loader", "type": "backend", "label": "Load + split", "sublabel": "normalize, cache, 90/10", "row": 1, "col": 1, "sources": [{ "path": "src/load.py" }] },
+    { "id": "state", "type": "backend", "label": "Session state", "sublabel": "settings", "row": 1, "col": 2, "sources": [{ "path": "src/state.py" }] },
+    { "id": "runner", "type": "backend", "label": "MITRA runner", "sublabel": "head, fit, baseline", "row": 2, "col": 1, "sources": [{ "path": "src/mitra_run.py" }] },
+    { "id": "models", "type": "cloud", "label": "MITRA-v2 heads", "sublabel": "classifier or regressor", "row": 2, "col": 2, "tag": "Hugging Face" },
+    { "id": "artifacts", "type": "database", "label": "Run artifacts", "sublabel": "run evidence", "row": 2, "col": 3, "sources": [{ "path": "docs/ARCHITECTURE.md" }] }
+  ],
+  "boundaries": [{ "kind": "region", "label": "One native Windows Streamlit process", "wraps": ["streamlit", "catalog", "loader", "state", "runner", "artifacts"], "pad": 34 }],
+  "connections": [
+    { "id": "launch-app", "from": "launcher", "to": "streamlit", "label": "start on :8541" },
+    { "id": "catalog-load", "from": "catalog", "to": "loader", "label": "source spec" },
+    { "id": "app-state", "from": "streamlit", "to": "state" },
+    { "id": "load-state", "from": "loader", "to": "state" },
+    { "id": "state-run", "from": "state", "to": "runner", "label": "train/test + settings" },
+    { "id": "run-model", "from": "runner", "to": "models", "label": "MITRA", "labelDx": 46 },
+    { "id": "model-artifacts", "from": "models", "to": "artifacts", "label": "persist" },
+    { "id": "results-ui", "from": "artifacts", "to": "streamlit", "label": "results selector", "variant": "emphasis" }
+  ],
+  "cards": []
+}

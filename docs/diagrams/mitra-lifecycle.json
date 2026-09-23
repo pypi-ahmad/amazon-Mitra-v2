@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "diagram_type": "lifecycle",
+  "meta": { "title": "Glass Box Run Lifecycle", "output": "docs/diagrams/mitra-lifecycle.html", "quality_profile": "showcase", "viewBox": [1080, 760] },
+  "lanes": [{ "id": "main", "label": "Run phases" }],
+  "states": [
+    { "id": "idle", "type": "start", "label": "Idle", "sublabel": "ready for run", "lane": "main", "col": 0, "step": "01", "tag": "entry" },
+    { "id": "loading", "type": "active", "label": "Loading", "sublabel": "resolve table", "lane": "main", "col": 1, "step": "02", "tag": "data" },
+    { "id": "prepared", "type": "active", "label": "Prepared", "sublabel": "split + validate", "lane": "main", "col": 2, "step": "03", "tag": "check" },
+    { "id": "fitting", "type": "active", "label": "Fitting", "sublabel": "MITRA + baseline", "lane": "main", "col": 3, "step": "04", "tag": "model" },
+    { "id": "persisted", "type": "success", "label": "Persisted", "sublabel": "run artifacts", "lane": "main", "col": 4, "step": "05", "tag": "evidence" }
+  ],
+  "transitions": [
+    { "id": "idle-loading", "from": "idle", "to": "loading", "variant": "emphasis" },
+    { "id": "loading-prepared", "from": "loading", "to": "prepared", "variant": "emphasis" },
+    { "id": "prepared-fitting", "from": "prepared", "to": "fitting", "variant": "emphasis" },
+    { "id": "fitting-persisted", "from": "fitting", "to": "persisted", "variant": "emphasis" }
+  ],
+  "cards": []
+}

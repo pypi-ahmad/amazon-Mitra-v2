@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "diagram_type": "workflow",
+  "meta": { "title": "Glass Box Training Workflow", "output": "docs/diagrams/mitra-workflow.html", "quality_profile": "showcase", "viewBox": [1080, 960] },
+  "lanes": [
+    { "id": "user", "label": "User Interface" },
+    { "id": "data", "label": "Data Preparation" },
+    { "id": "split", "label": "Evaluation Boundary" },
+    { "id": "model", "label": "Model Execution" },
+    { "id": "results", "label": "Results + Artifacts" },
+    { "id": "error", "label": "Validation / Failure", "variant": "exception" }
+  ],
+  "phases": [
+    { "id": "select", "label": "Select", "fromCol": 0, "toCol": 1 },
+    { "id": "prepare", "label": "Prepare", "fromCol": 2, "toCol": 3, "variant": "emphasis" },
+    { "id": "fit", "label": "Fit + persist", "fromCol": 4, "toCol": 5, "variant": "emphasis" }
+  ],
+  "mainPath": ["choose", "load", "split", "fit", "predict", "save"],
+  "nodes": [
+    { "id": "choose", "lane": "user", "col": 0, "type": "frontend", "label": "Choose table", "sublabel": "bundled or upload" },
+    { "id": "load", "lane": "data", "col": 1, "type": "backend", "label": "Load table", "sublabel": "normalize + cache" },
+    { "id": "split", "lane": "split", "col": 2, "type": "security", "label": "Split rows", "sublabel": "known / hidden" },
+    { "id": "fit", "lane": "model", "col": 3, "type": "backend", "label": "Fit MITRA", "sublabel": "task head" },
+    { "id": "predict", "lane": "results", "col": 4, "type": "backend", "label": "Predict", "sublabel": "MITRA + baseline" },
+    { "id": "save", "lane": "user", "col": 5, "type": "database", "label": "Show results", "sublabel": "metrics + predictor" },
+    { "id": "failed", "lane": "error", "col": 3, "type": "security", "label": "Show error", "sublabel": "error.json + run.log" }
+  ],
+  "edges": [
+    { "id": "choose-load", "from": "choose", "to": "load", "role": "main" },
+    { "id": "load-split", "from": "load", "to": "split", "role": "main" },
+    { "id": "split-fit", "from": "split", "to": "fit", "label": "valid target", "variant": "emphasis", "role": "main" },
+    { "id": "fit-failed", "from": "fit", "to": "failed", "variant": "security", "role": "error", "fromSide": "bottom", "toSide": "top", "route": "drop" },
+    { "id": "fit-predict", "from": "fit", "to": "predict", "role": "main" },
+    { "id": "predict-save", "from": "predict", "to": "save", "label": "metrics + predictions", "role": "main" }
+  ],
+  "cards": []
+}
